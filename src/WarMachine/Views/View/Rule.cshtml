@@ -1,0 +1,26 @@
+﻿
+@model IList<WarMachine.Models.WarModels.RuleModel>
+
+<h1>@ViewBag.Title</h1>
+
+
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+
+    </tr>
+
+    @foreach (var ability in Model)
+    {
+        <tr>
+            <td>@ability.Name</td>
+            <td>@ability.Text</td>
+
+        </tr>
+
+
+    }
+
+</table>

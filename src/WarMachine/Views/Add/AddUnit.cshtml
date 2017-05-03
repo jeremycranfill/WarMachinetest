@@ -1,0 +1,89 @@
+﻿@model WarMachine.ViewModels.AddUnitViewModel
+
+<form asp-controller="Add" asp-action="AddUnit" method="post">
+
+    <div class="form-group">
+        <label asp-for="SPD"></label>
+        <input class="form-control" asp-for="SPD" />
+        <span asp-validation-for="SPD"></span>
+        
+    </div>
+
+    <div class="form-group">
+        <label asp-for="STR"></label>
+        <input class="form-control" asp-for="STR" />
+        <span asp-validation-for="STR"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="MAT"></label>
+            <input class="form-control" asp-for="MAT" />
+            <span asp-validation-for="MAT"></span>
+         </div>
+
+    <div class="form-group">
+        <label asp-for="RAT"></label>
+        <input class="form-control" asp-for="RAT" />
+        <span asp-validation-for="RAT"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DEF"></label>
+        <input class="form-control" asp-for="DEF" />
+        <span asp-validation-for="DEF"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ARM"></label>
+        <input class="form-control" asp-for="ARM" />
+        <span asp-validation-for="ARM"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CMD"></label>
+        <input class="form-control" asp-for="CMD" />
+        <span asp-validation-for="CMD"></span>
+     </div>
+
+
+
+    <div class="form-group">
+        <label asp-for="CMD"></label>
+        <input class="form-control" asp-for="CMD" />
+        <span asp-validation-for="CMD"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PointCost"></label>
+        <input class="form-control" asp-for="PointCost" />
+        <span asp-validation-for="PointCost"></span>
+    </div>
+
+
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input class="form-control" asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+
+    </div>
+
+
+    <div class="form-group">
+        <label asp-for="MaxUnit"></label>
+        <input class="form-control" asp-for="MaxUnit" />
+        <span asp-validation-for="MaxUnit"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="MinUnit"></label>
+        <input class="form-control" asp-for="MinUnit" />
+        <span asp-validation-for="MinUnit"></span>
+    </div>
+    
+    
+    
+    
+    <input type="submit" />
+    
+
+</form>

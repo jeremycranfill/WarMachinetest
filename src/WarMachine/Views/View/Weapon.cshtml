@@ -1,0 +1,36 @@
+﻿@model List<WarMachine.Models.WarModels.Weapon>
+
+<h1>@ViewBag.Title</h1>
+
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>ROF</th>
+            <th>POW</th>
+            <th>RNG</th>
+          
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var weapon in Model)
+        {
+            <tr>
+                <td>@weapon.Name</td>
+                <td>@weapon.Type</td>
+                <td>@weapon.ROF</td>
+                <td>@weapon.POW</td>
+                <td>@weapon.RNG</td>
+               
+
+
+            </tr>
+
+
+        }
+    </tbody>
+</table>

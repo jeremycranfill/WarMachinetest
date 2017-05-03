@@ -1,0 +1,15 @@
+﻿@model WarMachine.ViewModels.AddModelViewModel
+
+
+
+
+
+
+<form asp-controller="Add" asp-action="Model" method="post">
+
+    <div asp-validation-summary="All"></div>
+    <select asp-for="AddType" asp-items="@Model.Categories"></select>
+   
+    <input type="submit" value="Add Item">
+
+</form>

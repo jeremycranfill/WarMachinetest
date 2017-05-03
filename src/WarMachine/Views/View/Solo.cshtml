@@ -1,0 +1,44 @@
+﻿@model List<WarMachine.Models.WarModels.SoloModel>
+
+
+
+<h1>@ViewBag.Title</h1>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>SPD</th>
+            <th>STR</th>
+            <th>MAT</th>
+            <th>RAT</th>
+            <th>DEF</th>
+            <th>ARM</th>
+            <th>CMD</th>
+            <th>Point Cost</th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var solo in Model)
+        {
+            <tr>
+                <td>@solo.Name</td>
+                <td>@solo.SPD</td>
+                <td>@solo.STR</td>
+                <td>@solo.MAT</td>
+                <td>@solo.RAT</td>
+                <td>@solo.DEF</td>
+                <td>@solo.ARM</td>
+                <td>@solo.CMD</td>
+                <td>@solo.PointCost</td>
+
+
+            </tr>
+
+
+        }
+    </tbody>
+</table>

@@ -1,0 +1,41 @@
+﻿@model WarMachine.ViewModels.AddWeaponViewModel
+
+<form asp-controller="Add" asp-action="WEapon" method="post">
+
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input class="form-control" asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+
+
+    <div class="form-group">
+        <label asp-for="RNG"></label>
+        <input class="form-control" asp-for="RNG" />
+        <span asp-validation-for="RNG"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="POW"></label>
+        <input class="form-control" asp-for="POW" />
+        <span asp-validation-for="POW"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Type"></label>
+        <input class="form-control" asp-for="Type" />
+        <span asp-validation-for="Type"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ROF"></label>
+        <input class="form-control" asp-for="ROF" />
+        <span asp-validation-for="ROF"></span>
+    </div>
+   
+    
+    
+    <input type="submit" />
+
+
+</form>
