@@ -102,6 +102,8 @@ namespace WarMachine.Controllers
 
         public IActionResult Solo()
         {
+         
+
 
             return View("AddSolo");
 
@@ -114,8 +116,9 @@ namespace WarMachine.Controllers
 
             if (ModelState.IsValid)
             {
+               
 
-
+          
                 SoloModel newSolo = new SoloModel();
 
                 newSolo.Name = model.Name;
@@ -128,6 +131,8 @@ namespace WarMachine.Controllers
                 newSolo.RAT = model.RAT;
                 newSolo.SPD = model.SPD;
                 newSolo.STR = model.STR;
+              
+
                 context.Solos.Add(newSolo);
                 context.SaveChanges();
                 return Redirect("/");

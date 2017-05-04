@@ -12,7 +12,7 @@ namespace WarMachine.Models.WarModels
         public string Name { get; set; }
         //public IList<Weapon> Weapons { get; set; }
         //public IList<Spell> Spells { get; set; }
-        //public IList<Ability> Abilities { get; set; }
+        public IList<Ability> Abilities { get; set; }
 
         public  int SPD { get; set; }
         public int STR { get; set; }
@@ -24,7 +24,8 @@ namespace WarMachine.Models.WarModels
         public int ID { get; set; }
         public int PointCost { get; set; }
 
-
+        
+       
 
     }
 
