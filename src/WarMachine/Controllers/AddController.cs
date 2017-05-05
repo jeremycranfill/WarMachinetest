@@ -111,7 +111,7 @@ namespace WarMachine.Controllers
         }
 
         [HttpPost]
-        public IActionResult Solo(AddSoloViewModel model)
+        public IActionResult Solo(SoloViewModel model)
         {
 
             if (ModelState.IsValid)

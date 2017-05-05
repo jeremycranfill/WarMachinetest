@@ -74,6 +74,17 @@ namespace WarMachine.Controllers
         }
 
 
+        [HttpGet]
+        [Route("View/Solo/{SoloId}")]
+
+        public IActionResult Solo(int SoloId)
+        {
+
+            return View();
+
+        }
+
+
 
         public IActionResult Rule()
         {

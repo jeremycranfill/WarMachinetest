@@ -30,16 +30,15 @@ namespace WarMachine.Controllers
 
         }
 
-
+        [HttpGet]
         public IActionResult Solo(int SoloID)
         {
-          IList<SoloAbility> CurrentAbilities = context.SoloAbilities.Where(c => c.SoloID == SoloID).ToList();
+            IList<SoloAbility> CurrentAbilities = context.SoloAbilities.Where(c => c.SoloID == SoloID).ToList();
 
             IList<Ability> allAbilities = context.Abilities.ToList();
 
             AddAbilitySolo ViewModel = new AddAbilitySolo(allAbilities);
-              
-             
+            ViewModel.SoloID = SoloID;
 
 
 
@@ -47,17 +46,51 @@ namespace WarMachine.Controllers
 
 
 
-            return View();
+
+
+            return View("Solo", ViewModel);
 
         }
 
+        [HttpPost]
+        public IActionResult Solo(AddAbilitySolo model)
+        {
+
+
+            if (ModelState.IsValid)
+            {
+                IList<SoloAbility> existingItems = context.SoloAbilities
+                .Where(cm => cm.SoloID == model.SoloID)
+                .Where(cm => cm.AbilityID == model.AbilityID).ToList();
+
+                if (existingItems.Count < 1)
+                {
+                    SoloAbility NewSoloAbility = new SoloAbility();
+                    NewSoloAbility.AbilityID = model.AbilityID;
+                    NewSoloAbility.SoloID = model.SoloID;
+                    context.SoloAbilities.Add(NewSoloAbility);
+                    context.SaveChanges();
+                    
+                    return Redirect("/View/Solo/" + model.SoloID);
+
+
+
+                }
+
+
+               
+
+
+            }
+
+
+            return View("Solo", model);
 
 
 
 
 
-
-
-
+        }
     }
 }
+

@@ -8,7 +8,7 @@ using WarMachine.Models.WarModels;
 
 namespace WarMachine.ViewModels
 {
-    public class AddSoloViewModel: BaseeAddModel
+    public class SoloViewModel: BaseeAddModel
     {
         [Required]
         [Display(Name = "Field Allowance")]

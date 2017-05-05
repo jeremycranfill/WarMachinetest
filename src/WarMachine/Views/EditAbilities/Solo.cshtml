@@ -1,12 +1,16 @@
 ﻿@model WarMachine.ViewModels.Add.AddAbilitySolo
 
-<form asp-controller=" EditAbilities" asp-action="Solo" method="post">
+TODO current list of abilities with link to delete<br />
+
+
+
+<form asp-controller="EditAbilities" asp-action="Solo" method="post">
     <div class="form-control">
         <select asp-for="AbilityID" asp-items="@Model.Abilities">Abilities</select>
     </div>
 
     <div class="form-control">
-       
+        <input type="hidden" name="SoloID" value="@Model.SoloID" />
         <input type="submit" />
     </div>
 </form>
