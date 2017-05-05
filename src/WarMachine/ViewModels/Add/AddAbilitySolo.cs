@@ -4,18 +4,25 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using WarMachine.Models;
 using WarMachine.Models.WarModels;
 
-namespace WarMachine.ViewModels
+namespace WarMachine.ViewModels.Add
 {
-    public class AddAbilityViewModel
+    public class AddAbilitySolo
     {
 
-        //this might not be needed
-        /*/
-        public AddAbilityViewModel() {}
-        public AddAbilityViewModel(IList<Ability> AbilityList)
+
+
+        public IList<SelectListItem> Abilities { get; set; }
+        [Required]
+        public int SoloID { get; set; }
+        [Required]
+        public int AbilityID { get; set; }
+
+
+
+        public AddAbilitySolo() { }
+        public AddAbilitySolo(IList<Ability> AbilityList)
         {
             Abilities = new List<SelectListItem>();
             foreach (var abil in AbilityList)
@@ -34,23 +41,15 @@ namespace WarMachine.ViewModels
                 );
 
 
+
+
+
+
+
+
+
             }
-            
-
-
-
-
         }
-        /*/
-
-        [Required]
-        public string Name { get; set; }
-        [Required]
-        public string Description { get; set; }
-
-        public List<SelectListItem> Abilities { get; set; } = new List<SelectListItem>();
-
-
 
     }
 }

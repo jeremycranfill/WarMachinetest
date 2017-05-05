@@ -1,0 +1,43 @@
+﻿@model List<WarMachine.Models.WarModels.SoloModel>
+@using WarMachine.Models.WarModels
+
+
+
+<h1>@ViewBag.Title</h1>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Abilities</th>'
+            <th>Edit</th>
+         
+
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var solo in Model)
+        {
+            <tr>
+                <td>@solo.Name</td>
+              
+                <td>
+                  //TODO add ability list                   
+                    abilities here at some point
+
+                </td>
+                
+                <td><a asp-controller="Edit" asp-action="Solo" asp-route-id="@solo.ID">@solo.ID</a></td>
+
+
+
+
+
+            </tr>
+
+
+        }
+    </tbody>
+</table>

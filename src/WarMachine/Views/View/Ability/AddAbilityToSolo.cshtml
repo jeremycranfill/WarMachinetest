@@ -1,0 +1,10 @@
+﻿@model WarMachine.ViewModels.Add.AddAbilitySolo
+
+<div class="form-control">
+    <select asp-for="AbilityID" asp-items="@Model.Abilities">Abilities</select>
+</div>
+
+<div class="form-control">
+<input type="hidden" name="SoloID" value="@Model.SoloID" />
+<input type="submit" />
+ </div>

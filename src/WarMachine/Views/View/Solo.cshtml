@@ -18,6 +18,7 @@
             <th>ARM</th>
             <th>CMD</th>
             <th>Point Cost</th>
+            <td>Edit</td>
 
         </tr>
     </thead>
@@ -35,6 +36,8 @@
                 <td>@solo.ARM</td>
                 <td>@solo.CMD</td>
                 <td>@solo.PointCost</td>
+                <td><a asp-controller="Edit" asp-action="Solo"  asp-route-SoloId="@solo.ID">@solo.ID</a></td>
+
             
 
 
