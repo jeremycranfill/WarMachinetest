@@ -62,10 +62,35 @@ namespace WarMachine.Controllers
 
         }
 
-        [Route("View/Solo/{SoloId}")]
+        [Route("View/Unit/{UnitID}")]
         public IActionResult Unit(int UnitID)
         {
             UnitModel unit = context.Units.Single(c => c.ID == UnitID);
+
+
+           
+           /*/   TODO add abilities to view List<SoloAbility> soloAbils = context.SoloAbilities.Where(c => c.SoloID == SoloId).ToList();
+
+            List<Ability> abilList = new List<Ability>();
+
+            foreach (SoloAbility abil in soloAbils)
+            {
+
+                abilList.Add(context.Abilities.Single(c => c.ID == abil.AbilityID));
+
+
+            }
+            solo.Abilities = abilList;
+
+    /*/ 
+
+
+
+
+
+
+
+
             return View("Singleunit", unit);
        
                 

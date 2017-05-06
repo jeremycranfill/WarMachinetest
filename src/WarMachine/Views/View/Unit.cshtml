@@ -30,7 +30,7 @@
         @foreach (var unit in Model)
         {
             <tr>
-                <td>@unit.Name</td>
+                <td><a asp-controller="View" asp-action="Unit" asp-route-id="@unit.ID"> @unit.Name</a></td>
                 <td>@unit.SPD</td>
                 <td>@unit.STR</td>
                 <td>@unit.MAT</td>
@@ -41,7 +41,7 @@
                 <td>@unit.MinUnit</td>
                 <td>@unit.MaxUnit</td>
                 <td>@unit.PointCost</td>
-                <td><a asp-controller="Edit" asp-action="Unit" asp-route-UnitID="@unit.ID">@unit.ID</a></td>
+                <td><a asp-controller="Edit" asp-action="Unit" asp-route-UnitID="@unit.ID">Edit</a></td>
 
 
             </tr>

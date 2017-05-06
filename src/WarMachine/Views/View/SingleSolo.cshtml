@@ -38,6 +38,10 @@
                
     </tbody>
 </table>
+
+<a asp-controller="Edit" asp-action="Solo" asp-route-SoloId="@Model.ID">Edit </a>
+
+
 <h3>Abilities</h3>
 <table class="table table-sm">
   <thead><tr>
@@ -63,5 +67,6 @@
 
 </table>
 <br />
+<a asp-controller="EditAbilities" asp-action="Solo" asp-route-SoloId="@Model.ID">Add Ability</a>
 
-<a asp-controller="Edit" asp-action="Solo" asp-route-SoloId="@Model.ID">Edit </a>
+

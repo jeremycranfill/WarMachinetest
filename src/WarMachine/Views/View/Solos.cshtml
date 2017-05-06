@@ -27,7 +27,7 @@
         @foreach (var solo in Model)
         {
             <tr>
-                <td>@solo.Name</td>
+                <td><a asp-controller="View" asp-action="Solo" asp-route-id="@solo.ID"> @solo.Name</a></td>
                 <td>@solo.SPD</td>
                 <td>@solo.STR</td>
                 <td>@solo.MAT</td>
