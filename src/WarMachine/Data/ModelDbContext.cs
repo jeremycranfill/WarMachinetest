@@ -15,6 +15,7 @@ namespace WarMachine.Data
         public DbSet<SoloModel> Solos { get; set; }
         public DbSet<RuleModel> Rules { get; set; }
         public DbSet<SoloAbility> SoloAbilities { get; set; }
+        public DbSet<SoloSpell> SoloSpells { get; set; }
 
         public ModelDbContext(DbContextOptions<ModelDbContext> options)
                 : base(options) {   }
@@ -30,6 +31,7 @@ namespace WarMachine.Data
             modelBuilder.Entity<UnitModel>().HasKey(c => c.ID);
             modelBuilder.Entity<SoloModel>().HasKey(c => c.ID);
             modelBuilder.Entity<SoloAbility>().HasKey(c => new { c.AbilityID, c.SoloID });
+            
 
             
             modelBuilder.Entity<SoloModel>().HasMany<SoloAbility>(i => i.SoloAbilities);
