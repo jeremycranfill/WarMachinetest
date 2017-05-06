@@ -8,13 +8,13 @@ using WarMachine.Models.WarModels;
 
 namespace WarMachine.ViewModels.Edit
 {
-    public class EditSoloViewModel : SoloModel
+    public class EditUnitViewModel : UnitModel
     {
 
 
-        public EditSoloViewModel() { }
+        public EditUnitViewModel() { }
 
-        public EditSoloViewModel(List<Ability> abilityList)
+        public EditUnitViewModel(List<Ability> abilityList)
         {
             foreach (Ability ability in abilityList)
             {
@@ -33,8 +33,7 @@ namespace WarMachine.ViewModels.Edit
 
        new public List<SelectListItem> Abilities { get; set; } = new List<SelectListItem>();
 
-        public int AbilityID { get; set; }
-
+      
 
 
 

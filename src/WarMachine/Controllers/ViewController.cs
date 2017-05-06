@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using WarMachine.Models;
 using WarMachine.Data;
 using WarMachine.Models.WarModels;
+using WarMachine.Models.Joins;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -61,13 +62,25 @@ namespace WarMachine.Controllers
 
         }
 
+        [Route("View/Solo/{SoloId}")]
+        public IActionResult Unit(int UnitID)
+        {
+            UnitModel unit = context.Units.Single(c => c.ID == UnitID);
+            return View("Singleunit", unit);
+       
+                
+                
+              }
+
+
+
 
 
         public IActionResult Solo()
         {
 
             List<SoloModel> soloList = context.Solos.ToList();
-            return View(soloList);
+            return View("Solos",soloList);
 
 
 
@@ -80,7 +93,23 @@ namespace WarMachine.Controllers
         public IActionResult Solo(int SoloId)
         {
 
-            return View();
+            SoloModel solo = context.Solos.Single(c => c.ID == SoloId);
+            List<SoloAbility> soloAbils = context.SoloAbilities.Where(c => c.SoloID == SoloId).ToList();
+
+            List<Ability> abilList = new List<Ability>();
+
+            foreach (SoloAbility abil in soloAbils)
+            {
+
+                abilList.Add(context.Abilities.Single(c => c.ID == abil.AbilityID));
+
+
+            }
+            solo.Abilities = abilList;
+
+
+
+            return View("SingleSolo", solo);
 
         }
 

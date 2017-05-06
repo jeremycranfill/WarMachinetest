@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WarMachine.ViewModels
 {
-    public class AddUnitViewModel : BaseeAddModel
+    public class AddUnitViewModel : BasedModelViewModel
     {
         [Required]
         [Display(Name = "Min Unit Size")]

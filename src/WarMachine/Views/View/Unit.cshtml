@@ -1,4 +1,6 @@
 ﻿@model List<WarMachine.Models.WarModels.UnitModel>
+@using WarMachine.Models.WarModels
+
 
 
 
@@ -19,6 +21,7 @@
            <th>Min Unit</th>
            <th>Max Unit</th>
            <th>Point Cost</th>
+            <th>Edit</th>
 
         </tr>
     </thead>
@@ -38,6 +41,7 @@
                 <td>@unit.MinUnit</td>
                 <td>@unit.MaxUnit</td>
                 <td>@unit.PointCost</td>
+                <td><a asp-controller="Edit" asp-action="Unit" asp-route-UnitID="@unit.ID">@unit.ID</a></td>
 
 
             </tr>

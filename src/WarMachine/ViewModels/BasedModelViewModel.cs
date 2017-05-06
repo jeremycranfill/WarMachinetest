@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WarMachine.ViewModels
 {
-    public class BaseeAddModel
+    public class BasedModelViewModel
     {
 
         [Required]
