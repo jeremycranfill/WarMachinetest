@@ -10,6 +10,8 @@ namespace WarMachine.Models.WarModels
     {
         public int FA { get; set; }
        public IList<SoloAbility> SoloAbilities { get; set; }
+        public IList<SoloSpell> SoloSpells { get; set; }
+        public IList<SoloWeapon> SoloWeapons { get; set; }
 
     }
 }

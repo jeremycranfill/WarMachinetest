@@ -16,6 +16,11 @@ namespace WarMachine.Data
         public DbSet<RuleModel> Rules { get; set; }
         public DbSet<SoloAbility> SoloAbilities { get; set; }
         public DbSet<SoloSpell> SoloSpells { get; set; }
+        public DbSet<SoloWeapon> SoloWeapons { get; set; }
+        public DbSet<UnitAbiliity> UnitAbilities { get; set; }
+        public DbSet<UnitWeapon> UnitWeapons { get; set; }
+        public DbSet<UnitSpell> UnitSpells { get; set; }
+
 
         public ModelDbContext(DbContextOptions<ModelDbContext> options)
                 : base(options) {   }
@@ -30,12 +35,33 @@ namespace WarMachine.Data
             modelBuilder.Entity<Weapon>().HasKey(c => c.ID);
             modelBuilder.Entity<UnitModel>().HasKey(c => c.ID);
             modelBuilder.Entity<SoloModel>().HasKey(c => c.ID);
-            modelBuilder.Entity<SoloAbility>().HasKey(c => new { c.AbilityID, c.SoloID });
-            
 
-            
+            modelBuilder.Entity<SoloAbility>().HasKey(c => new { c.AbilityID, c.SoloID });
+
+            modelBuilder.Entity<SoloSpell>().HasKey(c => new { c.SpellID, c.SoloID });
+
+            modelBuilder.Entity<SoloWeapon>().HasKey(c => new { c.WeaponID  , c.SoloID });
+
+            modelBuilder.Entity<UnitAbiliity>().HasKey(c => new { c.UnitID, c.AbilityID });
+
+            modelBuilder.Entity<UnitWeapon>().HasKey(c => new { c.UnitID, c.WeaponId });
+
+            modelBuilder.Entity<UnitSpell>().HasKey(c => new { c.SpellID, c.UnitID });
+
+
+
             modelBuilder.Entity<SoloModel>().HasMany<SoloAbility>(i => i.SoloAbilities);
+            modelBuilder.Entity<SoloModel>().HasMany<SoloSpell>(i => i.SoloSpells);
+            modelBuilder.Entity<SoloModel>().HasMany<SoloWeapon>(i => i.SoloWeapons);
+
+
+
+
+
+
             modelBuilder.Entity<Ability>().HasMany<SoloAbility>(i => i.SoloAbilities);
+    
+      
 
 
 
