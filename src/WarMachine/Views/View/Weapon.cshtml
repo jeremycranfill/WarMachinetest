@@ -12,6 +12,7 @@
             <th>ROF</th>
             <th>POW</th>
             <th>RNG</th>
+            <th>Edit</th>
           
         </tr>
     </thead>
@@ -20,11 +21,13 @@
         @foreach (var weapon in Model)
         {
             <tr>
-                <td>@weapon.Name</td>
+               
+                <td><a asp-controller="View" asp-action="Weapon" asp-route-id="@weapon.ID"> @weapon.Name</a></td>
                 <td>@weapon.Type</td>
                 <td>@weapon.ROF</td>
                 <td>@weapon.POW</td>
                 <td>@weapon.RNG</td>
+                <td><a asp-controller="Edit" asp-action="Weapon" asp-route-SoloId="@weapon.ID">Edit</a></td>
                
 
 

@@ -60,7 +60,15 @@ namespace WarMachine.Data
 
 
             modelBuilder.Entity<Ability>().HasMany<SoloAbility>(i => i.SoloAbilities);
-    
+            modelBuilder.Entity<Ability>().HasMany<UnitAbiliity>(i => i.UnitAbillities);
+
+            modelBuilder.Entity<Spell>().HasMany<SoloSpell>(s => s.SoloSpells);
+            modelBuilder.Entity<Spell>().HasMany<UnitSpell>(s => s.UnitSpells);
+
+            modelBuilder.Entity<Weapon>().HasMany<SoloWeapon>(w => w.SoloWeapons);
+            modelBuilder.Entity<Weapon>().HasMany<UnitWeapon>(w => w.UnitWeapons);
+
+
       
 
 

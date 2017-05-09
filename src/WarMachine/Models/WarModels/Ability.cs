@@ -12,6 +12,8 @@ namespace WarMachine.Models.WarModels
         public string Name { get; set; }
         public string Description { get; set; }
         public IList<SoloAbility> SoloAbilities { get; set; }
+        public IList<UnitAbiliity> UnitAbillities { get; set; }
+        
 
 
 

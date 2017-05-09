@@ -5,22 +5,29 @@
 
 
 
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Description</th>
-        
-    </tr>
-
-    @foreach (var ability in Model)
-    {
+<table class="table table-striped">
+    <thead>
         <tr>
-            <td>@ability.Name</td>
-            <td>@ability.Description</td>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Edit</th>
 
         </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var ability in Model)
+        {
+            <tr>
+                
+                <td><a asp-controller="View" asp-action="Ability" asp-route-id="@ability.ID"> @ability.Name</a></td>
+                <td>@ability.Description</td>
+                <td><a asp-controller="Edit" asp-action="Ability" asp-route-UnitID="@ability.ID">Edit</a></td>
+
+            </tr>
 
 
-    }
+        }
+    </tbody>
 
     </table>

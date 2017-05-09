@@ -15,6 +15,7 @@
             <th>Pow</th>
             <th>RNG</th>
             <th>OFF</th>
+            <th>Edit</th>
 
         </tr>
     </thead>
@@ -23,7 +24,8 @@
         @foreach (var spell in Model)
         {
             <tr>
-                <td>@spell.Name</td>
+                
+                <td><a asp-controller="View" asp-action="Spell" asp-route-id="@spell.ID"> @spell.Name</a></td>
                 <td>@spell.Description</td>
                 <td>@spell.Cost</td>
                 <td>@spell.AOE</td>
@@ -31,6 +33,7 @@
                 <td>@spell.POW</td>
                 <td>@spell.RNG</td>
                 <td>@spell.OFF</td>
+                <td><a asp-controller="Edit" asp-action="Spell" asp-route-UnitID="@spell.ID">Edit</a></td>
 
 
             </tr>

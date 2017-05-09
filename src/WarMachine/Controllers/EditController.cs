@@ -25,7 +25,7 @@ namespace WarMachine.Controllers
         {
 
             IList<SoloModel> solos = context.Solos.ToList();
-            return View("SoloIndex", solos);
+            return Redirect("View");
 
 
         }

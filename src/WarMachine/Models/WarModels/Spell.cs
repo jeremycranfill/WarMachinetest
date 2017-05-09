@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WarMachine.Models.Joins;
 
 namespace WarMachine.Models.WarModels
 {
     public class Spell
     {
+        public IList<SoloSpell> SoloSpells { get; set; }
+        public IList<UnitSpell> UnitSpells { get; set; }
         public string Name { get; set; }
         public int Cost { get; set; }
         public string RNG { get; set; }
