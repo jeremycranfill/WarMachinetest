@@ -9,6 +9,7 @@ using WarMachine.Models;
 using WarMachine.Data;
 using WarMachine.Models.ManageViewModels;
 using WarMachine.Models.WarModels;
+using WarMachine.Models.Joins;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -102,10 +103,25 @@ namespace WarMachine.Controllers
 
         public IActionResult Solo()
         {
-         
 
 
-            return View("AddSolo");
+            SoloViewModel soloView = new SoloViewModel
+                
+            (
+
+            context.Abilities.ToList(),
+           
+            context.Weapons.ToList(),
+            context.Spells.ToList()
+
+            );
+
+           
+            
+                     
+
+
+            return View("AddSolo", soloView);
 
 
         }
@@ -121,6 +137,7 @@ namespace WarMachine.Controllers
           
                 SoloModel newSolo = new SoloModel();
 
+                
                 newSolo.Name = model.Name;
                 newSolo.ARM = model.ARM;
                 newSolo.CMD = model.CMD;
@@ -131,10 +148,50 @@ namespace WarMachine.Controllers
                 newSolo.RAT = model.RAT;
                 newSolo.SPD = model.SPD;
                 newSolo.STR = model.STR;
-              
 
                 context.Solos.Add(newSolo);
                 context.SaveChanges();
+
+                foreach (var abil in model.abilIDS)
+                {
+
+                    SoloAbility NewSoloAbility = new SoloAbility();
+                    NewSoloAbility.AbilityID =abil ;
+                    NewSoloAbility.SoloID = newSolo.ID;
+                    context.SoloAbilities.Add(NewSoloAbility);
+                    context.SaveChanges();
+
+
+                }
+
+                foreach (var weap in model.weapIDS)
+                {
+
+                    SoloWeapon NewSoloWeapon = new SoloWeapon();
+                    NewSoloWeapon.WeaponID = weap;
+                    NewSoloWeapon.SoloID = newSolo.ID;
+                    context.SoloWeapons.Add(NewSoloWeapon);
+                    context.SaveChanges();
+
+
+                }
+
+                foreach (var spell in model.weapIDS)
+                {
+
+                    SoloSpell NewSoloSpell = new SoloSpell();
+                    NewSoloSpell.SpellID = spell;
+                    NewSoloSpell.SoloID = newSolo.ID;
+                    context.SoloSpells.Add(NewSoloSpell);
+                    context.SaveChanges();
+
+
+                }
+
+
+
+
+
                 return Redirect("/");
 
 
