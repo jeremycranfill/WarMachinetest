@@ -42,7 +42,15 @@ namespace WarMachine.Controllers
             List<Ability> AbilityList = context.Abilities.ToList();
             SoloModel editSolo = context.Solos.Single(c => c.ID == SoloId);
 
-            EditSoloViewModel ViewModel = new EditSoloViewModel(AbilityList)
+            EditSoloViewModel ViewModel = new
+            EditSoloViewModel
+           (
+
+            context.Abilities.ToList(),
+            context.Weapons.ToList(),
+            context.Spells.ToList()
+            )
+
 
             {
 
@@ -56,11 +64,19 @@ namespace WarMachine.Controllers
                 SPD = editSolo.SPD,
                 PointCost = editSolo.PointCost,
                 STR = editSolo.STR,
-                ID = editSolo.ID
+                soloID = editSolo.ID,
+                currenntAbilIDs = context.SoloAbilities.Where(c => c.SoloID == SoloId).Select(x => x.AbilityID).ToList(),
+                currenntSpellIDs = context.SoloSpells.Where(c => c.SoloID == SoloId).Select(x => x.SpellID).ToList(),
+                currenntWeaponIDs = context.SoloWeapons.Where(c => c.SoloID == SoloId).Select(x => x.WeaponID).ToList()
+
 
 
 
             };
+
+            ViewModel.SelecCurrenttWeapons();
+            ViewModel.SelectCurrenntSpells();
+            ViewModel.SelectCurrentAbillities();
 
             return View("EditSolo", ViewModel);
 
@@ -70,7 +86,7 @@ namespace WarMachine.Controllers
         public IActionResult Solo(EditSoloViewModel editModel)
         {
 
-            SoloModel editSolo = context.Solos.Single(c => c.ID == editModel.ID);
+            SoloModel editSolo = context.Solos.Single(c => c.ID == editModel.soloID);
 
 
 
@@ -130,6 +146,9 @@ namespace WarMachine.Controllers
 
 
             };
+            
+
+
             return View("EditUnit", ViewModel);
         }
         [HttpPost]

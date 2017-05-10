@@ -58,12 +58,29 @@
         </div>
 
      
-        <input type="hidden" name="ID" value="@Model.ID" />
+        <input type="hidden" name="ID" value="@Model.soloID" />
 
 
 
     </div>
+    <div class="form-group">
+        <label asp-for="abilIDS"></label>
+        <select asp-for="abilIDS" asp-items="@Model.allAbills"></select>
 
+    </div>
+
+    <div class="form-group">
+        <label asp-for="spellIDS"></label>
+        <select asp-for="spellIDS" asp-items="@Model.allSpells"></select>
+
+    </div>
+
+
+    <div class="form-group">
+        <label asp-for="weapIDS"></label>
+        <select asp-for="weapIDS" asp-items="@Model.allWeaps"></select>
+
+    </div>
 
 
 
@@ -75,4 +92,4 @@
 </form>
 
 
-<a asp-controller="EditAbilities" asp-action="Solo" asp-route-SoloId="@Model.ID">Add Ability</a>
+<a asp-controller="EditAbilities" asp-action="Solo" asp-route-SoloId="@Model.soloID">Add Ability</a>

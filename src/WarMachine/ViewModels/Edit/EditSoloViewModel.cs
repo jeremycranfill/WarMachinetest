@@ -8,41 +8,117 @@ using WarMachine.Models.WarModels;
 
 namespace WarMachine.ViewModels.Edit
 {
-    public class EditSoloViewModel : SoloModel
+    public class EditSoloViewModel : SoloViewModel
     {
 
 
         public EditSoloViewModel() { }
 
-        public EditSoloViewModel(List<Ability> abilityList)
+        public EditSoloViewModel(IList<Ability> abills, IList<Weapon> weapons, IList<Spell> spells)
         {
-            foreach (Ability ability in abilityList)
+
+            allAbills = new List<SelectListItem>();
+            foreach (var abil in abills)
             {
-                Abilities.Add(new SelectListItem
+                var item = new SelectListItem
                 {
-                    Value = ability.ID.ToString(),
-                    Text = ability.Name
+                    Value = abil.ID.ToString(),
+                    Text = abil.Name
+
+                };
+
+                allAbills.Add(item);
+            }
 
 
 
-                });
+            allWeaps = new List<SelectListItem>();
+            foreach (var weapon in weapons)
+            {
+                var item = new SelectListItem
+                {
+                    Value = weapon.ID.ToString(),
+                    Text = weapon.Name
+                };
 
+                allWeaps.Add(item);
+            }
+
+            allSpells = new List<SelectListItem>();
+            foreach (var spell in spells)
+            {
+                var item = new SelectListItem
+                {
+                    Value = spell.ID.ToString(),
+                    Text = spell.Name
+                };
+
+                allWeaps.Add(item);
+            }
+
+
+
+
+        }
+
+
+        public int soloID { get; set; }
+        public List<int> currenntAbilIDs { get; set; }
+        public List<int> currenntSpellIDs { get; set; }
+        public List<int> currenntWeaponIDs { get; set; }
+
+
+
+        public void SelecCurrenttWeapons()
+        {
+            foreach (var item in allWeaps)
+            {
+                if (currenntWeaponIDs.Contains(Int32.Parse(item.Value)))
+                {
+                    item.Selected = true;
+
+                }
             }
         }
-        
-
-       new public List<SelectListItem> Abilities { get; set; } = new List<SelectListItem>();
-
-        public int AbilityID { get; set; }
 
 
 
+        public void SelectCurrentAbillities()
+        {
+            foreach (var item in allAbills)
+            {
+                if (currenntAbilIDs.Contains(Int32.Parse(item.Value)))
+                {
+                    item.Selected = true;
+
+                }
+            }
+        }
+
+
+        public void SelectCurrenntSpells()
+
+
+        {
+            foreach (var item in allSpells)
+            {
+                if (currenntSpellIDs.Contains(Int32.Parse(item.Value)))
+                {
+                    item.Selected = true;
+
+                }
+            }
 
 
 
 
 
 
+
+
+
+        }
     }
-    }
+}
+
 
