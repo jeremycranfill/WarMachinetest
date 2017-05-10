@@ -57,7 +57,9 @@ namespace WarMachine.ViewModels.Edit
             }
 
 
-
+            currenntAbilIDs = new List<int>();
+            currenntSpellIDs = new List<int>();
+            currenntWeaponIDs = new List<int>();
 
         }
 

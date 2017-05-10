@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using WarMachine.Models.WarModels;
 using WarMachine.Data;
 using WarMachine.ViewModels.Edit;
+using WarMachine.Models.Joins;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -85,6 +86,8 @@ namespace WarMachine.Controllers
         [HttpPost]
         public IActionResult Solo(EditSoloViewModel editModel)
         {
+            if (ModelState.IsValid)
+            { 
 
             SoloModel editSolo = context.Solos.Single(c => c.ID == editModel.soloID);
 
@@ -100,17 +103,50 @@ namespace WarMachine.Controllers
             editSolo.SPD = editModel.SPD;
             editSolo.PointCost = editModel.PointCost;
             editSolo.STR = editModel.STR;
-
-
-
-
-
-
             context.SaveChanges();
 
+                foreach (int id in editModel.abilIDS)
+                {
+                    if (!editModel.currenntAbilIDs.Contains(id))
+                    {
+
+                        SoloAbility NewSoloAbility = new SoloAbility();
+                        NewSoloAbility.AbilityID = id;
+                        NewSoloAbility.SoloID = editModel.soloID;
+                        context.SoloAbilities.Add(NewSoloAbility);
+                        context.SaveChanges();
+
+                    }
+
+                }
+
+               foreach(int id in editModel.currenntAbilIDs)
+                {
+
+                    if (!editModel.abilIDS.Contains(id))
+                    {
+
+                       context.Remove(context.SoloAbilities.Where(c => c.AbilityID == id && c.SoloID == editModel.soloID));
+                        context.SaveChanges();
+
+
+                    }
+
+
+
+                }
+
+
+
+
+
+
+
+
+
             return Redirect("/View/Solo");
-
-
+        }
+            return View("EditSolo", editModel);
 
 
         }
