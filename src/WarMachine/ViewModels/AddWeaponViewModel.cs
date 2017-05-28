@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using static WarMachine.Models.WarModels.Weapon;
 
 namespace WarMachine.ViewModels
 {
@@ -16,9 +17,11 @@ namespace WarMachine.ViewModels
         public int POW { get; set; }
         //TODO enum of some type maybe
         [Required]
-        public string Type { get; set; }
+        public WeaponType Type { get; set; }
       
         public int ROF { get; set; }
+
+        public WeaponType WeaponType;
 
 
 

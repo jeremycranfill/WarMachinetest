@@ -20,6 +20,7 @@
             <th>Point Cost</th>
            <th>MinUnit</th>
             <th>MaxUnit</th>
+            <th>FA</th>
             <th>Edit</th>
 
         </tr>
@@ -38,7 +39,8 @@
             <td>@Model.CMD</td>
             <td>@Model.PointCost</td>
             <td>@Model.MinUnit</td>
-            <td>@Model.MaxUnit</td>            
+            <td>@Model.MaxUnit</td>   
+            <td>@Model.FA</td>           
             <td><a asp-controller="Edit" asp-action="Unit" asp-route-SoloId="@Model.ID">Edit</a></td>
 
 

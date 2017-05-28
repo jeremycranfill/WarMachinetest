@@ -7,6 +7,7 @@ using WarMachine.Models.WarModels;
 using WarMachine.Data;
 using WarMachine.ViewModels.Edit;
 using WarMachine.Models.Joins;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -32,7 +33,7 @@ namespace WarMachine.Controllers
         }
 
 
-
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         [Route("Edit/Solo/{SoloId}")]
 

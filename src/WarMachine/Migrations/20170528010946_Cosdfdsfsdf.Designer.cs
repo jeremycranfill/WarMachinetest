@@ -8,8 +8,8 @@ using WarMachine.Data;
 namespace WarMachine.Migrations
 {
     [DbContext(typeof(ModelDbContext))]
-    [Migration("20170510035426_cool3")]
-    partial class cool3
+    [Migration("20170528010946_Cosdfdsfsdf")]
+    partial class Cosdfdsfsdf
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -154,7 +154,7 @@ namespace WarMachine.Migrations
 
                     b.Property<int>("DEF");
 
-                    b.Property<int>("FA");
+                    b.Property<string>("FA");
 
                     b.Property<string>("Faction");
 
@@ -186,7 +186,7 @@ namespace WarMachine.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<string>("Duration");
+                    b.Property<int>("Duration");
 
                     b.Property<string>("Name");
 
@@ -212,7 +212,7 @@ namespace WarMachine.Migrations
 
                     b.Property<int>("DEF");
 
-                    b.Property<int>("FA");
+                    b.Property<string>("FA");
 
                     b.Property<string>("Faction");
 
@@ -250,7 +250,7 @@ namespace WarMachine.Migrations
 
                     b.Property<int>("ROF");
 
-                    b.Property<string>("Type");
+                    b.Property<int>("Type");
 
                     b.HasKey("ID");
 

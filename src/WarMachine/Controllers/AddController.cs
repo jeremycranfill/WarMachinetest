@@ -85,6 +85,7 @@ namespace WarMachine.Controllers
                 newUnit.RAT = model.RAT;
                 newUnit.SPD = model.SPD;
                 newUnit.STR = model.STR;
+                newUnit.FA = model.FA;
                 context.Units.Add(newUnit);
                 context.SaveChanges();
                 return Redirect("/");
@@ -148,46 +149,56 @@ namespace WarMachine.Controllers
                 newSolo.RAT = model.RAT;
                 newSolo.SPD = model.SPD;
                 newSolo.STR = model.STR;
+                newSolo.FA = model.FA;
 
                 context.Solos.Add(newSolo);
                 context.SaveChanges();
 
-                foreach (var abil in model.abilIDS)
+                if (model.abilIDS != null)
                 {
+                    foreach (var abil in model.abilIDS)
+                    {
 
-                    SoloAbility NewSoloAbility = new SoloAbility();
-                    NewSoloAbility.AbilityID =abil ;
-                    NewSoloAbility.SoloID = newSolo.ID;
-                    context.SoloAbilities.Add(NewSoloAbility);
-                    context.SaveChanges();
+                        SoloAbility NewSoloAbility = new SoloAbility();
+                        NewSoloAbility.AbilityID = abil;
+                        NewSoloAbility.SoloID = newSolo.ID;
+                        context.SoloAbilities.Add(NewSoloAbility);
+                        context.SaveChanges();
 
 
+                    }
                 }
 
-                foreach (var weap in model.weapIDS)
+
+                if (model.weapIDS != null)
                 {
+                    foreach (var weap in model.weapIDS)
+                    {
 
-                    SoloWeapon NewSoloWeapon = new SoloWeapon();
-                    NewSoloWeapon.WeaponID = weap;
-                    NewSoloWeapon.SoloID = newSolo.ID;
-                    context.SoloWeapons.Add(NewSoloWeapon);
-                    context.SaveChanges();
+                        SoloWeapon NewSoloWeapon = new SoloWeapon();
+                        NewSoloWeapon.WeaponID = weap;
+                        NewSoloWeapon.SoloID = newSolo.ID;
+                        context.SoloWeapons.Add(NewSoloWeapon);
+                        context.SaveChanges();
 
 
+                    }
                 }
 
-                foreach (var spell in model.weapIDS)
+                if (model.spellIDS != null)
                 {
+                    foreach (var spell in model.spellIDS)
+                    {
 
-                    SoloSpell NewSoloSpell = new SoloSpell();
-                    NewSoloSpell.SpellID = spell;
-                    NewSoloSpell.SoloID = newSolo.ID;
-                    context.SoloSpells.Add(NewSoloSpell);
-                    context.SaveChanges();
+                        SoloSpell NewSoloSpell = new SoloSpell();
+                        NewSoloSpell.SpellID = spell;
+                        NewSoloSpell.SoloID = newSolo.ID;
+                        context.SoloSpells.Add(NewSoloSpell);
+                        context.SaveChanges();
 
 
+                    }
                 }
-
 
 
 

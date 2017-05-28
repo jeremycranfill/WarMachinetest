@@ -1,4 +1,5 @@
 ﻿@model WarMachine.ViewModels.AddSpellViewModel
+@using static WarMachine.Models.WarModels.Spell;
 
 
 <form asp-controller="Add" asp-action="Spell" method="post">
@@ -23,7 +24,7 @@
 
     <div class="form-group">
         <label asp-for="AOE"></label>
-        <input class="form-control" asp-for="AOE" />
+        <select asp-items="Html.GetEnumSelectList<AoeType>()" asp-for="AOE"></select>
         <span asp-validation-for="AOE"></span>
     </div>
 
@@ -35,7 +36,7 @@
 
     <div class="form-group">
         <label asp-for="Duration"></label>
-        <input class="form-control" asp-for="Duration" />
+        <select asp-items="Html.GetEnumSelectList<DurationType>()" asp-for="Duration"></select>
         <span asp-validation-for="Duration"></span>
     </div>
     <div class="form-group">

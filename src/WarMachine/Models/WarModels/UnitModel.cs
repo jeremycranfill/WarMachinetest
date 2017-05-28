@@ -10,7 +10,7 @@ namespace WarMachine.Models.WarModels
     {
         public int MinUnit { get; set; }
         public int MaxUnit { get; set; }
-        public int FA { get; set; }
+        public string FA { get; set; }
 
         public IList<UnitSpell> UnitSpells { get; set; }
         public IList<UnitAbiliity> UnitAbillities { get; set; }

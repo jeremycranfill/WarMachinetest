@@ -20,7 +20,7 @@ namespace WarMachine.ViewModels
 
         [Required]
         [Display(Name = "Field Allowance")]
-        public int FA { get; set; }
+        public string FA { get; set; }
 
 
 

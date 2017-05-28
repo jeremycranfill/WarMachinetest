@@ -24,7 +24,14 @@
                
                 <td><a asp-controller="View" asp-action="Weapon" asp-route-id="@weapon.ID"> @weapon.Name</a></td>
                 <td>@weapon.Type</td>
-                <td>@weapon.ROF</td>
+                <td>
+                @if (weapon.Type == WarMachine.Models.WarModels.Weapon.WeaponType.Melee)
+
+                { <text>-</text> }
+
+                else { @weapon.ROF}
+                
+                </td>
                 <td>@weapon.POW</td>
                 <td>@weapon.RNG</td>
                 <td><a asp-controller="Edit" asp-action="Weapon" asp-route-SoloId="@weapon.ID">Edit</a></td>

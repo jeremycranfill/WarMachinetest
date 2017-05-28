@@ -12,6 +12,8 @@ using Microsoft.Extensions.Logging;
 using WarMachine.Data;
 using WarMachine.Models;
 using WarMachine.Services;
+using WarMachine.Models.User;
+using Microsoft.AspNet.Identity;
 
 namespace WarMachine
 {
@@ -42,18 +44,34 @@ namespace WarMachine
             // Add framework services.
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddDbContext<ModelDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            //for my user class
+            services.AddDbContext<UserDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
+            /*/this is for my user class
+            services.AddIdentity<User, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+                /*/
+
+        
+
             services.AddMvc();
 
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
+
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -85,6 +103,23 @@ namespace WarMachine
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+
+            //ApplicationDbContext.CreateAdminAccount(app.ApplicationServices,
+            //
         }
+
+
+
+
+
+        
+
+
+
+
+
+
+
     }
 }

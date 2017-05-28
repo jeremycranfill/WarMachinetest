@@ -1,7 +1,10 @@
-﻿{
+{
   "userSecretsId": "aspnet-WarMachine-de66abea-0c96-435d-bff0-f671255c4458",
 
   "dependencies": {
+    "Ansver.MVC.Selectize": "0.12.4.3",
+    "Microsoft.AspNet.Identity.Core": "2.2.1",
+    "Microsoft.AspNet.Identity.EntityFramework": "2.2.1",
     "Microsoft.AspNetCore.Authentication.Cookies": "1.0.0",
     "Microsoft.AspNetCore.Diagnostics": "1.0.0",
     "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "1.0.0",

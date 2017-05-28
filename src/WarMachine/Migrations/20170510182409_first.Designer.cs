@@ -8,9 +8,10 @@ using WarMachine.Data;
 namespace WarMachine.Migrations
 {
     [DbContext(typeof(ModelDbContext))]
-    partial class ModelDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170510182409_first")]
+    partial class first
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")
@@ -153,7 +154,7 @@ namespace WarMachine.Migrations
 
                     b.Property<int>("DEF");
 
-                    b.Property<string>("FA");
+                    b.Property<int>("FA");
 
                     b.Property<string>("Faction");
 
@@ -185,7 +186,7 @@ namespace WarMachine.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<int>("Duration");
+                    b.Property<string>("Duration");
 
                     b.Property<string>("Name");
 
@@ -211,7 +212,7 @@ namespace WarMachine.Migrations
 
                     b.Property<int>("DEF");
 
-                    b.Property<string>("FA");
+                    b.Property<int>("FA");
 
                     b.Property<string>("Faction");
 
@@ -249,7 +250,7 @@ namespace WarMachine.Migrations
 
                     b.Property<int>("ROF");
 
-                    b.Property<int>("Type");
+                    b.Property<string>("Type");
 
                     b.HasKey("ID");
 
