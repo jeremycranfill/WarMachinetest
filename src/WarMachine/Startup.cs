@@ -12,13 +12,109 @@ using Microsoft.Extensions.Logging;
 using WarMachine.Data;
 using WarMachine.Models;
 using WarMachine.Services;
-using WarMachine.Models.User;
-using Microsoft.AspNet.Identity;
+
+
+
+
+
+
+using Microsoft.AspNetCore.Identity;
+
 
 namespace WarMachine
 {
     public class Startup
     {
+
+
+
+
+        static async Task CreateRoles(IServiceProvider serviceProvider)
+
+        {
+
+            //adding custom roles
+
+            var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+            var UserManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+
+            string[] roleNames = { "Admin", "Editor", "User" };
+
+            IdentityResult roleResult;
+
+
+            foreach (var roleName in roleNames)
+
+            {
+
+                //creating the roles and seeding them to the database
+
+                var roleExist = await RoleManager.RoleExistsAsync(roleName);
+
+                if (!roleExist)
+
+                {
+
+                    roleResult = await RoleManager.CreateAsync(new IdentityRole(roleName));
+
+                }
+
+            }
+
+
+            //creating a super user who could maintain the web app
+
+            var poweruser = new ApplicationUser
+
+            {
+
+                UserName = "admin@example.com",
+
+                Email = "admin@example.com"
+
+            };
+
+
+            string UserPassword = "P@ssw0rd";
+
+            var _user = await UserManager.FindByEmailAsync("admin@example.com");
+
+
+            if (_user == null)
+
+            {
+
+                var createPowerUser = await UserManager.CreateAsync(poweruser, UserPassword);
+
+                if (createPowerUser.Succeeded)
+
+                {
+
+                    //here we tie the new user to the "Admin" role 
+
+                    await UserManager.AddToRoleAsync(poweruser, "Admin");
+
+
+                }
+
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
@@ -52,17 +148,26 @@ namespace WarMachine
             services.AddDbContext<UserDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
+            /*/ removing default for now  services.AddIdentity<ApplicationUser, IdentityRole>()
+                  .AddEntityFrameworkStores<ApplicationDbContext>()
+                  .AddDefaultTokenProviders();
+                  /*/
 
-            /*/this is for my user class
-            services.AddIdentity<User, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
-                /*/
+            services.AddIdentity<ApplicationUser, IdentityRole>(opts => {
 
-        
+                opts.User.RequireUniqueEmail = true;
+                //opts.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyz";
+
+                opts.Password.RequiredLength = 6;
+                opts.Password.RequireNonAlphanumeric = false;
+                opts.Password.RequireLowercase = false;
+                opts.Password.RequireUppercase = false;
+                opts.Password.RequireDigit = false;
+            }).AddEntityFrameworkStores<ApplicationDbContext>();
+
+
+
+
 
             services.AddMvc();
 
@@ -75,7 +180,7 @@ namespace WarMachine
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public async void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IServiceProvider serviceProvider)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
@@ -105,15 +210,14 @@ namespace WarMachine
             });
 
 
-            //ApplicationDbContext.CreateAdminAccount(app.ApplicationServices,
-            //
+            await CreateRoles(serviceProvider);
         }
 
 
 
 
 
-        
+
 
 
 

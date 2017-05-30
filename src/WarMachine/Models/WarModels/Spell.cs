@@ -22,5 +22,6 @@ namespace WarMachine.Models.WarModels
         public bool OFF { get; set; }
         public int ID { get; set; }
         public string Description { get; set; }
+        public bool isAnimi { get; set; }
     }
 }

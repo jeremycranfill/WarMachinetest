@@ -60,9 +60,8 @@
   },
 
   "frameworks": {
-    "net452": { }
+    "net452": {}
   },
-
   "buildOptions": {
     "emitEntryPoint": true,
     "preserveCompilationContext": true

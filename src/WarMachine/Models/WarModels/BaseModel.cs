@@ -6,12 +6,12 @@ using WarMachine.Models.WarModels;
 
 namespace WarMachine.Models.WarModels
 {
-    public class BaseModel
+    public abstract class BaseModel
     {
-        public string Faction { get; set; }
+        
         public string Name { get; set; }
-        //public IList<Weapon> Weapons { get; set; }
-        //public IList<Spell> Spells { get; set; }
+        public IList<Weapon> Weapons { get; set; }
+        public IList<Spell> Spells { get; set; }
         public IList<Ability> Abilities { get; set; }
 
         public  int SPD { get; set; }
@@ -23,6 +23,7 @@ namespace WarMachine.Models.WarModels
         public int CMD { get; set; }
         public int ID { get; set; }
         public int PointCost { get; set; }
+        public Faction Faction { get; set; }
 
         
        
