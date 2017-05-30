@@ -32,7 +32,7 @@ namespace WarMachine.Controllers
 
         }
 
-        [ValidateAntiForgeryToken]
+       
         [Authorize(Roles = "Admin")]
         [HttpGet]
         [Route("Edit/Solo/{SoloId}")]
@@ -83,7 +83,7 @@ namespace WarMachine.Controllers
             return View("EditSolo", ViewModel);
 
         }
-        [ValidateAntiForgeryToken]
+       
         [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult Solo(EditSoloViewModel editModel)
@@ -152,7 +152,7 @@ namespace WarMachine.Controllers
 
 
         }
-        [ValidateAntiForgeryToken]
+  
         [Authorize(Roles = "Admin")]
         [HttpGet]
         [Route("Edit/Unit/{UnitId}")]
@@ -192,7 +192,7 @@ namespace WarMachine.Controllers
         }
 
 
-        [ValidateAntiForgeryToken]
+       
         [Authorize(Roles = "Admin")]
 
         [HttpPost]

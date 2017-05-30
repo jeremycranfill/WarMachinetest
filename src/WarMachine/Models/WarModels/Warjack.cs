@@ -7,7 +7,9 @@ namespace WarMachine.Models.WarModels
 {
     public class Warjack : BaseModel
     {
-        public enum Size {Light, Heavy, Colossal }
+        public enum Sizes { Light, Heavy, Colossal }
+        public Sizes Size { get; set; }
+        public string FA { get; set; }
 
 
     }

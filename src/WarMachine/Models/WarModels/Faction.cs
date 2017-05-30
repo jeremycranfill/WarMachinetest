@@ -8,6 +8,7 @@ namespace WarMachine.Models.WarModels
     public class Faction
     {
         public string Name { get; set; }
+        public int ID { get; set; }
         public ICollection<SoloModel> Solos;
         public ICollection<UnitModel> Units;
         public ICollection<WarBeast> Beats;

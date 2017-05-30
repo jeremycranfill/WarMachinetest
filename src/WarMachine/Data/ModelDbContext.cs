@@ -19,7 +19,10 @@ namespace WarMachine.Data
         public DbSet<SoloWeapon> SoloWeapons { get; set; }
         public DbSet<UnitAbiliity> UnitAbilities { get; set; }
         public DbSet<UnitWeapon> UnitWeapons { get; set; }
-        public DbSet<UnitSpell> UnitSpells { get; set; }
+        public DbSet<UnitSpell> UnitSpells { get; set; } 
+        public DbSet<Faction> Factions { get; set; }
+        public DbSet<Warjack> Warjacks { get; set; }
+        public DbSet<WarBeast> WarBeasts { get; set; }
 
 
         public ModelDbContext(DbContextOptions<ModelDbContext> options)
@@ -28,14 +31,14 @@ namespace WarMachine.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
-           
-            modelBuilder.Entity<RuleModel>().HasKey(i => i.ID);
+            modelBuilder.Entity<WarBeast>().HasKey(c => c.ID);
+            modelBuilder.Entity<Warjack>().HasKey(c => c.ID);
             modelBuilder.Entity<Ability>().HasKey(c => c.ID);
             modelBuilder.Entity<Spell>().HasKey(c => c.ID);
             modelBuilder.Entity<Weapon>().HasKey(c => c.ID);
             modelBuilder.Entity<UnitModel>().HasKey(c => c.ID);
             modelBuilder.Entity<SoloModel>().HasKey(c => c.ID);
-
+            modelBuilder.Entity<Faction>().HasKey(c => c.ID);
             modelBuilder.Entity<SoloAbility>().HasKey(c => new { c.AbilityID, c.SoloID });
 
             modelBuilder.Entity<SoloSpell>().HasKey(c => new { c.SpellID, c.SoloID });
@@ -54,6 +57,8 @@ namespace WarMachine.Data
             modelBuilder.Entity<SoloModel>().HasMany<SoloSpell>(i => i.SoloSpells);
             modelBuilder.Entity<SoloModel>().HasMany<SoloWeapon>(i => i.SoloWeapons);
 
+            
+
 
 
 
@@ -69,7 +74,15 @@ namespace WarMachine.Data
             modelBuilder.Entity<Weapon>().HasMany<UnitWeapon>(w => w.UnitWeapons);
 
 
-      
+
+            modelBuilder.Entity<SoloModel>().HasOne<Faction>(i => i.Faction);
+            modelBuilder.Entity<UnitModel>().HasOne<Faction>(i => i.Faction);
+            modelBuilder.Entity<WarBeast>().HasOne<Faction>(i => i.Faction);
+            modelBuilder.Entity<WarBeast>().HasOne<Faction>(i => i.Faction);
+
+
+
+
 
 
 

@@ -9,9 +9,11 @@ namespace WarMachine.Models.WarModels
     {
 
 
-        public enum size {Lesser, Light, Heavy, Pack }
+        public enum sizes {Lesser, Light, Heavy, Pack }
+        public sizes Size { get; set; }
         public int Fury { get; set; }
         public int Threshhold { get; set; }
+        public string FA { get; set; }
 
 
 

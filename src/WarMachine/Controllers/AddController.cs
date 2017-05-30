@@ -102,6 +102,133 @@ namespace WarMachine.Controllers
         }
 
 
+
+
+        public IActionResult Warjack()
+        {
+
+
+            AddWarjackViewModel view = new AddWarjackViewModel
+
+            (
+
+            context.Abilities.ToList(),
+
+            context.Weapons.ToList(),
+            context.Spells.ToList()
+
+            );
+
+
+
+
+
+
+            return View("AddWarjack", view);
+
+
+        }
+
+
+
+        [HttpPost]
+        public IActionResult Warjack(AddWarjackViewModel model)
+        {
+
+            if (ModelState.IsValid)
+            {
+
+
+
+                Warjack newJack = new Warjack();
+
+
+                newJack.Name = model.Name;
+                newJack.ARM = model.ARM;
+                newJack.CMD = model.CMD;
+                newJack.DEF = model.DEF;
+                newJack.FA = model.FA;
+                newJack.MAT = model.MAT;
+                newJack.PointCost = model.PointCost;
+                newJack.RAT = model.RAT;
+                newJack.SPD = model.SPD;
+                newJack.STR = model.STR;
+                newJack.FA = model.FA;
+                newJack.Size = model.Size;
+
+                context.Warjacks.Add(newJack);
+                context.SaveChanges();
+
+                if (model.abilIDS != null)
+                {
+                    foreach (var abil in model.abilIDS)
+                    {
+
+                        SoloAbility NewSoloAbility = new SoloAbility();
+                        NewSoloAbility.AbilityID = abil;
+                        NewSoloAbility.SoloID = newJack.ID;
+                        context.SoloAbilities.Add(NewSoloAbility);
+                        context.SaveChanges();
+
+
+                    }
+                }
+
+
+                if (model.weapIDS != null)
+                {
+                    foreach (var weap in model.weapIDS)
+                    {
+
+                        SoloWeapon NewSoloWeapon = new SoloWeapon();
+                        NewSoloWeapon.WeaponID = weap;
+                        NewSoloWeapon.SoloID = newJack.ID;
+                        context.SoloWeapons.Add(NewSoloWeapon);
+                        context.SaveChanges();
+
+
+                    }
+                }
+
+                if (model.spellIDS != null)
+                {
+                    foreach (var spell in model.spellIDS)
+                    {
+
+                        SoloSpell NewSoloSpell = new SoloSpell();
+                        NewSoloSpell.SpellID = spell;
+                        NewSoloSpell.SoloID = newJack.ID;
+                        context.SoloSpells.Add(NewSoloSpell);
+                        context.SaveChanges();
+
+
+                    }
+                }
+
+
+
+
+                return Redirect("/");
+
+
+            }
+
+            return View("Warjack", model);
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
         public IActionResult Solo()
         {
 

@@ -28,8 +28,20 @@ namespace WarMachine.ViewModels
 
             Categories.Add(new SelectListItem
             {
-                Value = "AddSolo",
+                Value = "Solo",
                 Text = "Solo"
+            });
+
+            Categories.Add(new SelectListItem
+            {
+                Value = "Warjack",
+                Text = "Warjack"
+            });
+
+            Categories.Add(new SelectListItem
+            {
+                Value = "WarBeast",
+                Text = "WarBeast"
             });
 
 
@@ -37,7 +49,7 @@ namespace WarMachine.ViewModels
 
 
 
-            }
+        }
 
       
 
