@@ -105,7 +105,7 @@ namespace WarMachine.Controllers
         {
 
             List<SoloModel> soloList = context.Solos.ToList();
-            return View("Solos",soloList);
+            return View("View",soloList);
 
 
 

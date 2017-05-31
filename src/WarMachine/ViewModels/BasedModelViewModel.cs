@@ -69,6 +69,9 @@ namespace WarMachine.ViewModels
         public string Name { get; set; }
 
         [Required]
+        public string FA { get; set; }
+
+        [Required]
         public int SPD { get; set; }
 
         [Required]

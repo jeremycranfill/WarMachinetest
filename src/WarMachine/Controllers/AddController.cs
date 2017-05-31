@@ -221,6 +221,121 @@ namespace WarMachine.Controllers
 
 
 
+        public IActionResult WarBeast()
+        {
+
+
+            AddWarBeastViewModel view = new AddWarBeastViewModel
+
+            (
+
+            context.Abilities.ToList(),
+
+            context.Weapons.ToList(),
+            context.Spells.ToList()
+
+            );
+
+
+
+
+
+
+            return View("AddWarBeast", view);
+        }
+
+
+
+        [HttpPost]
+        public IActionResult WarBeast(AddWarBeastViewModel model)
+        {
+
+            if (ModelState.IsValid)
+            {
+
+
+
+                WarBeast newBeast = new WarBeast();
+
+
+                newBeast.Name = model.Name;
+                newBeast.ARM = model.ARM;
+                newBeast.CMD = model.CMD;
+                newBeast.DEF = model.DEF;
+                newBeast.FA = model.FA;
+                newBeast.MAT = model.MAT;
+                newBeast.PointCost = model.PointCost;
+                newBeast.RAT = model.RAT;
+                newBeast.SPD = model.SPD;
+                newBeast.STR = model.STR;
+                newBeast.FA = model.FA;
+                newBeast.Size = model.Size;
+                newBeast.Threshhold = model.Threshold;
+
+
+                context.WarBeasts.Add(newBeast);
+                context.SaveChanges();
+
+                if (model.abilIDS != null)
+                {
+                    foreach (var abil in model.abilIDS)
+                    {
+
+                        SoloAbility NewSoloAbility = new SoloAbility();
+                        NewSoloAbility.AbilityID = abil;
+                        NewSoloAbility.SoloID = newBeast.ID;
+                        context.SoloAbilities.Add(NewSoloAbility);
+                        context.SaveChanges();
+
+
+                    }
+                }
+
+
+                if (model.weapIDS != null)
+                {
+                    foreach (var weap in model.weapIDS)
+                    {
+
+                        SoloWeapon NewSoloWeapon = new SoloWeapon();
+                        NewSoloWeapon.WeaponID = weap;
+                        NewSoloWeapon.SoloID = newBeast.ID;
+                        context.SoloWeapons.Add(NewSoloWeapon);
+                        context.SaveChanges();
+
+
+                    }
+                }
+
+                if (model.spellIDS != null)
+                {
+                    foreach (var spell in model.spellIDS)
+                    {
+
+                        SoloSpell NewSoloSpell = new SoloSpell();
+                        NewSoloSpell.SpellID = spell;
+                        NewSoloSpell.SoloID = newBeast.ID;
+                        context.SoloSpells.Add(NewSoloSpell);
+                        context.SaveChanges();
+
+
+                    }
+                }
+
+
+
+
+                return Redirect("/");
+
+
+            }
+
+            return View("Warbeast", model);
+
+
+
+        }
+
 
 
 

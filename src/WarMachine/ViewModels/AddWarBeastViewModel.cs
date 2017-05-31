@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WarMachine.Models.WarModels;
-using static WarMachine.Models.WarModels.Warjack;
+using static WarMachine.Models.WarModels.WarBeast;
 
 namespace WarMachine.ViewModels
 {
-    public class AddWarjackViewModel : SoloViewModel
+    public class AddWarBeastViewModel : SoloViewModel
     {
-        public AddWarjackViewModel() { }
-        public AddWarjackViewModel(IList<Ability> abills, IList<Weapon> weapons, IList<Spell> spells)
+        public AddWarBeastViewModel() { }
+        public AddWarBeastViewModel(IList<Ability> abills, IList<Weapon> weapons, IList<Spell> spells) 
         {
 
             allAbills = new List<SelectListItem>();
@@ -58,7 +58,9 @@ namespace WarMachine.ViewModels
 
 
 
-    public Sizes Size { get; set; }
+    public sizes Size { get; set; }
+        public int Fury { get; set;}
+        public int Threshold { get; set; }
 
 
 
