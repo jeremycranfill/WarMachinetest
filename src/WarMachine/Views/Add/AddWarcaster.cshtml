@@ -1,0 +1,34 @@
+﻿@model WarMachine.ViewModels.AddWarcasterViewModel
+
+<form asp-controller="Add" asp-action="Solo" method="post">
+
+    @Html.Partial("ModelForm")
+
+    <div class="form-group">
+        <label asp-for="Focus"></label>
+        <input asp-for="Focus">
+        <span asp-validation-for="Focus"></span>
+    </div>
+
+
+    <div class="form-group">
+        <label asp-for="WarjackPoints"></label>
+        <input asp-for="WarjackPoints">
+        <span asp-validation-for="WarjackPoints"></span>
+    </div>
+
+
+
+
+    <div class="form-group">
+        <label asp-for="Feat"></label>
+        <input asp-for="Feat">
+        <span asp-validation-for="Feat"></span>
+    </div>
+
+
+
+    <input type="submit" />
+
+
+</form>

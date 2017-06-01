@@ -459,6 +459,250 @@ namespace WarMachine.Controllers
 
 
 
+        public IActionResult Warcaster()
+        {
+
+
+            AddWarcasterViewModel soloView = new AddWarcasterViewModel
+
+            (
+
+            context.Abilities.ToList(),
+
+            context.Weapons.ToList(),
+            context.Spells.ToList()
+
+            );
+
+
+
+
+
+
+            return View("AddWarcaster", soloView);
+
+
+        }
+
+
+
+
+
+
+        [HttpPost]
+        public IActionResult Warcaster(AddWarcasterViewModel model)
+        {
+
+            if (ModelState.IsValid)
+            {
+
+
+
+                Warcaster newSolo = new Warcaster();
+
+
+                newSolo.Name = model.Name;
+                newSolo.ARM = model.ARM;
+                newSolo.CMD = model.CMD;
+                newSolo.DEF = model.DEF;
+                newSolo.MAT = model.MAT;
+                newSolo.PointCost = model.PointCost;
+                newSolo.RAT = model.RAT;
+                newSolo.SPD = model.SPD;
+                newSolo.STR = model.STR;
+                newSolo.WarjackPoints = model.WarjackPoints;
+                
+
+                context.Warcasters.Add(newSolo);
+                context.SaveChanges();
+
+                if (model.abilIDS != null)
+                {
+                    foreach (var abil in model.abilIDS)
+                    {
+
+                        SoloAbility NewSoloAbility = new SoloAbility();
+                        NewSoloAbility.AbilityID = abil;
+                        NewSoloAbility.SoloID = newSolo.ID;
+                        context.SoloAbilities.Add(NewSoloAbility);
+                        context.SaveChanges();
+
+
+                    }
+                }
+
+
+                if (model.weapIDS != null)
+                {
+                    foreach (var weap in model.weapIDS)
+                    {
+
+                        SoloWeapon NewSoloWeapon = new SoloWeapon();
+                        NewSoloWeapon.WeaponID = weap;
+                        NewSoloWeapon.SoloID = newSolo.ID;
+                        context.SoloWeapons.Add(NewSoloWeapon);
+                        context.SaveChanges();
+
+
+                    }
+                }
+
+                if (model.spellIDS != null)
+                {
+                    foreach (var spell in model.spellIDS)
+                    {
+
+                        SoloSpell NewSoloSpell = new SoloSpell();
+                        NewSoloSpell.SpellID = spell;
+                        NewSoloSpell.SoloID = newSolo.ID;
+                        context.SoloSpells.Add(NewSoloSpell);
+                        context.SaveChanges();
+
+
+                    }
+                }
+
+
+
+
+                return Redirect("/");
+
+
+            }
+
+            return View("Warcaster", model);
+
+
+
+        }
+
+
+
+
+
+
+
+        public IActionResult Warlock()
+        {
+
+
+            AddWarlockViewModel soloView = new AddWarlockViewModel
+
+            (
+
+            context.Abilities.ToList(),
+
+            context.Weapons.ToList(),
+            context.Spells.ToList()
+
+            );
+
+
+
+
+
+
+            return View("AddWarlock", soloView);
+
+
+        }
+
+
+        [HttpPost]
+        public IActionResult Warlock(AddWarlockViewModel model)
+        {
+
+            if (ModelState.IsValid)
+            {
+
+
+
+                Warlock newSolo = new Warlock();
+
+
+                newSolo.Name = model.Name;
+                newSolo.ARM = model.ARM;
+                newSolo.CMD = model.CMD;
+                newSolo.DEF = model.DEF;
+                newSolo.MAT = model.MAT;
+                newSolo.PointCost = model.PointCost;
+                newSolo.RAT = model.RAT;
+                newSolo.SPD = model.SPD;
+                newSolo.STR = model.STR;
+                newSolo.WarbeastPoints = model.WarbeastPoints;
+
+
+                context.Warlocks.Add(newSolo);
+                context.SaveChanges();
+
+                if (model.abilIDS != null)
+                {
+                    foreach (var abil in model.abilIDS)
+                    {
+
+                        SoloAbility NewSoloAbility = new SoloAbility();
+                        NewSoloAbility.AbilityID = abil;
+                        NewSoloAbility.SoloID = newSolo.ID;
+                        context.SoloAbilities.Add(NewSoloAbility);
+                        context.SaveChanges();
+
+
+                    }
+                }
+
+
+                if (model.weapIDS != null)
+                {
+                    foreach (var weap in model.weapIDS)
+                    {
+
+                        SoloWeapon NewSoloWeapon = new SoloWeapon();
+                        NewSoloWeapon.WeaponID = weap;
+                        NewSoloWeapon.SoloID = newSolo.ID;
+                        context.SoloWeapons.Add(NewSoloWeapon);
+                        context.SaveChanges();
+
+
+                    }
+                }
+
+                if (model.spellIDS != null)
+                {
+                    foreach (var spell in model.spellIDS)
+                    {
+
+                        SoloSpell NewSoloSpell = new SoloSpell();
+                        NewSoloSpell.SpellID = spell;
+                        NewSoloSpell.SoloID = newSolo.ID;
+                        context.SoloSpells.Add(NewSoloSpell);
+                        context.SaveChanges();
+
+
+                    }
+                }
+
+
+
+
+                return Redirect("/");
+
+
+            }
+
+            return View("Warcaster", model);
+
+
+
+        }
+
+
+
+
+
+
+
+
+
 
 
 
@@ -496,6 +740,20 @@ namespace WarMachine.Controllers
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         public IActionResult Ability()
         {
             
@@ -503,6 +761,11 @@ namespace WarMachine.Controllers
             return View("AddAbility");
 
         }
+
+
+
+
+
 
 
         [HttpPost]
@@ -560,34 +823,6 @@ namespace WarMachine.Controllers
 
 
 
-
-        public IActionResult Rule()
-        {
-
-
-            return View("AddRule");
-
-        }
-
-
-        [HttpPost]
-        public IActionResult Rule(AddRuleViewModel model)
-
-        {
-
-            if (ModelState.IsValid)
-            {
-                RuleModel newRule = new RuleModel();
-                newRule.Text = model.Text;
-                newRule.Name = model.Name;
-                context.Rules.Add(newRule);
-                context.SaveChanges();
-                return Redirect("/");
-            }
-
-            return View("AddRule", model);
-
-        }
 
 
     

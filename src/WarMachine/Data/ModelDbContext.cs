@@ -23,6 +23,8 @@ namespace WarMachine.Data
         public DbSet<Faction> Factions { get; set; }
         public DbSet<Warjack> Warjacks { get; set; }
         public DbSet<WarBeast> WarBeasts { get; set; }
+        public DbSet<Warlock> Warlocks { get; set; }
+        public DbSet<Warcaster> Warcasters { get; set; }
 
 
         public ModelDbContext(DbContextOptions<ModelDbContext> options)
@@ -79,6 +81,7 @@ namespace WarMachine.Data
             modelBuilder.Entity<UnitModel>().HasOne<Faction>(i => i.Faction);
             modelBuilder.Entity<WarBeast>().HasOne<Faction>(i => i.Faction);
             modelBuilder.Entity<WarBeast>().HasOne<Faction>(i => i.Faction);
+           
 
 
 

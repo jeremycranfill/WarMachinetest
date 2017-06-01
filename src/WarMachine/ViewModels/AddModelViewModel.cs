@@ -45,7 +45,17 @@ namespace WarMachine.ViewModels
             });
 
 
+            Categories.Add(new SelectListItem
+            {
+                Value = "Warlock",
+                Text = "Warlock"
+            });
 
+            Categories.Add(new SelectListItem
+            {
+                Value = "Warcaster",
+                Text = "Warcaster"
+            });
 
 
 

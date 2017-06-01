@@ -18,9 +18,7 @@ namespace WarMachine.ViewModels
         public int MaxUnit { get; set; }
 
 
-        [Required]
-        [Display(Name = "Field Allowance")]
-        public string FA { get; set; }
+   
 
 
 

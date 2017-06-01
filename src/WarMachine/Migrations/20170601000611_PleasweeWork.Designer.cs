@@ -8,9 +8,10 @@ using WarMachine.Data;
 namespace WarMachine.Migrations
 {
     [DbContext(typeof(ModelDbContext))]
-    partial class ModelDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170601000611_PleasweeWork")]
+    partial class PleasweeWork
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")
@@ -121,11 +122,7 @@ namespace WarMachine.Migrations
 
                     b.Property<int?>("WarBeastID");
 
-                    b.Property<int?>("WarcasterID");
-
                     b.Property<int?>("WarjackID");
-
-                    b.Property<int?>("WarlockID");
 
                     b.HasKey("ID");
 
@@ -135,11 +132,7 @@ namespace WarMachine.Migrations
 
                     b.HasIndex("WarBeastID");
 
-                    b.HasIndex("WarcasterID");
-
                     b.HasIndex("WarjackID");
-
-                    b.HasIndex("WarlockID");
 
                     b.ToTable("Abilities");
                 });
@@ -231,11 +224,7 @@ namespace WarMachine.Migrations
 
                     b.Property<int?>("WarBeastID");
 
-                    b.Property<int?>("WarcasterID");
-
                     b.Property<int?>("WarjackID");
-
-                    b.Property<int?>("WarlockID");
 
                     b.Property<bool>("isAnimi");
 
@@ -247,11 +236,7 @@ namespace WarMachine.Migrations
 
                     b.HasIndex("WarBeastID");
 
-                    b.HasIndex("WarcasterID");
-
                     b.HasIndex("WarjackID");
-
-                    b.HasIndex("WarlockID");
 
                     b.ToTable("Spells");
                 });
@@ -334,44 +319,6 @@ namespace WarMachine.Migrations
                     b.ToTable("WarBeasts");
                 });
 
-            modelBuilder.Entity("WarMachine.Models.WarModels.Warcaster", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("ARM");
-
-                    b.Property<int>("CMD");
-
-                    b.Property<int>("DEF");
-
-                    b.Property<int?>("FactionID");
-
-                    b.Property<string>("Feat");
-
-                    b.Property<int>("Focus");
-
-                    b.Property<int>("MAT");
-
-                    b.Property<string>("Name");
-
-                    b.Property<int>("PointCost");
-
-                    b.Property<int>("RAT");
-
-                    b.Property<int>("SPD");
-
-                    b.Property<int>("STR");
-
-                    b.Property<int>("WarjackPoints");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("FactionID");
-
-                    b.ToTable("Warcasters");
-                });
-
             modelBuilder.Entity("WarMachine.Models.WarModels.Warjack", b =>
                 {
                     b.Property<int>("ID")
@@ -408,44 +355,6 @@ namespace WarMachine.Migrations
                     b.ToTable("Warjacks");
                 });
 
-            modelBuilder.Entity("WarMachine.Models.WarModels.Warlock", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("ARM");
-
-                    b.Property<int>("CMD");
-
-                    b.Property<int>("DEF");
-
-                    b.Property<int?>("FactionID");
-
-                    b.Property<string>("Feat");
-
-                    b.Property<int>("Fury");
-
-                    b.Property<int>("MAT");
-
-                    b.Property<string>("Name");
-
-                    b.Property<int>("PointCost");
-
-                    b.Property<int>("RAT");
-
-                    b.Property<int>("SPD");
-
-                    b.Property<int>("STR");
-
-                    b.Property<int>("WarbeastPoints");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("FactionID");
-
-                    b.ToTable("Warlocks");
-                });
-
             modelBuilder.Entity("WarMachine.Models.WarModels.Weapon", b =>
                 {
                     b.Property<int>("ID")
@@ -467,11 +376,7 @@ namespace WarMachine.Migrations
 
                     b.Property<int?>("WarBeastID");
 
-                    b.Property<int?>("WarcasterID");
-
                     b.Property<int?>("WarjackID");
-
-                    b.Property<int?>("WarlockID");
 
                     b.HasKey("ID");
 
@@ -481,11 +386,7 @@ namespace WarMachine.Migrations
 
                     b.HasIndex("WarBeastID");
 
-                    b.HasIndex("WarcasterID");
-
                     b.HasIndex("WarjackID");
-
-                    b.HasIndex("WarlockID");
 
                     b.ToTable("Weapons");
                 });
@@ -582,17 +483,9 @@ namespace WarMachine.Migrations
                         .WithMany("Abilities")
                         .HasForeignKey("WarBeastID");
 
-                    b.HasOne("WarMachine.Models.WarModels.Warcaster")
-                        .WithMany("Abilities")
-                        .HasForeignKey("WarcasterID");
-
                     b.HasOne("WarMachine.Models.WarModels.Warjack")
                         .WithMany("Abilities")
                         .HasForeignKey("WarjackID");
-
-                    b.HasOne("WarMachine.Models.WarModels.Warlock")
-                        .WithMany("Abilities")
-                        .HasForeignKey("WarlockID");
                 });
 
             modelBuilder.Entity("WarMachine.Models.WarModels.SoloModel", b =>
@@ -616,17 +509,9 @@ namespace WarMachine.Migrations
                         .WithMany("Spells")
                         .HasForeignKey("WarBeastID");
 
-                    b.HasOne("WarMachine.Models.WarModels.Warcaster")
-                        .WithMany("Spells")
-                        .HasForeignKey("WarcasterID");
-
                     b.HasOne("WarMachine.Models.WarModels.Warjack")
                         .WithMany("Spells")
                         .HasForeignKey("WarjackID");
-
-                    b.HasOne("WarMachine.Models.WarModels.Warlock")
-                        .WithMany("Spells")
-                        .HasForeignKey("WarlockID");
                 });
 
             modelBuilder.Entity("WarMachine.Models.WarModels.UnitModel", b =>
@@ -643,21 +528,7 @@ namespace WarMachine.Migrations
                         .HasForeignKey("FactionID");
                 });
 
-            modelBuilder.Entity("WarMachine.Models.WarModels.Warcaster", b =>
-                {
-                    b.HasOne("WarMachine.Models.WarModels.Faction", "Faction")
-                        .WithMany()
-                        .HasForeignKey("FactionID");
-                });
-
             modelBuilder.Entity("WarMachine.Models.WarModels.Warjack", b =>
-                {
-                    b.HasOne("WarMachine.Models.WarModels.Faction", "Faction")
-                        .WithMany()
-                        .HasForeignKey("FactionID");
-                });
-
-            modelBuilder.Entity("WarMachine.Models.WarModels.Warlock", b =>
                 {
                     b.HasOne("WarMachine.Models.WarModels.Faction", "Faction")
                         .WithMany()
@@ -678,17 +549,9 @@ namespace WarMachine.Migrations
                         .WithMany("Weapons")
                         .HasForeignKey("WarBeastID");
 
-                    b.HasOne("WarMachine.Models.WarModels.Warcaster")
-                        .WithMany("Weapons")
-                        .HasForeignKey("WarcasterID");
-
                     b.HasOne("WarMachine.Models.WarModels.Warjack")
                         .WithMany("Weapons")
                         .HasForeignKey("WarjackID");
-
-                    b.HasOne("WarMachine.Models.WarModels.Warlock")
-                        .WithMany("Weapons")
-                        .HasForeignKey("WarlockID");
                 });
         }
     }
