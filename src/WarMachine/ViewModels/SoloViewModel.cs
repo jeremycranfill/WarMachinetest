@@ -65,6 +65,8 @@ namespace WarMachine.ViewModels
 
         [Required]
         [Display(Name = "Field Allowance")]
+
+
         public string FA { get; set; }
 
      

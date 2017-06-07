@@ -1,0 +1,54 @@
+﻿@model List<WarMachine.Models.WarModels.Warjack>
+@using WarMachine.Models.WarModels
+
+
+
+<h1>@ViewBag.Title</h1>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>SPD</th>
+            <th>STR</th>
+            <th>MAT</th>
+            <th>RAT</th>
+            <th>DEF</th>
+            <th>ARM</th>
+            <th>CMD</th>
+            <th>Point Cost</th>
+            <th>FA</th>
+            <th>Edit</th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var jack in Model)
+        {
+            <tr>
+                <td><a asp-controller="View" asp-action="Warjack" asp-route-id="@jack.ID"> @jack.Name</a></td>
+                <td>@jack.SPD</td>
+                <td>@jack.STR</td>
+                <td>@jack.MAT</td>
+                <td>@jack.RAT</td>
+                <td>@jack.DEF</td>
+                <td>@jack.ARM</td>
+                <td>@jack.CMD</td>
+                <td>@jack.PointCost</td>
+                <td>@jack.FA</td>
+                <td>@jack.Size</td>
+                
+                <td><a asp-controller="Edit" asp-action="Warjack"  asp-route-SoloId="@jack.ID">Edit</a></td>
+
+            
+
+
+
+            </tr>
+
+
+        }
+    </tbody>
+</table>

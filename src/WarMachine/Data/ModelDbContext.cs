@@ -26,6 +26,15 @@ namespace WarMachine.Data
         public DbSet<Warlock> Warlocks { get; set; }
         public DbSet<Warcaster> Warcasters { get; set; }
 
+        public DbSet<WarjackAbillity> WarjackAbilities { get; set; }
+        public DbSet<WarjackWeapon> WarjackWeapons { get; set; }
+
+        public DbSet<WarbeastSpell> WarbeastSpells { get; set; }
+        public DbSet<WarBeastAbillity> WarbeastAbillities { get; set; }
+        public DbSet<WarbeastWeapon> WarbeastWeapons { get; set; }
+
+
+
 
         public ModelDbContext(DbContextOptions<ModelDbContext> options)
                 : base(options) {   }
@@ -52,6 +61,16 @@ namespace WarMachine.Data
             modelBuilder.Entity<UnitWeapon>().HasKey(c => new { c.UnitID, c.WeaponId });
 
             modelBuilder.Entity<UnitSpell>().HasKey(c => new { c.SpellID, c.UnitID });
+
+            modelBuilder.Entity<WarBeastAbillity>().HasKey(c => new { c.AbillityId, c.WarBeastid });
+            modelBuilder.Entity<WarbeastSpell>().HasKey(c => new { c.Spellid, c.WarbeastId });
+            modelBuilder.Entity<WarbeastWeapon>().HasKey(c => new { c.WeaponId, c.WarbeastID });
+
+            modelBuilder.Entity<WarjackAbillity>().HasKey(c => new { c.AbillityID, c.WarjackID });
+            modelBuilder.Entity<WarjackWeapon>().HasKey(c => new { c.WeaponId, c.WarjackId });
+
+
+
 
 
 

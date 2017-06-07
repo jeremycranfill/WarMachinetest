@@ -1,7 +1,5 @@
-﻿@model WarMachine.Models.WarModels.SoloModel
+﻿Machine.Models.WarModels.Warjack>
 @using WarMachine.Models.WarModels
-
-
 
 <h1>@ViewBag.Title</h1>
 
@@ -71,6 +69,52 @@
 
 
 
+<h3>Weapons</h3>
+
+
+<h3>Spells</h3>
+<table class="table table-sm">
+    <thead>
+        <tr>
+            <th>Name </th>
+            <th>Pow</th>
+            <th>Rng</th>
+            <th>Rof</th>
+            <th>Type</th>
+            
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (Weapon weap in @Model.Weapons)
+            {
+            <tr>
+                <td>@weap.Name </td>
+                <td>@weap.POW</td>
+                <td>@weap.RNG</td>
+                <td>@weap.ROF</td>
+                <td>@weap.Type</td>
+             
+            </tr>
+        }
+
+
+    </tbody>
+
+
+
+</table>
+
+
+
+
+
+
+
+
+
+
 
 <h3>Spells</h3>
 <table class="table table-sm">
@@ -119,7 +163,7 @@
 
 
 <br />
-<a asp-controller="EditAbilities" asp-action="Solo" asp-route-SoloId="@Model.ID">Add Ability</a>
-
+<a asp-controller="EditAbilities" asp-action="Warbeast" asp-route-WarbeastId="@Model.ID">Add Ability</a>
+<a asp-controller="Edit" asp-action="Warbeast" asp-route-WarbeastId="@Model.ID">Edit </a>
 
 

@@ -69,20 +69,37 @@ namespace WarMachine.Controllers
 
 
            
-           /*/   TODO add abilities to view List<SoloAbility> soloAbils = context.SoloAbilities.Where(c => c.SoloID == SoloId).ToList();
+        List<UnitAbiliity> unitAbils = context.UnitAbilities.Where(c => c.UnitID == UnitID).ToList();
 
             List<Ability> abilList = new List<Ability>();
 
-            foreach (SoloAbility abil in soloAbils)
+            foreach (UnitAbiliity abil in unitAbils)
             {
 
                 abilList.Add(context.Abilities.Single(c => c.ID == abil.AbilityID));
 
 
             }
-            solo.Abilities = abilList;
+            unit.Abilities = abilList;
 
-    /*/ 
+
+            List<UnitSpell> unitSpells = context.UnitSpells.Where(c => c.UnitID == UnitID).ToList();
+
+            List<Spell> Spells = new List<Spell>();
+
+            foreach (UnitSpell spell in unitSpells)
+            {
+
+                Spells.Add(context.Spells.Single(c => c.ID == spell.UnitID));
+
+
+
+            }
+
+            unit.Spells = Spells;
+
+
+
 
 
 
@@ -105,7 +122,7 @@ namespace WarMachine.Controllers
         {
 
             List<SoloModel> soloList = context.Solos.ToList();
-            return View("View",soloList);
+            return View("Solos",soloList);
 
 
 
@@ -118,11 +135,17 @@ namespace WarMachine.Controllers
         public IActionResult Solo(int SoloId)
         {
 
+            //create new model
             SoloModel solo = context.Solos.Single(c => c.ID == SoloId);
-            List<SoloAbility> soloAbils = context.SoloAbilities.Where(c => c.SoloID == SoloId).ToList();
 
+
+            //get list of abilitiy IDS for the model
+            List<SoloAbility> soloAbils = context.SoloAbilities.Where(c => c.SoloID == SoloId).ToList();
+            //create list to hold abils
             List<Ability> abilList = new List<Ability>();
 
+
+            //add each ability to list.
             foreach (SoloAbility abil in soloAbils)
             {
 
@@ -130,7 +153,28 @@ namespace WarMachine.Controllers
 
 
             }
+
+            //set solo abilities to list we just made
             solo.Abilities = abilList;
+
+
+            List<SoloSpell> soloSpells = context.SoloSpells.Where(c => c.SoloID == SoloId).ToList();
+
+            List<Spell> Spells = new List<Spell>();
+
+            foreach (SoloSpell spell in soloSpells)
+            {
+
+                Spells.Add(context.Spells.Single(c => c.ID == spell.SoloID));
+
+
+
+            }
+
+            solo.Spells = Spells;
+
+
+
 
 
 
@@ -140,18 +184,160 @@ namespace WarMachine.Controllers
 
 
 
-        public IActionResult Rule()
+
+        public IActionResult Warjack()
         {
 
-            List<RuleModel> ruleList = context.Rules.ToList();
-            return View(ruleList);
+            List<Warjack> jackList = context.Warjacks.ToList();
+            return View("Warjacks", jackList);
 
 
 
         }
 
 
-    
+
+        [HttpGet]
+        [Route("View/Warjack/{WarjackId}")]
+
+        public IActionResult Warjack(int WarjackId)
+        {
+
+            //create new model
+            Warjack warjack = context.Warjacks.Single(c => c.ID == WarjackId);
+
+
+            //get list of abilitiy IDS for the model
+            List<WarjackAbillity> jackAbils = context.WarjackAbilities.Where(c => c.WarjackID == WarjackId).ToList();
+            //create list to hold abils
+            List<Ability> abilList = new List<Ability>();
+
+
+            //add each ability to list.
+            foreach (WarjackAbillity abil in jackAbils)
+            {
+
+                abilList.Add(context.Abilities.Single(c => c.ID == abil.AbillityID));
+
+
+            }
+
+            //set solo abilities to list we just made
+            warjack.Abilities = abilList;
+
+
+            List<WarjackWeapon> jackWeapons = context.WarjackWeapons.Where(c => c.WarjackId == WarjackId).ToList();
+
+            List<Weapon> Weapons = new List<Weapon>();
+
+            foreach (WarjackWeapon weapon in jackWeapons)
+            {
+
+                Weapons.Add(context.Weapons.Single(c => c.ID == weapon.WeaponId));
+
+
+
+            }
+
+            warjack.Weapons = Weapons;
+
+
+
+
+
+
+            return View("Warjack", warjack);
+
+        }
+
+
+
+
+        public IActionResult Warbeast()
+        {
+
+            List<WarBeast> beastlist = context.WarBeasts.ToList();
+            return View("Warbeasts", beastlist);
+
+
+
+        }
+
+        [HttpGet]
+        [Route("View/Warbeast/{WarbeastId}")]
+
+        public IActionResult Warbeast(int warbeastId)
+        {
+
+            //create new model
+            WarBeast warbeast = context.WarBeasts.Single(c => c.ID == warbeastId);
+
+
+            //get list of abilitiy IDS for the model
+            List<WarBeastAbillity> beastAbils = context.WarbeastAbillities.Where(c => c.WarBeastid == warbeastId).ToList();
+            //create list to hold abils
+            List<Ability> abilList = new List<Ability>();
+
+
+            //add each ability to list.
+            foreach (WarBeastAbillity abil in beastAbils)
+            {
+
+                abilList.Add(context.Abilities.Single(c => c.ID == abil.AbillityId));
+
+
+            }
+
+            //set solo abilities to list we just made
+            warbeast.Abilities = abilList;
+
+
+            List<WarbeastWeapon> beastWeapons = context.WarbeastWeapons.Where(c => c.WarbeastID == warbeastId).ToList();
+
+            List<Weapon> Weapons = new List<Weapon>();
+
+            foreach (WarbeastWeapon weapon in beastWeapons)
+            {
+
+                Weapons.Add(context.Weapons.Single(c => c.ID == weapon.WeaponId));
+
+
+
+            }
+
+            warbeast.Weapons = Weapons;
+
+            List<WarbeastSpell> beastSpells = context.WarbeastSpells.Where(c => c.WarbeastId == warbeastId).ToList();
+
+            List<Spell> Spells = new List<Spell>();
+
+            foreach (WarbeastSpell spell in beastSpells)
+            {
+
+                Spells.Add(context.Spells.Single(c => c.ID == spell.WarbeastId));
+
+
+
+            }
+
+            warbeast.Spells = Spells;
+
+
+
+
+
+
+
+
+            return View("Warbeast", warbeast);
+
+        }
+
+
+
+
+
+
 
 
 

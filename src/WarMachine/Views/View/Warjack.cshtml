@@ -1,7 +1,5 @@
-﻿@model WarMachine.Models.WarModels.SoloModel
+﻿Machine.Models.WarModels.Warjack>
 @using WarMachine.Models.WarModels
-
-
 
 <h1>@ViewBag.Title</h1>
 
@@ -71,6 +69,8 @@
 
 
 
+<h3>Weapons</h3>
+
 
 <h3>Spells</h3>
 <table class="table table-sm">
@@ -79,27 +79,23 @@
             <th>Name </th>
             <th>Pow</th>
             <th>Rng</th>
-            <th>Cost</th>
-            <th>Duration</th>
-            <th>AOE</th>
-            <th>OFF</th>
-            <th>Description</th>
+            <th>Rof</th>
+            <th>Type</th>
+            
         </tr>
     </thead>
 
     <tbody>
 
-        @foreach (Spell spell in @Model.Spells)
+        @foreach (Weapon weap in @Model.Weapons)
             {
             <tr>
-                <td>@spell.Name </td>
-                <td>@spell.POW</td>
-                <td>@spell.RNG</td>
-                <td>@spell.Cost</td>
-                <td>@spell.Duration</td>
-                <td>@spell.AOE</td>
-                <td>@spell.OFF</td>
-                <td>@spell.Description </td>
+                <td>@weap.Name </td>
+                <td>@weap.POW</td>
+                <td>@weap.RNG</td>
+                <td>@weap.ROF</td>
+                <td>@weap.Type</td>
+             
             </tr>
         }
 
@@ -118,8 +114,14 @@
 
 
 
+
+
+
+
+
+
 <br />
 <a asp-controller="EditAbilities" asp-action="Solo" asp-route-SoloId="@Model.ID">Add Ability</a>
-
+<a asp-controller="Edit" asp-action="Solo" asp-route-SoloId="@Model.ID">Edit </a>
 
 
