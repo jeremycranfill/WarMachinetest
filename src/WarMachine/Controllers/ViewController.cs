@@ -32,9 +32,22 @@ namespace WarMachine.Controllers
            
             return View(abilityList);
 
-        
-        
+                
         }
+        [Route("View/Ability/{AbilityID}")]
+        public IActionResult Ability(int AbilityId)
+        {
+           Ability abil  = context.Abilities.Single(c=> c.ID == AbilityId);
+
+
+            return View("SingleAbility",abil );
+
+
+        }
+
+
+
+
 
         public IActionResult Spell()
         {
@@ -47,12 +60,44 @@ namespace WarMachine.Controllers
 
         }
 
+        [Route("View/Spell/{SpellID}")]
+        public IActionResult Spell(int SpellID)
+        {
+           
+            Spell Spell = context.Spells.Single(c => c.ID == SpellID);
+
+
+            return View("SingleSpell", Spell);
+
+
+
+        }
+
+
+
+
+
+
         public IActionResult Weapon()
         {
             List<Weapon> weaponList = context.Weapons.ToList();
             return View(weaponList);
 
         }
+        [Route("View/Weapon/{WeaponID}")]
+        public IActionResult Weapon(int WeaponID)
+        {
+            Weapon weapon = context.Weapons.Single(c => c.ID == WeaponID);
+            return View("SingleWeapon",weapon);
+
+        }
+
+
+
+
+
+
+
 
         public IActionResult Unit()
         {
@@ -61,7 +106,7 @@ namespace WarMachine.Controllers
             return View(unitList);
 
         }
-
+                                                                                         
         [Route("View/Unit/{UnitID}")]
         public IActionResult Unit(int UnitID)
         {
@@ -145,7 +190,9 @@ namespace WarMachine.Controllers
             List<Ability> abilList = new List<Ability>();
 
 
-            //add each ability to list.
+            //add each ability to listif any
+
+
             foreach (SoloAbility abil in soloAbils)
             {
 
@@ -165,7 +212,7 @@ namespace WarMachine.Controllers
             foreach (SoloSpell spell in soloSpells)
             {
 
-                Spells.Add(context.Spells.Single(c => c.ID == spell.SoloID));
+                Spells.Add(context.Spells.Single(c => c.ID == spell.SpellID));
 
 
 
@@ -336,6 +383,75 @@ namespace WarMachine.Controllers
 
 
 
+        public IActionResult Warlock()
+        {
+
+            List<Warlock> warlockList = context.Warlocks.ToList();
+            return View("Warlock", warlockList);
+
+
+
+        }
+
+
+        [HttpGet]
+        [Route("View/Warlock/{WarlockId}")]
+
+        public IActionResult Warlock(int warlockId)
+        {
+
+            //create new model
+            Warlock warlock = context.Warlocks.Single(c => c.ID == warlockId);
+
+
+            //get list of abilitiy IDS for the model
+            List<SoloAbility> lockAbils = context.SoloAbilities.Where(c => c.SoloID == warlockId).ToList();
+            //create list to hold abils
+            List<Ability> abilList = new List<Ability>();
+
+
+            //add each ability to list.
+            foreach (SoloAbility abil in lockAbils)
+            {
+
+                abilList.Add(context.Abilities.Single(c => c.ID == abil.AbilityID));
+
+
+            }
+
+            //set solo abilities to list we just made
+            warlock.Abilities = abilList;
+
+
+            List<SoloWeapon> lockWeapons = context.SoloWeapons.Where(c => c.SoloID == warlockId).ToList();
+
+            List<Weapon> Weapons = new List<Weapon>();
+
+            foreach (SoloWeapon weapon in lockWeapons)
+            {
+
+                Weapons.Add(context.Weapons.Single(c => c.ID == weapon.WeaponID));
+
+
+
+            }
+
+            warlock.Weapons = Weapons;
+
+            List<SoloSpell> lockSpells = context.SoloSpells.Where(c => c.SoloID == warlockId).ToList();
+
+            List<Spell> Spells = new List<Spell>();
+
+            foreach (SoloSpell spell in lockSpells)
+            {
+
+                Spells.Add(context.Spells.Single(c => c.ID == spell.SoloID));
+
+
+
+            }
+
+            warlock.Spells = Spells;
 
 
 
@@ -344,6 +460,91 @@ namespace WarMachine.Controllers
 
 
 
+            return View("Warlock", warlock);
+
+        }
+
+
+        public IActionResult Warcaster()
+        {
+
+            List<Warcaster> casterList = context.Warcasters.ToList();
+            return View("Warcaster", casterList);
+
+
+
+        }
+
+
+        [HttpGet]
+        [Route("View/Warcaster/{WarcasterId}")]
+
+        public IActionResult Warcaster(int WarcasterId)
+        {
+
+            //create new model
+            Warcaster Warcaster = context.Warcasters.Single(c => c.ID == WarcasterId);
+
+
+            //get list of abilitiy IDS for the model
+            List<SoloAbility> casterAbils = context.SoloAbilities.Where(c => c.SoloID == WarcasterId).ToList();
+            //create list to hold abils
+            List<Ability> abilList = new List<Ability>();
+
+
+            //add each ability to list.
+            foreach (SoloAbility abil in casterAbils)
+            {
+
+                abilList.Add(context.Abilities.Single(c => c.ID == abil.AbilityID));
+
+
+            }
+
+            //set solo abilities to list we just made
+            Warcaster.Abilities = abilList;
+
+
+            List<SoloWeapon> lockWeapons = context.SoloWeapons.Where(c => c.SoloID == WarcasterId).ToList();
+
+            List<Weapon> Weapons = new List<Weapon>();
+
+            foreach (SoloWeapon weapon in lockWeapons)
+            {
+
+                Weapons.Add(context.Weapons.Single(c => c.ID == weapon.WeaponID));
+
+
+
+            }
+
+            Warcaster.Weapons = Weapons;
+
+            List<SoloSpell> lockSpells = context.SoloSpells.Where(c => c.SoloID == WarcasterId).ToList();
+
+            List<Spell> Spells = new List<Spell>();
+
+            foreach (SoloSpell spell in lockSpells)
+            {
+
+                Spells.Add(context.Spells.Single(c => c.ID == spell.SoloID));
+
+
+
+            }
+
+            Warcaster.Spells = Spells;
+
+
+
+
+
+
+
+
+            return View("Warcaster", Warcaster);
+
+        }
 
     }
 }

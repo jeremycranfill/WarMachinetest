@@ -1,0 +1,30 @@
+﻿@model WarMachine.Models.WarModels.Ability
+
+
+<h3>Spells</h3>
+<table class="table table-sm">
+    <thead>
+        <tr>
+            <th>Name </th>
+            <th>Dscription</th>
+           
+        </tr>
+    </thead>
+
+    <tbody>
+
+          
+            <tr>
+                <td>@Model.Name </td>
+                <td>@Model.Description</td>
+            
+            </tr>
+      
+
+
+    </tbody>
+    </table>
+
+
+<br />
+<a asp-controller="Edit" asp-action="Ability" asp-route-SoloId="@Model.ID">Edit Ability</a>

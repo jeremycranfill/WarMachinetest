@@ -1,0 +1,35 @@
+﻿@model WarMachine.Models.WarModels.Weapon
+
+
+<h3>Spells</h3>
+<table class="table table-sm">
+    <thead>
+        <tr>
+            <th>Name </th>
+            <th>Pow</th>
+            <th>Rng</th>
+            <th>Rof</th>
+           
+        </tr>
+    </thead>
+
+    <tbody>
+
+          
+            <tr>
+                <td>@Model.Name </td>
+                <td>@Model.POW</td>
+                <td>@Model.RNG</td>
+                <td>@Model.ROF</td>
+               
+            
+            </tr>
+      
+
+
+    </tbody>
+    </table>
+
+
+<br />
+<a asp-controller="Edit" asp-action="Weapon" asp-route-SoloId="@Model.ID">Edit</a>

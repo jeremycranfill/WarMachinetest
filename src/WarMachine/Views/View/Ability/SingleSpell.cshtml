@@ -1,0 +1,36 @@
+﻿@model WarMachine.Models.WarModels.Spell
+
+
+<h3>Spells</h3>
+<table class="table table-sm">
+    <thead>
+        <tr>
+            <th>Name </th>
+            <th>Pow</th>
+            <th>Rng</th>
+            <th>Cost</th>
+            <th>Duration</th>
+            <th>AOE</th>
+            <th>OFF</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+          
+            <tr>
+                <td>@Model.Name </td>
+                <td>@Model.POW</td>
+                <td>@Model.RNG </ td >
+                <td>@Model.Cost </ td >
+                <td>@Model.Duration </ td >
+                <td>@Model.AOE </ td >
+                <td>@Model.OFF </ td >
+                <td>@Model.Description </ td >
+            </tr>
+      
+
+
+    </tbody>
+    </table>

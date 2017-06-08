@@ -52,7 +52,7 @@ namespace WarMachine.ViewModels
                     Text = spell.Name
                 };
 
-                allWeaps.Add(item);
+                allSpells.Add(item);
             }
 
 
