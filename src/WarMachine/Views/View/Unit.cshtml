@@ -22,6 +22,7 @@
            <th>Max Unit</th>
            <th>Point Cost</th>
             <th>FA</th>
+            <th>Faction</th>
             <th>Edit</th>
 
         </tr>
@@ -42,6 +43,7 @@
                 <td>@unit.MinUnit</td>
                 <td>@unit.MaxUnit</td>
                 <td>@unit.PointCost</td>
+                <td>@unit.factionName</td>
                 <td>@unit.FA</td>
                 <td><a asp-controller="Edit" asp-action="Unit" asp-route-UnitID="@unit.ID">Edit</a></td>
 

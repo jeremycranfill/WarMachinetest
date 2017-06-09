@@ -64,6 +64,9 @@ namespace WarMachine.ViewModels
 
         }
 
+        public  enum FactionName { Cryx, Ret, Cygnar, Convergence, Menoth, Khador, Mercs, Trolls, Skorne, Circle, Legion, Minnions }
+
+        
 
         [Required]
         public string Name { get; set; }
@@ -104,6 +107,8 @@ namespace WarMachine.ViewModels
        public IList<SelectListItem> allSpells { get; set; }
        public IList<int> spellIDS { get; set; }
 
+        [Required]
+        public FactionName Faction { get; set; }
 
 
 

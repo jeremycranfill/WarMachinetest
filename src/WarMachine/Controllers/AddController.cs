@@ -56,7 +56,18 @@ namespace WarMachine.Controllers
         public IActionResult AddUnit()
         {
 
-            return View();
+            AddUnitViewModel view = new AddUnitViewModel
+
+            (
+
+            context.Abilities.ToList(),
+
+            context.Weapons.ToList(),
+            context.Spells.ToList()
+
+            );
+
+            return View(view);
 
 
         }
@@ -86,14 +97,14 @@ namespace WarMachine.Controllers
                 newUnit.SPD = model.SPD;
                 newUnit.STR = model.STR;
                 newUnit.FA = model.FA;
+                newUnit.factionName = model.Faction;
                 context.Units.Add(newUnit);
                 context.SaveChanges();
                 return Redirect("/");
                               
 
                  }
-
-
+            
 
             return View(model);
 
@@ -155,6 +166,7 @@ namespace WarMachine.Controllers
                 newJack.STR = model.STR;
                 newJack.FA = model.FA;
                 newJack.Size = model.Size;
+                newJack.factionName = model.Faction;
 
                 context.Warjacks.Add(newJack);
                 context.SaveChanges();
@@ -271,6 +283,7 @@ namespace WarMachine.Controllers
                 newBeast.FA = model.FA;
                 newBeast.Size = model.Size;
                 newBeast.Threshhold = model.Threshold;
+                newBeast.factionName = model.Faction;
 
 
                 context.WarBeasts.Add(newBeast);
@@ -392,6 +405,7 @@ namespace WarMachine.Controllers
                 newSolo.SPD = model.SPD;
                 newSolo.STR = model.STR;
                 newSolo.FA = model.FA;
+                newSolo.factionName = model.Faction;
 
                 context.Solos.Add(newSolo);
                 context.SaveChanges();
@@ -511,7 +525,8 @@ namespace WarMachine.Controllers
                 newSolo.SPD = model.SPD;
                 newSolo.STR = model.STR;
                 newSolo.WarjackPoints = model.WarjackPoints;
-                
+                newSolo.factionName = model.Faction;
+
 
                 context.Warcasters.Add(newSolo);
                 context.SaveChanges();
@@ -630,6 +645,7 @@ namespace WarMachine.Controllers
                 newSolo.SPD = model.SPD;
                 newSolo.STR = model.STR;
                 newSolo.WarbeastPoints = model.WarbeastPoints;
+                newSolo.factionName = model.Faction;
 
 
                 context.Warlocks.Add(newSolo);

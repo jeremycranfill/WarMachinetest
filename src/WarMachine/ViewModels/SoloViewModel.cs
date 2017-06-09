@@ -12,6 +12,8 @@ namespace WarMachine.ViewModels
     {
 
 
+
+
         public SoloViewModel() { }
         public SoloViewModel(IList<Ability> abills, IList<Weapon> weapons, IList<Spell> spells)
         {
@@ -72,8 +74,9 @@ namespace WarMachine.ViewModels
      
 
 
+         //TODO add faction to all views
 
-                       
+
 
 
 

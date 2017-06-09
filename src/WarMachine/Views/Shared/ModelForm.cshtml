@@ -1,4 +1,5 @@
 ﻿@model WarMachine.ViewModels.BasedModelViewModel
+@using static WarMachine.ViewModels.BasedModelViewModel
 <div class="form-group">
     <label asp-for="SPD"></label>
     <input class="form-control" asp-for="SPD" />
@@ -49,6 +50,13 @@
     <span asp-validation-for="FA"></span>
 </div>
 
+
+
+<div class="form-group">
+    <label asp-for="Faction"></label>
+    <select asp-items="Html.GetEnumSelectList<FactionName>()" asp-for="Faction"></select>
+    <span asp-validation-for="Faction"></span>
+</div>
 
 
 

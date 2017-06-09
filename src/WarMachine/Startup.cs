@@ -134,6 +134,10 @@ namespace WarMachine
 
         public IConfigurationRoot Configuration { get; }
 
+        
+     
+        
+        
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -175,12 +179,12 @@ namespace WarMachine
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
 
-
+          
 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public async void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IServiceProvider serviceProvider)
+        public async void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IServiceProvider serviceProvider, ModelDbContext context)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
@@ -211,6 +215,10 @@ namespace WarMachine
 
 
             await CreateRoles(serviceProvider);
+
+            DataSeeder.Initialize(context);
+
+
         }
 
 

@@ -1,0 +1,71 @@
+﻿@model List<WarMachine.Models.WarModels.Warlock>
+@using WarMachine.Models.WarModels
+
+
+
+<h1>@ViewBag.Title</h1>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>SPD</th>
+            <th>STR</th>
+            <th>MAT</th>
+            <th>RAT</th>
+            <th>DEF</th>
+            <th>ARM</th>
+            <th>CMD</th>
+            <th>Bg Points</th>
+            <th>Fury</th>
+            <th>Factions</th>
+            <th>Feat</th>
+
+            <th>Edit</th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var caster in Model)
+        {
+            <tr>
+                <td><a asp-controller="View" asp-action="Warlock" asp-route-id="@caster.ID"> @caster.Name</a></td>
+                <td>@caster.SPD</td>
+                <td>@caster.STR</td>
+                <td>@caster.MAT</td>
+                <td>@caster.RAT</td>
+                <td>@caster.DEF</td>
+                <td>@caster.ARM</td>
+                <td>@caster.CMD</td>
+               
+                <td>@caster.WarbeastPoints</td>
+                <td>@caster.Fury</td>
+                <td>@caster.Faction</td>
+                <td>@caster.Feat</td>
+               
+                
+                <td><a asp-controller="Edit" asp-action="Warlock"  asp-route-SoloId="@caster.ID">Edit</a></td>
+
+            
+
+
+
+            </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        }
+    </tbody>
+</table>

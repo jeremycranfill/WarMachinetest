@@ -56,7 +56,7 @@ namespace WarMachine.ViewModels
 
     
 
-
+    
 
     public Sizes Size { get; set; }
 

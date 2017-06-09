@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WarMachine.Models.WarModels;
+using static WarMachine.ViewModels.BasedModelViewModel;
 
 namespace WarMachine.Models.WarModels
 {
@@ -24,9 +25,11 @@ namespace WarMachine.Models.WarModels
         public int ID { get; set; }
         public int PointCost { get; set; }
         public Faction Faction { get; set; }
+        public FactionName factionName { get; set; }
 
-        
-       
+ 
+
+
 
     }
 

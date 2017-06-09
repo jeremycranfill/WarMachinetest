@@ -387,7 +387,7 @@ namespace WarMachine.Controllers
         {
 
             List<Warlock> warlockList = context.Warlocks.ToList();
-            return View("Warlock", warlockList);
+            return View("Warlocks", warlockList);
 
 
 
@@ -469,7 +469,7 @@ namespace WarMachine.Controllers
         {
 
             List<Warcaster> casterList = context.Warcasters.ToList();
-            return View("Warcaster", casterList);
+            return View("Warcasters", casterList);
 
 
 

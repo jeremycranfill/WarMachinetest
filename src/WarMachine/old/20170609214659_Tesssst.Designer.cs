@@ -8,9 +8,10 @@ using WarMachine.Data;
 namespace WarMachine.Migrations
 {
     [DbContext(typeof(ModelDbContext))]
-    partial class ModelDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170609214659_Tesssst")]
+    partial class Tesssst
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")
@@ -274,6 +275,8 @@ namespace WarMachine.Migrations
 
                     b.Property<int>("STR");
 
+                    b.Property<int>("factionName");
+
                     b.HasKey("ID");
 
                     b.HasIndex("FactionID");
@@ -364,6 +367,8 @@ namespace WarMachine.Migrations
 
                     b.Property<int>("STR");
 
+                    b.Property<int>("factionName");
+
                     b.HasKey("ID");
 
                     b.HasIndex("FactionID");
@@ -404,6 +409,8 @@ namespace WarMachine.Migrations
 
                     b.Property<int>("Threshhold");
 
+                    b.Property<int>("factionName");
+
                     b.HasKey("ID");
 
                     b.HasIndex("FactionID");
@@ -442,6 +449,8 @@ namespace WarMachine.Migrations
 
                     b.Property<int>("WarjackPoints");
 
+                    b.Property<int>("factionName");
+
                     b.HasKey("ID");
 
                     b.HasIndex("FactionID");
@@ -477,6 +486,8 @@ namespace WarMachine.Migrations
                     b.Property<int>("STR");
 
                     b.Property<int>("Size");
+
+                    b.Property<int>("factionName");
 
                     b.HasKey("ID");
 
@@ -515,6 +526,8 @@ namespace WarMachine.Migrations
                     b.Property<int>("STR");
 
                     b.Property<int>("WarbeastPoints");
+
+                    b.Property<int>("factionName");
 
                     b.HasKey("ID");
 
