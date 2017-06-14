@@ -1,6 +1,11 @@
 ﻿@model WarMachine.ViewModels.AddSpellViewModel
 @using static WarMachine.Models.WarModels.Spell;
 
+@section scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
 
 <form asp-controller="Add" asp-action="Spell" method="post">
 
@@ -24,7 +29,7 @@
 
     <div class="form-group">
         <label asp-for="AOE"></label>
-        <select asp-items="Html.GetEnumSelectList<AoeType>()" asp-for="AOE"></select>
+        <select class="form-control" asp-items="Html.GetEnumSelectList<AoeType>()" asp-for="AOE"></select>
         <span asp-validation-for="AOE"></span>
     </div>
 
@@ -36,7 +41,7 @@
 
     <div class="form-group">
         <label asp-for="Duration"></label>
-        <select asp-items="Html.GetEnumSelectList<DurationType>()" asp-for="Duration"></select>
+        <select class="form-control" asp-items="Html.GetEnumSelectList<DurationType>()" asp-for="Duration"></select>
         <span asp-validation-for="Duration"></span>
     </div>
     <div class="form-group">
@@ -48,7 +53,7 @@
     
     <div class="form-group">
         <label asp-for="OFF"></label>
-        <input class="form-control" asp-for="OFF" />
+        <input  asp-for="OFF" />
         <span asp-validation-for="OFF"></span>
     </div>
 

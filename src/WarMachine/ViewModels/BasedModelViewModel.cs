@@ -111,7 +111,7 @@ namespace WarMachine.ViewModels
         public FactionName Faction { get; set; }
 
 
-
+      
 
 
     }

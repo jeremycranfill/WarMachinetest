@@ -1,6 +1,10 @@
 ﻿@model WarMachine.ViewModels.AddWeaponViewModel
 @using static WarMachine.Models.WarModels.Weapon;
 
+@section scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
 
 <form asp-controller="Add" asp-action="WEapon" method="post">
 
@@ -25,7 +29,7 @@
 
     <div class="form-group">
       <label asp-for="Type">Weapon Type</label>
-         <select asp-items="Html.GetEnumSelectList<WeaponType>()" asp-for="Type"></select>
+         <select class="form-control"- asp-items="Html.GetEnumSelectList<WeaponType>()" asp-for="Type"></select>
            
             <span asp-validation-for="Type"></span>
 </div>

@@ -221,8 +221,7 @@ namespace WarMachine.Controllers
             solo.Spells = Spells;
 
 
-
-
+           
 
 
             return View("SingleSolo", solo);
@@ -545,6 +544,75 @@ namespace WarMachine.Controllers
             return View("Warcaster", Warcaster);
 
         }
+
+
+
+
+
+
+
+
+
+
+
+        [Route("View/SoloTest/{SoloId}")]
+        public IActionResult SoloTest(int SoloId)
+        {
+
+            //create new model
+            SoloModel solo = context.Solos.Single(c => c.ID == SoloId);
+
+
+            //get list of abilitiy IDS for the model
+            List<SoloAbility> soloAbils = context.SoloAbilities.Where(c => c.SoloID == SoloId).ToList();
+            //create list to hold abils
+            List<Ability> abilList = new List<Ability>();
+
+
+            //add each ability to listif any
+
+
+            foreach (SoloAbility abil in soloAbils)
+            {
+
+                abilList.Add(context.Abilities.Single(c => c.ID == abil.AbilityID));
+
+
+            }
+
+            //set solo abilities to list we just made
+            solo.Abilities = abilList;
+
+
+            List<SoloSpell> soloSpells = context.SoloSpells.Where(c => c.SoloID == SoloId).ToList();
+
+            List<Spell> Spells = new List<Spell>();
+
+            foreach (SoloSpell spell in soloSpells)
+            {
+
+                Spells.Add(context.Spells.Single(c => c.ID == spell.SpellID));
+
+
+
+            }
+
+            solo.Spells = Spells;
+
+
+            ViewBag.Props = solo.GetProps();
+
+
+
+            return View("BaseView", solo);
+
+        }
+
+
+
+
+
+
 
     }
 }

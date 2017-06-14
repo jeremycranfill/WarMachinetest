@@ -1,5 +1,10 @@
 ﻿@model WarMachine.ViewModels.Edit.EditSoloViewModel
 
+@section scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
 <form asp-controller="Edit" asp-action="Solo" method="post">
 
     <div class="form-group">

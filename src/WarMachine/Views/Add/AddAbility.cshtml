@@ -1,6 +1,9 @@
 ﻿@model WarMachine.ViewModels.AddAbilityViewModel
 
-
+@section scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
 
 <form asp-controller="Add" asp-action="Ability" method="post">
 

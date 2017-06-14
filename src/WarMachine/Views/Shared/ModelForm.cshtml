@@ -54,7 +54,7 @@
 
 <div class="form-group">
     <label asp-for="Faction"></label>
-    <select asp-items="Html.GetEnumSelectList<FactionName>()" asp-for="Faction"></select>
+    <select class="form-control" asp-items="Html.GetEnumSelectList<FactionName>()" asp-for="Faction"></select>
     <span asp-validation-for="Faction"></span>
 </div>
 
@@ -78,7 +78,7 @@
 {
     <div class="form-group">
         <label asp-for="abilIDS"></label>
-        <select asp-for="abilIDS" asp-items="@Model.allAbills"></select>
+        <select multiple class="form-control" asp-for="abilIDS" asp-items="@Model.allAbills"></select>
 
 
     </div>
@@ -88,7 +88,7 @@
 {
     <div class="form-group">
         <label asp-for="spellIDS"></label>
-        <select asp-for="spellIDS" asp-items="@Model.allSpells"></select>
+        <select multiple class="form-control" asp-for="spellIDS" asp-items="@Model.allSpells"></select>
 
     </div>
 }
@@ -97,7 +97,7 @@
 {
     <div class="form-group">
         <label asp-for="weapIDS"></label>
-        <select asp-for="weapIDS" asp-items="@Model.allWeaps"></select>
+        <select multiple class="form-control" asp-for="weapIDS" asp-items="@Model.allWeaps"></select>
 
     </div>
 

@@ -1,4 +1,4 @@
-﻿Machine.Models.WarModels.Warjack>
+﻿@model WarMachine.Models.WarModels.Warjack
 @using WarMachine.Models.WarModels
 
 <h1>@ViewBag.Title</h1>
@@ -17,6 +17,7 @@
             <th>CMD</th>
             <th>Point Cost</th>
             <th>FA</th>
+            <th>Faction</th>
             
         </tr>
     </thead>
@@ -34,6 +35,7 @@
                 <td>@Model.CMD</td>
                 <td>@Model.PointCost</td>
                 <td>@Model.FA</td>
+                <td>@Model.factionName</td>
               </tr>
                
     </tbody>

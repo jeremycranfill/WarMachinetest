@@ -1,19 +1,45 @@
-﻿
-
+﻿@model WarMachine.Models.WarModels.SoloModel
+@using System.Reflection
 
 <table class="table table-striped">
     <thead>
         <tr>
 
-            @foreach (var property in ViewData.ModelMetadata.Properties)
+            @foreach (var property in ViewBag.Props)
             {
                 <th>
-                   @(property.DisplayName ?? property.PropertyName)
+                   @property
                    
                 </th>
             }
 
             <th>Edit</th>
+
+
+            @foreach (PropertyInfo prop in @Model.GetType().GetProperties())
+            {
+                var type = Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType;
+                if (type == typeof(Int32))
+                {
+                    prop.GetValue(@Model, null);
+                }
+            }
+            
+
+
+
+            
+
+
+@foreach (var propertyName in ViewBag.Props)
+            {
+    <td>
+        @Model.GetType().GetProperty(propertyName).GetValue(Model, null);
+
+    </td>
+}
+
+            <td><a asp-controller="Edit" asp-action="Warcaster" asp-route-SoloId="@Model.ID">Edit</a></td>
 
 
 

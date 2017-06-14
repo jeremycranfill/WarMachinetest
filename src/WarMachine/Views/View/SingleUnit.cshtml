@@ -21,6 +21,7 @@
             <th>MinUnit</th>
             <th>MaxUnit</th>
             <th>FA</th>
+            <th>Faction</th></tg>
             <th>Edit</th>
 
         </tr>
@@ -41,6 +42,7 @@
             <td>@Model.MinUnit</td>
             <td>@Model.MaxUnit</td>
             <td>@Model.FA</td>
+            <td>@Model.factionName</td>
             <td><a asp-controller="Edit" asp-action="Unit" asp-route-SoloId="@Model.ID">Edit</a></td>
 
         </tr>
