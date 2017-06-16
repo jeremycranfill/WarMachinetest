@@ -1,5 +1,8 @@
 ﻿@using WarMachine.Models.WarModels
 @model IList<Ability>
+<link rel="stylesheet" href="~/lib/fontawesome/css/font-awesome.min.css">
+
+
 
 <h1>@ViewBag.Title</h1>
 
@@ -22,7 +25,7 @@
                 
                 <td><a asp-controller="View" asp-action="Ability" asp-route-id="@ability.ID"> @ability.Name</a></td>
                 <td>@ability.Description</td>
-                <td><a asp-controller="Edit" asp-action="Ability" asp-route-UnitID="@ability.ID">Edit</a></td>
+                <td><a asp-controller="Edit" asp-action="Ability" asp-route-UnitID="@ability.ID"><i class="fa fa-edit fa-lg"></i>Edit</a></td>
 
             </tr>
 

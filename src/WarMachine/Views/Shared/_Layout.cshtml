@@ -7,6 +7,8 @@
 
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/lib/bootswatch/yeti/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/lib/fontawesome/css/font-awesome.min.css" />
         <link rel="stylesheet" href="~/css/site.css" />
     </environment>
     <environment names="Staging,Production">
@@ -26,12 +28,70 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">usertest</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Warmachine Database</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Add<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a asp-controller="Add" asp-action="Solo">Solo</a></li>
+                            <li><a asp-controller="Add" asp-action="Unit">Unit</a></li>
+
+                            <li><a asp-controller="Add" asp-action="Warbeast">Warbeast</a></li>
+                            <li><a asp-controller="Add" asp-action="Warjack">Warjack</a></li>
+                            <li><a asp-controller="Add" asp-action="Warlock">Warlock</a></li>
+                            <li><a asp-controller="Add" asp-action="Warcaster">Warcaster</a></li>
+
+                            <li class="divider"></li>
+                            <li><a asp-controller="Add" asp-action="Ability">Ability</a></li>
+                            <li><a asp-controller="Add" asp-action="Spell">Spell</a></li>
+                            <li><a asp-controller="Add" asp-action="Weapon">Weapon</a></li>
+                        </ul>
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">View<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a asp-controller="View" asp-action="Solo">Solo</a></li>
+                            <li><a asp-controller="View" asp-action="Unit">Unit</a></li>
+
+                            <li><a asp-controller="View" asp-action="Warbeast">Warbeast</a></li>
+                            <li><a asp-controller="View" asp-action="Warjack">Warjack</a></li>
+                            <li><a asp-controller="View" asp-action="Warlock">Warlock</a></li>
+                            <li><a asp-controller="View" asp-action="Warcaster">Warcaster</a></li>
+
+                            <li class="divider"></li>
+                            <li><a asp-controller="View" asp-action="Ability">Ability</a></li>
+                            <li><a asp-controller="View" asp-action="Spell">Spell</a></li>
+                            <li><a asp-controller="View" asp-action="Weapon">Weapon</a></li>
+                        </ul>
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Edit<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a asp-controller="Edit" asp-action="Solo">Solo</a></li>
+                            <li><a asp-controller="Edit" asp-action="Unit">Unit</a></li>
+
+                            <li><a asp-controller="Edit" asp-action="Warbeast">Warbeast</a></li>
+                            <li><a asp-controller="Edit" asp-action="Warjack">Warjack</a></li>
+                            <li><a asp-controller="Edit" asp-action="Warlock">Warlock</a></li>
+                            <li><a asp-controller="Edit" asp-action="Warcaster">Warcaster</a></li>
+
+                            <li class="divider"></li>
+                            <li><a asp-controller="Edit" asp-action="Ability">Ability</a></li>
+                            <li><a asp-controller="Edit" asp-action="Spell">Spell</a></li>
+                            <li><a asp-controller="Edit" asp-action="Weapon">Weapon</a></li>
+                        </ul>
+
+
+
+
+                 
+
+
+
+<li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")

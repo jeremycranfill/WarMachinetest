@@ -98,7 +98,73 @@ namespace WarMachine.Controllers
                 newUnit.STR = model.STR;
                 newUnit.FA = model.FA;
                 newUnit.factionName = model.Faction;
+
+
+                if (model.abilIDS != null)
+                {
+                    foreach (var abil in model.abilIDS)
+                    {
+
+                        SoloAbility NewSoloAbility = new SoloAbility();
+                        NewSoloAbility.AbilityID = abil;
+                        NewSoloAbility.SoloID = newUnit.ID;
+                        context.SoloAbilities.Add(NewSoloAbility);
+                        context.SaveChanges();
+
+
+                    }
+                }
+
+
+                if (model.weapIDS != null)
+                {
+                    foreach (var weap in model.weapIDS)
+                    {
+
+                        SoloWeapon NewSoloWeapon = new SoloWeapon();
+                        NewSoloWeapon.WeaponID = weap;
+                        NewSoloWeapon.SoloID = newUnit.ID;
+                        context.SoloWeapons.Add(NewSoloWeapon);
+                        context.SaveChanges();
+
+
+                    }
+                }
+
+                if (model.spellIDS != null)
+                {
+                    foreach (var spell in model.spellIDS)
+                    {
+
+                        SoloSpell NewSoloSpell = new SoloSpell();
+                        NewSoloSpell.SpellID = spell;
+                        NewSoloSpell.SoloID = newUnit.ID;
+                        context.SoloSpells.Add(NewSoloSpell);
+                        context.SaveChanges();
+
+
+                    }
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 context.Units.Add(newUnit);
+
                 context.SaveChanges();
                 return Redirect("/");
                               

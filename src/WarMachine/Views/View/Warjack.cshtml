@@ -7,41 +7,43 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>Name</th>
-            <th>SPD</th>
-            <th>STR</th>
-            <th>MAT</th>
-            <th>RAT</th>
-            <th>DEF</th>
-            <th>ARM</th>
-            <th>CMD</th>
-            <th>Point Cost</th>
-            <th>Faction</th>
-            <th>FA</th>
-            
+
+            @foreach (var property in ViewBag.Props)
+            {
+                <th>
+                    @if (property == "factionName")
+                    {<text> Faction </text>}
+                    else
+                    {
+                        @property
+                    }
+
+                </th>
+            }
+
+            <th>Edit</th>
         </tr>
+
     </thead>
 
+
+
     <tbody>
-      
-            <tr>
-                <td>@Model.Name</td>
-                <td>@Model.SPD</td>
-                <td>@Model.STR</td>
-                <td>@Model.MAT</td>
-                <td>@Model.RAT</td>
-                <td>@Model.DEF</td>
-                <td>@Model.ARM</td>
-                <td>@Model.CMD</td>
-                <td>@Model.PointCost</td>
-                <td>@Model.factionName</td>
-                <td>@Model.FA</td>
-              </tr>
-               
+        <tr>
+            @foreach (var propertyName in ViewBag.PropData)
+            {
+                <td>
+                    @propertyName
+
+                </td>
+            }
+
+            <td><a asp-controller="Edit" asp-action="@ViewBag.Type" asp-route-SoloId="@Model.ID"><i class="fa fa-edit fa-lg"></i>Edit</a></td>
+
+        </tr>
     </tbody>
+
 </table>
-
-
 
 
 <h3>Abilities</h3>
@@ -124,6 +126,6 @@
 
 <br />
 <a asp-controller="EditAbilities" asp-action="Solo" asp-route-SoloId="@Model.ID">Add Ability</a>
-<a asp-controller="Edit" asp-action="Solo" asp-route-SoloId="@Model.ID">Edit </a>
+<a asp-controller="Edit" asp-action="Solo" asp-route-SoloId="@Model.ID"><i class="fa fa-edit fa-lg"></i>Edit </a>
 
 

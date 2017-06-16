@@ -4,6 +4,7 @@
 
 
 
+
 <h1>@ViewBag.Title</h1>
 
 
@@ -43,9 +44,10 @@
                 <td>@unit.MinUnit</td>
                 <td>@unit.MaxUnit</td>
                 <td>@unit.PointCost</td>
-                <td>@unit.factionName</td>
+                
                 <td>@unit.FA</td>
-                <td><a asp-controller="Edit" asp-action="Unit" asp-route-UnitID="@unit.ID">Edit</a></td>
+                <td>@unit.factionName</td>
+                <td><a asp-controller="Edit" asp-action="Unit" asp-route-UnitID="@unit.ID"><i class="fa fa-edit fa-lg"></i>Edit</a></td>
 
 
             </tr>

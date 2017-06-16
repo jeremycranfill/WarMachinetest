@@ -1,0 +1,70 @@
+﻿@model WarMachine.ViewModels.Edit.EditSoloViewModel
+
+@section scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+
+
+<form asp-controller="Edit" asp-action="@ViewBag.Type" method="post">
+
+
+
+
+
+    @foreach (var property in ViewBag.Props)
+    {
+
+        <div class="form-group">
+            <label asp-for="@property"></label>
+            <input class="form-control" asp-for="@property" />
+            <span asp-validation-for="@property"></span>
+        </div>
+
+
+
+
+    }
+
+
+
+
+    <input type="hidden" asp-for="soloID" value="@Model.soloID" />
+    <input type="hidden" asp-for="currenntAbilIDs" value="@Model.currenntAbilIDs" />
+    <input type="hidden" asp-for="currenntSpellIDs" value="@Model.currenntSpellIDs" />
+    <input type="hidden" asp-for="currenntWeaponIDs" value="@Model.currenntWeaponIDs" />
+
+
+
+
+
+   
+    <div class="form-group">
+        <label asp-for="abilIDS"></label>
+        <select asp-for="abilIDS" asp-items="@Model.allAbills"></select>
+
+    </div>
+
+    <div class="form-group">
+        <label asp-for="spellIDS"></label>
+        <select asp-for="spellIDS" asp-items="@Model.allSpells"></select>
+
+    </div>
+
+
+    <div class="form-group">
+        <label asp-for="weapIDS"></label>
+        <select asp-for="weapIDS" asp-items="@Model.allWeaps"></select>
+
+    </div>
+
+
+
+
+
+    <input type="submit" />
+
+
+</form>
+

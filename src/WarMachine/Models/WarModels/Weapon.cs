@@ -19,5 +19,24 @@ namespace WarMachine.Models.WarModels
         public WeaponType Type { get; set; }
         public int ID { get; set; }
         public int ROF { get; set; }
+
+
+
+         public IList<String> GetProps()
+
+        {
+            IList<string> Props =
+                new[] { "Name", "RNG", "POW", "Type", "ROF" };
+            return Props;
+
+
+        }
+
+
+
+
+
+
+
     }
 }

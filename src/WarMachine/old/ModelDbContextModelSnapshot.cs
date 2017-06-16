@@ -428,6 +428,8 @@ namespace WarMachine.Migrations
 
                     b.Property<int>("DEF");
 
+                    b.Property<string>("FA");
+
                     b.Property<int?>("FactionID");
 
                     b.Property<string>("Feat");
@@ -505,6 +507,8 @@ namespace WarMachine.Migrations
                     b.Property<int>("CMD");
 
                     b.Property<int>("DEF");
+
+                    b.Property<string>("FA");
 
                     b.Property<int?>("FactionID");
 

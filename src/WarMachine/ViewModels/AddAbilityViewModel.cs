@@ -9,48 +9,20 @@ using WarMachine.Models.WarModels;
 
 namespace WarMachine.ViewModels
 {
-    public class AddAbilityViewModel
+    public class EditAbilityViewModel
     {
 
         //this might not be needed
-        /*/
-        public AddAbilityViewModel() {}
-        public AddAbilityViewModel(IList<Ability> AbilityList)
-        {
-            Abilities = new List<SelectListItem>();
-            foreach (var abil in AbilityList)
-
-            {
-
-                Abilities.Add(
-                new SelectListItem
-                {
-                    Value = abil.ID.ToString(),
-                    Text = abil.Name
-
-
-
-                }
-                );
-
-
-            }
-            
-
-
-
-
-        }
-        /*/
+  
 
         [Required]
         public string Name { get; set; }
         [Required]
         public string Description { get; set; }
 
-        public List<SelectListItem> Abilities { get; set; } = new List<SelectListItem>();
+        //public List<SelectListItem> Abilities { get; set; } = new List<SelectListItem>();
 
 
-
+        public int Soloid { get; set; }
     }
 }

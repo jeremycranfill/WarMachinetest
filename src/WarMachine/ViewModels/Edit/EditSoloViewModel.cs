@@ -53,7 +53,7 @@ namespace WarMachine.ViewModels.Edit
                     Text = spell.Name
                 };
 
-                allWeaps.Add(item);
+                allSpells.Add(item);
             }
 
 
@@ -68,6 +68,12 @@ namespace WarMachine.ViewModels.Edit
         public List<int> currenntAbilIDs { get; set; }
         public List<int> currenntSpellIDs { get; set; }
         public List<int> currenntWeaponIDs { get; set; }
+        [Display(Name ="Abillities")]
+        public List<int> AbilIDs { get; set; }
+        [Display(Name = "Spells")]
+        public List<int> SpellIDs { get; set; }
+        [Display(Name = "Weapons")]
+        public List<int> WeaponIDs { get; set; }
 
 
 

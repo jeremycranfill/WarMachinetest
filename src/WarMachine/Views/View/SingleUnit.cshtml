@@ -3,119 +3,110 @@
 
 
 
-<h1>@ViewBag.Title</h1>
 
 
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>Name</th>
-            <th>SPD</th>
-            <th>STR</th>
-            <th>MAT</th>
-            <th>RAT</th>
-            <th>DEF</th>
-            <th>ARM</th>
-            <th>CMD</th>
-            <th>Point Cost</th>
-            <th>MinUnit</th>
-            <th>MaxUnit</th>
-            <th>FA</th>
-            <th>Faction</th></tg>
+
+            @foreach (var property in ViewBag.Props)
+            {
+                <th>
+                    @if (property == "factionName")
+                    {<text> Faction </text>}
+                    else
+                    {
+                        @property
+                    }
+
+                </th>
+            }
+
             <th>Edit</th>
-
         </tr>
+
     </thead>
 
-    <tbody>
 
+
+    <tbody>
         <tr>
-            <td>@Model.Name</td>
-            <td>@Model.SPD</td>
-            <td>@Model.STR</td>
-            <td>@Model.MAT</td>
-            <td>@Model.RAT</td>
-            <td>@Model.DEF</td>
-            <td>@Model.ARM</td>
-            <td>@Model.CMD</td>
-            <td>@Model.PointCost</td>
-            <td>@Model.MinUnit</td>
-            <td>@Model.MaxUnit</td>
-            <td>@Model.FA</td>
-            <td>@Model.factionName</td>
-            <td><a asp-controller="Edit" asp-action="Unit" asp-route-SoloId="@Model.ID">Edit</a></td>
+            @foreach (var propertyName in ViewBag.PropData)
+            {
+                <td>
+                    @propertyName
+
+                </td>
+            }
+
+            <td><a asp-controller="Edit" asp-action="@ViewBag.Type" asp-route-SoloId="@Model.ID"><i class="fa fa-edit fa-lg"></i>Edit</a></td>
 
         </tr>
-
     </tbody>
 
-
-
 </table>
 
+            <h3>Abilities</h3>
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th>Name </th>
+                        <th> Description</th>
+                    </tr>
+                </thead>
 
-<h3>Abilities</h3>
-<table class="table table-sm">
-    <thead>
-        <tr>
-            <th>Name </th>
-            <th> Description</th>
-        </tr>
-    </thead>
+                <tbody>
 
-    <tbody>
-
-        @foreach (Ability abil in @Model.Abilities)
+                    @foreach (Ability abil in @Model.Abilities)
             {
-            <tr>
-                <td>@abil.Name </td>
-                <td>@abil.Description </td>
-            </tr>
-        }
+                        <tr>
+                            <td>@abil.Name </td>
+                            <td>@abil.Description </td>
+                        </tr>
+                    }
 
 
-    </tbody>
-
-
-
-</table>
+                </tbody>
 
 
 
-@if (Model.Spells.Count > 0)
+            </table>
 
-{
-    <h3>Spells</h3>
-<table class="table table-sm">
-    <thead>
-        <tr>
-            <th>Name </th>
-            <th>Pow</th>
-            <th>Rng</th>
-            <th>Cost</th>
-            <th>Duration</th>
-            <th>AOE</th>
-            <th>OFF</th>
-            <th>Description</th>
-        </tr>
-    </thead>
 
-    <tbody>
 
-        @foreach (Spell spell in @Model.Spells)
+            @if (Model.Spells.Count > 0)
+
             {
-            <tr>
-                <td>@spell.Name </td>
-                <td>@spell.POW</td>
-                <td>@spell.RNG</td>
-                <td>@spell.Cost</td>
-                <td>@spell.Duration</td>
-                <td>@spell.AOE</td>
-                <td>@spell.OFF</td>
-                <td>@spell.Description </td>
-            </tr>
-        }
-    
+                <h3>Spells</h3>
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th>Name </th>
+                            <th>Pow</th>
+                            <th>Rng</th>
+                            <th>Cost</th>
+                            <th>Duration</th>
+                            <th>AOE</th>
+                            <th>OFF</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        @foreach (Spell spell in @Model.Spells)
+                        {
+                            <tr>
+                                <td>@spell.Name </td>
+                                <td>@spell.POW</td>
+                                <td>@spell.RNG</td>
+                                <td>@spell.Cost</td>
+                                <td>@spell.Duration</td>
+                                <td>@spell.AOE</td>
+                                <td>@spell.OFF</td>
+                                <td>@spell.Description </td>
+                            </tr>
+                        }
 
 
 
@@ -125,6 +116,7 @@
 
 
 
-        
-</table>
-}
+
+
+                </table>
+            }

@@ -1,0 +1,28 @@
+﻿@model WarMachine.ViewModels.Edit.EditWarjackViewModel
+
+
+
+
+@section scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+<form asp-controller="Edit" asp-action="Unit" method="post">
+
+    @Html.Partial("ModelForm")
+
+
+    <div class="form-group">
+        <label asp-for="Size"></label>
+        <input class="form-control" asp-for="Size" />
+        <span asp-validation-for="Size"></span>
+    </div>
+
+  
+
+
+
+    <input type="submit" class="btn btn-success" />
+
+
+</form>

@@ -1,4 +1,4 @@
-﻿@model WarMachine.Models.WarModels.Warjack
+﻿@model WarMachine.Models.WarModels.WarBeast
 @using WarMachine.Models.WarModels
 
 <h1>@ViewBag.Title</h1>
@@ -7,40 +7,43 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>Name</th>
-            <th>SPD</th>
-            <th>STR</th>
-            <th>MAT</th>
-            <th>RAT</th>
-            <th>DEF</th>
-            <th>ARM</th>
-            <th>CMD</th>
-            <th>Point Cost</th>
-            <th>FA</th>
-            <th>Faction</th>
-            
+
+            @foreach (var property in ViewBag.Props)
+            {
+                <th>
+                    @if (property == "factionName")
+                    {<text> Faction </text>}
+                    else
+                    {
+                        @property
+                    }
+
+                </th>
+            }
+
+            <th>Edit</th>
         </tr>
+
     </thead>
 
-    <tbody>
-      
-            <tr>
-                <td>@Model.Name</td>
-                <td>@Model.SPD</td>
-                <td>@Model.STR</td>
-                <td>@Model.MAT</td>
-                <td>@Model.RAT</td>
-                <td>@Model.DEF</td>
-                <td>@Model.ARM</td>
-                <td>@Model.CMD</td>
-                <td>@Model.PointCost</td>
-                <td>@Model.FA</td>
-                <td>@Model.factionName</td>
-              </tr>
-               
-    </tbody>
-</table>
 
+
+    <tbody>
+        <tr>
+            @foreach (var propertyName in ViewBag.PropData)
+            {
+                <td>
+                    @propertyName
+
+                </td>
+            }
+
+            <td><a asp-controller="Edit" asp-action="@ViewBag.Type" asp-route-SoloId="@Model.ID"><i class="fa fa-edit fa-lg"></i>Edit</a></td>
+
+        </tr>
+    </tbody>
+
+</table>
 
 
 
@@ -118,54 +121,12 @@
 
 
 
-<h3>Spells</h3>
-<table class="table table-sm">
-    <thead>
-        <tr>
-            <th>Name </th>
-            <th>Pow</th>
-            <th>Rng</th>
-            <th>Cost</th>
-            <th>Duration</th>
-            <th>AOE</th>
-            <th>OFF</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-
-    <tbody>
-
-        @foreach (Spell spell in @Model.Spells)
-            {
-            <tr>
-                <td>@spell.Name </td>
-                <td>@spell.POW</td>
-                <td>@spell.RNG</td>
-                <td>@spell.Cost</td>
-                <td>@spell.Duration</td>
-                <td>@spell.AOE</td>
-                <td>@spell.OFF</td>
-                <td>@spell.Description </td>
-            </tr>
-        }
-
-
-    </tbody>
-
-
-
-</table>
-
-
-
-
-
 
 
 
 
 <br />
-<a asp-controller="EditAbilities" asp-action="Warbeast" asp-route-WarbeastId="@Model.ID">Add Ability</a>
-<a asp-controller="Edit" asp-action="Warbeast" asp-route-WarbeastId="@Model.ID">Edit </a>
+
+<a asp-controller="Edit" asp-action="Warbeast" asp-route-WarbeastId="@Model.ID"><i class="fa fa-edit fa-lg"></i>Edit </a>
 
 

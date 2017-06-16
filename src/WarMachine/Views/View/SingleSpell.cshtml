@@ -1,39 +1,43 @@
 ﻿@model WarMachine.Models.WarModels.Spell
 
 
-<h3>Spells</h3>
-<table class="table table-sm">
+<table class="table table-striped">
     <thead>
         <tr>
-            <th>Name </th>
-            <th>Pow</th>
-            <th>Rng</th>
-            <th>Cost</th>
-            <th>Duration</th>
-            <th>AOE</th>
-            <th>OFF</th>
-            <th>Description</th>
+
+            @foreach (var property in ViewBag.Props)
+            {
+                <th>
+                    @if (property == "factionName")
+                    {<text> Faction </text>}
+                    else
+                    {
+                        @property
+                    }
+
+                </th>
+            }
+
+            <th>Edit</th>
         </tr>
+
     </thead>
 
+
+
     <tbody>
+        <tr>
+            @foreach (var propertyName in ViewBag.PropData)
+            {
+                <td>
+                    @propertyName
 
-          
-            <tr>
-                <td>@Model.Name </td>
-                <td>@Model.POW</td>
-                <td>@Model.RNG </ td >
-                <td>@Model.Cost </ td >
-                <td>@Model.Duration </ td >
-                <td>@Model.AOE </ td >
-                <td>@Model.OFF </ td >
-                <td>@Model.Description </ td >
-            </tr>
-      
+                </td>
+            }
 
+            <td><a asp-controller="Edit" asp-action="@ViewBag.Type" asp-route-SoloId="@Model.ID"><i class="fa fa-edit fa-lg"></i>Edit</a></td>
 
+        </tr>
     </tbody>
-    </table>
 
-
-<a asp-controller="Edit" asp-action="Spell" asp-route-Spell-Id="@Model.ID">Edit</a>
+</table>

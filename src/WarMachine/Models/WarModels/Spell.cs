@@ -23,5 +23,30 @@ namespace WarMachine.Models.WarModels
         public int ID { get; set; }
         public string Description { get; set; }
         public bool isAnimi { get; set; }
+
+
+
+
+
+
+         public IList<String> GetProps()
+
+        {
+            IList<string> Props =
+                new[] { "Name", "Cost", "RNG", "AOE", "POW", "Duration", "OFF", "Description" };
+            return Props;
+
+
+        }
+
+
+
+
+
+
+
+
+
+
     }
 }

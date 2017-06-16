@@ -48,3 +48,7 @@ textarea {
     display: none
   }
 }
+
+.jumbotron {
+background-image: url(../images/wm1.png)
+;}

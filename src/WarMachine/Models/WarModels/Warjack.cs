@@ -9,7 +9,21 @@ namespace WarMachine.Models.WarModels
     {
         public enum Sizes { Light, Heavy, Colossal }
         public Sizes Size { get; set; }
-        public string FA { get; set; }
+
+
+        override public IList<String> GetProps()
+
+        {
+            IList<string> Props =
+                new[] { "Name", "SPD", "STR", "MAT", "RAT", "DEF", "ARM", "CMD", "PointCost","Size", "FA", "factionName" };
+            return Props;
+
+
+        }
+
+
+
+
 
 
     }

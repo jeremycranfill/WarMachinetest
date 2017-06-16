@@ -32,8 +32,8 @@ namespace WarMachine.Controllers
 
         }
 
-       
-        [Authorize(Roles = "Admin")]
+
+
         [HttpGet]
         [Route("Edit/Solo/{SoloId}")]
 
@@ -80,18 +80,23 @@ namespace WarMachine.Controllers
             ViewModel.SelectCurrenntSpells();
             ViewModel.SelectCurrentAbillities();
 
+
             return View("EditSolo", ViewModel);
 
         }
-       
-        [Authorize(Roles = "Admin")]
+
+
         [HttpPost]
         public IActionResult Solo(EditSoloViewModel editModel)
         {
-            if (ModelState.IsValid)
-            { 
 
             SoloModel editSolo = context.Solos.Single(c => c.ID == editModel.soloID);
+
+
+
+            editModel.currenntAbilIDs = context.SoloAbilities.Where(c => c.SoloID == editModel.soloID).Select(i => i.AbilityID).ToList();
+            editModel.currenntWeaponIDs = context.SoloWeapons.Where(c => c.SoloID == editModel.soloID).Select(x => x.WeaponID).ToList();
+            editModel.currenntSpellIDs = context.SoloSpells.Where(c => c.SoloID == editModel.soloID).Select(x => x.SpellID).ToList();
 
 
 
@@ -107,38 +112,101 @@ namespace WarMachine.Controllers
             editSolo.STR = editModel.STR;
             context.SaveChanges();
 
+
+
+
+            if (editModel.abilIDS != null)
+            {
                 foreach (int id in editModel.abilIDS)
+
                 {
-                    if (!editModel.currenntAbilIDs.Contains(id))
+                    foreach (var abil in editModel.abilIDS)
                     {
 
-                        SoloAbility NewSoloAbility = new SoloAbility();
-                        NewSoloAbility.AbilityID = id;
-                        NewSoloAbility.SoloID = editModel.soloID;
-                        context.SoloAbilities.Add(NewSoloAbility);
-                        context.SaveChanges();
+                        if (! editModel.currenntAbilIDs.Contains(abil))
+                        {
+
+                            SoloAbility NewSoloAbility = new SoloAbility();
+                            NewSoloAbility.AbilityID = abil;
+                            NewSoloAbility.SoloID = editModel.soloID;
+                            context.SoloAbilities.Add(NewSoloAbility);
+                            context.SaveChanges();
+
+                        }
+
+                    }
+
+
+                    foreach (var abil in editModel.currenntAbilIDs)
+                    {
+
+                        if (!editModel.abilIDS.Contains(abil))
+                        {
+
+                            SoloAbility soloabil = (from s in context.SoloAbilities where s.AbilityID == abil where s.SoloID == editModel.soloID select s).FirstOrDefault<SoloAbility>();
+                            context.SoloAbilities.Remove(soloabil);
+
+                        }
+
+
+                    }
+
 
                     }
 
                 }
 
-               foreach(int id in editModel.currenntAbilIDs)
+            else {
+
+                // delete all solo abils
+                var soloAbils =  context.SoloAbilities.Where(c => c.SoloID == editModel.soloID).ToList();
+
+                foreach (var Abil in soloAbils)
                 {
-
-                    if (!editModel.abilIDS.Contains(id))
-                    {
-
-                       context.Remove(context.SoloAbilities.Where(c => c.AbilityID == id && c.SoloID == editModel.soloID));
-                        context.SaveChanges();
-
-
-                    }
-
+                    context.SoloAbilities.Remove(Abil);
 
 
                 }
 
 
+            }
+
+
+            
+
+
+                    if (editModel.weapIDS != null)
+                    {
+                        foreach (var weap in editModel.weapIDS)
+                        {
+
+                            if (!editModel.currenntWeaponIDs.Contains(weap))
+                            {
+                                SoloWeapon NewSoloWeapon = new SoloWeapon();
+                                NewSoloWeapon.WeaponID = weap;
+                                NewSoloWeapon.SoloID = editModel.soloID;
+                                context.SoloWeapons.Add(NewSoloWeapon);
+                                context.SaveChanges();
+                            }
+
+                        }
+
+
+                        foreach (var weap in editModel.currenntWeaponIDs)
+                        {
+
+                            if (!editModel.weapIDS.Contains(weap))
+                            {
+
+                                SoloWeapon soloWeap = (from s in context.SoloWeapons where s.WeaponID == weap where s.SoloID == editModel.soloID select s).FirstOrDefault<SoloWeapon>();
+                                context.SoloWeapons.Remove(soloWeap);
+
+                            }
+
+
+
+
+                        }
 
 
 
@@ -146,25 +214,82 @@ namespace WarMachine.Controllers
 
 
 
-            return Redirect("/View/Solo");
+                        if (editModel.spellIDS != null)
+
+
+                        {
+
+
+                            foreach (var spell in editModel.spellIDS)
+                            {
+
+                                if (!editModel.currenntWeaponIDs.Contains(spell))
+                                {
+                                    SoloSpell NewSoloSpell = new SoloSpell();
+                                    NewSoloSpell.SpellID = spell;
+                                    NewSoloSpell.SoloID = editModel.soloID;
+                                    context.SoloSpells.Add(NewSoloSpell);
+                                    context.SaveChanges();
+                                }
+
+                            }
+
+
+                            foreach (var spell in editModel.currenntSpellIDs)
+                            {
+
+                                if (!editModel.weapIDS.Contains(spell))
+                                {
+
+                                    SoloSpell soloSpell = (from s in context.SoloSpells where s.SpellID == spell where s.SoloID == editModel.ID select s).FirstOrDefault<SoloSpell>();
+                                    context.SoloSpells.Remove(soloSpell);
+
+                                }
+
+
+
+
+                            }
+
+
+
+
+
+
+
+
+                            return Redirect("/View/Solo/"+editSolo.ID);
+                        }
+
+
+                    }
+
+            return Redirect("/View/Solo/" + editSolo.ID);
+
         }
-            return View("EditSolo", editModel);
+           
+      
 
 
-        }
-  
-        [Authorize(Roles = "Admin")]
         [HttpGet]
         [Route("Edit/Unit/{UnitId}")]
 
         public IActionResult Unit(int UnitId)
         {
 
-
-            List<Ability> AbilityList = context.Abilities.ToList();
             UnitModel editUnit = context.Units.Single(c => c.ID == UnitId);
+            List<Ability> AbilityList = context.Abilities.ToList();
 
-            EditUnitViewModel ViewModel = new EditUnitViewModel(AbilityList)
+
+            EditUnitViewModel ViewModel = new
+             EditUnitViewModel
+            (
+
+             context.Abilities.ToList(),
+             context.Weapons.ToList(),
+             context.Spells.ToList()
+             )
+
 
             {
 
@@ -178,26 +303,38 @@ namespace WarMachine.Controllers
                 SPD = editUnit.SPD,
                 PointCost = editUnit.PointCost,
                 STR = editUnit.STR,
-                ID = editUnit.ID,
+                soloID = editUnit.ID,
                 MaxUnit = editUnit.MaxUnit,
-                MinUnit = editUnit.MinUnit
+                MinUnit = editUnit.MinUnit,
+
+
+                currenntAbilIDs = context.SoloAbilities.Where(c => c.SoloID == UnitId).Select(x => x.AbilityID).ToList(),
+                currenntSpellIDs = context.SoloSpells.Where(c => c.SoloID == UnitId).Select(x => x.SpellID).ToList(),
+                currenntWeaponIDs = context.SoloWeapons.Where(c => c.SoloID == UnitId).Select(x => x.WeaponID).ToList()
+
 
 
 
             };
-            
+
+            ViewModel.SelecCurrenttWeapons();
+            ViewModel.SelectCurrenntSpells();
+            ViewModel.SelectCurrentAbillities();
 
 
             return View("EditUnit", ViewModel);
         }
 
 
-       
-        [Authorize(Roles = "Admin")]
+
+
+
 
         [HttpPost]
         public IActionResult Unit(EditUnitViewModel editModel)
         {
+            if (ModelState.IsValid)
+            { 
 
             UnitModel editUnit = context.Units.Single(c => c.ID == editModel.ID);
 
@@ -218,17 +355,186 @@ namespace WarMachine.Controllers
 
 
 
+                if (editModel.abilIDS != null)
+                {
+                    foreach (var abil in editModel.abilIDS)
+                    {
+
+                        UnitAbiliity newAbility = new UnitAbiliity();
+                        newAbility.AbilityID = abil;
+                        newAbility.UnitID = editUnit.ID;
+                        context.UnitAbilities.Add(newAbility);
+                        context.SaveChanges();
+
+
+                    }
+                }
+
+
+                if (editModel.weapIDS != null)
+                {
+                    foreach (var weap in editModel.weapIDS)
+                    {
+
+                        UnitWeapon NewSoloWeapon = new UnitWeapon();
+                        NewSoloWeapon.WeaponId = weap;
+                        NewSoloWeapon.UnitID = editModel.ID;
+                        context.UnitWeapons.Add(NewSoloWeapon);
+                        context.SaveChanges();
+
+
+                    }
+                }
+
+                if (editModel.spellIDS != null)
+                {
+                    foreach (var spell in editModel.spellIDS)
+                    {
+
+                        UnitSpell NewSoloSpell = new UnitSpell();
+                        NewSoloSpell.SpellID = spell;
+                        NewSoloSpell.UnitID = editModel.ID;
+                        context.UnitSpells.Add(NewSoloSpell);
+                        context.SaveChanges();
+
+
+                    }
+                }
 
 
 
 
-            context.SaveChanges();
+
+
+
+
+
+                context.SaveChanges();
+
 
             return Redirect("/View/Unit");
+        }
 
 
-
+            return View("EditUnit", editModel);
 
         }
+
+
+
+
+
+
+        [HttpGet]
+        [Route("Edit/Warjack/{modelId}")]
+
+        public IActionResult Warjack(int modelId)
+        {
+
+            Warjack editModel = context.Warjacks.Single(c => c.ID == modelId);
+          
+
+
+            EditWarjackViewModel ViewModel = new
+             EditWarjackViewModel
+            (
+
+             context.Abilities.ToList(),
+             context.Weapons.ToList(),
+             context.Spells.ToList()
+             )
+
+
+            {
+
+                ARM = editModel.ARM,
+                CMD = editModel.CMD,
+                DEF = editModel.DEF,
+                FA = editModel.FA,
+                MAT = editModel.MAT,
+                RAT = editModel.RAT,
+                Name = editModel.Name,
+                SPD = editModel.SPD,
+                PointCost = editModel.PointCost,
+                STR = editModel.STR,
+                soloID = editModel.ID,
+                Size = editModel.Size,            
+                
+
+
+                currenntAbilIDs = context.UnitAbilities.Where(c => c.UnitID == modelId).Select(x => x.AbilityID).ToList(),
+                currenntSpellIDs = context.UnitSpells.Where(c => c.UnitID == modelId).Select(x => x.SpellID).ToList(),
+                currenntWeaponIDs = context.UnitWeapons.Where(c => c.UnitID == modelId).Select(x => x.WeaponId).ToList()
+
+
+
+
+            };
+
+            ViewModel.SelecCurrenttWeapons();
+            ViewModel.SelectCurrenntSpells();
+            ViewModel.SelectCurrentAbillities();
+
+
+            return View("EditWarjack", ViewModel);
+        }
+
+
+
+
+
+
+        [HttpPost]
+        public IActionResult Warjack(EditWarjackViewModel editModel)
+        {
+            if (ModelState.IsValid)
+            {
+
+                Warjack originalModel = context.Warjacks.Single(c => c.ID == editModel.ID);
+
+
+
+                originalModel.ARM = editModel.ARM;
+                originalModel.CMD = editModel.CMD;
+                originalModel.DEF = editModel.DEF;
+                originalModel.FA = editModel.FA;
+                originalModel.MAT = editModel.MAT;
+                originalModel.RAT = editModel.RAT;
+                originalModel.Name = editModel.Name;
+                originalModel.SPD = editModel.SPD;
+                originalModel.PointCost = editModel.PointCost;
+                originalModel.STR = editModel.STR;
+
+
+
+
+              
+
+
+
+                context.SaveChanges();
+
+
+                return Redirect("/View/Warjack");
+            }
+
+
+            return View("Warjack", editModel);
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

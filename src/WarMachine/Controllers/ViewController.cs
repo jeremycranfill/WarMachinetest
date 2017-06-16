@@ -7,6 +7,7 @@ using WarMachine.Models;
 using WarMachine.Data;
 using WarMachine.Models.WarModels;
 using WarMachine.Models.Joins;
+using WarMachine.Helpers;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -39,8 +40,12 @@ namespace WarMachine.Controllers
         {
            Ability abil  = context.Abilities.Single(c=> c.ID == AbilityId);
 
+            ViewBag.Props = abil.GetProps();
+            ViewBag.PropData = Helper.GetPropData(abil.GetProps(), abil);
+            ViewBag.Type = "Spell";
 
-            return View("SingleAbility",abil );
+
+            return View("Ability", abil);
 
 
         }
@@ -67,6 +72,12 @@ namespace WarMachine.Controllers
             Spell Spell = context.Spells.Single(c => c.ID == SpellID);
 
 
+
+            ViewBag.Props = Spell.GetProps();
+            ViewBag.PropData = Helper.GetPropData(Spell.GetProps(), Spell);
+            ViewBag.Type = "Spell";
+
+
             return View("SingleSpell", Spell);
 
 
@@ -88,7 +99,22 @@ namespace WarMachine.Controllers
         public IActionResult Weapon(int WeaponID)
         {
             Weapon weapon = context.Weapons.Single(c => c.ID == WeaponID);
-            return View("SingleWeapon",weapon);
+
+
+
+            ViewBag.Props = weapon.GetProps();
+            ViewBag.PropData = Helper.GetPropData(weapon.GetProps(), weapon);
+            ViewBag.Type = "weapon";
+
+
+            return View("SingleWeapon", weapon);
+
+
+
+
+
+
+
 
         }
 
@@ -151,13 +177,16 @@ namespace WarMachine.Controllers
 
 
 
+            ViewBag.Props = unit.GetProps();
+            ViewBag.PropData = Helper.GetPropData(unit.GetProps(), unit);
+            ViewBag.Type = "Unit";
 
 
-            return View("Singleunit", unit);
-       
-                
-                
-              }
+            return View("SingleUnit", unit);
+
+
+
+        }
 
 
 
@@ -169,65 +198,12 @@ namespace WarMachine.Controllers
             List<SoloModel> soloList = context.Solos.ToList();
             return View("Solos",soloList);
 
-
-
-        }
-
-
-        [HttpGet]
-        [Route("View/Solo/{SoloId}")]
-
-        public IActionResult Solo(int SoloId)
-        {
-
-            //create new model
-            SoloModel solo = context.Solos.Single(c => c.ID == SoloId);
-
-
-            //get list of abilitiy IDS for the model
-            List<SoloAbility> soloAbils = context.SoloAbilities.Where(c => c.SoloID == SoloId).ToList();
-            //create list to hold abils
-            List<Ability> abilList = new List<Ability>();
-
-
-            //add each ability to listif any
-
-
-            foreach (SoloAbility abil in soloAbils)
-            {
-
-                abilList.Add(context.Abilities.Single(c => c.ID == abil.AbilityID));
-
-
-            }
-
-            //set solo abilities to list we just made
-            solo.Abilities = abilList;
-
-
-            List<SoloSpell> soloSpells = context.SoloSpells.Where(c => c.SoloID == SoloId).ToList();
-
-            List<Spell> Spells = new List<Spell>();
-
-            foreach (SoloSpell spell in soloSpells)
-            {
-
-                Spells.Add(context.Spells.Single(c => c.ID == spell.SpellID));
-
-
-
-            }
-
-            solo.Spells = Spells;
-
-
-           
-
-
-            return View("SingleSolo", solo);
+            
 
         }
 
+
+       
 
 
 
@@ -289,7 +265,9 @@ namespace WarMachine.Controllers
 
 
 
-
+            ViewBag.Props = warjack.GetProps();
+            ViewBag.PropData = Helper.GetPropData(warjack.GetProps(), warjack);
+            ViewBag.Type = "Warjack";
 
 
             return View("Warjack", warjack);
@@ -372,7 +350,9 @@ namespace WarMachine.Controllers
 
 
 
-
+            ViewBag.Props = warbeast.GetProps();
+            ViewBag.PropData = Helper.GetPropData(warbeast.GetProps(), warbeast);
+            ViewBag.Type = "Warbeast";
 
 
             return View("Warbeast", warbeast);
@@ -456,7 +436,9 @@ namespace WarMachine.Controllers
 
 
 
-
+            ViewBag.Props = warlock.GetProps();
+            ViewBag.PropData = Helper.GetPropData(warlock.GetProps(), warlock);
+            ViewBag.Type = "Warlock";
 
 
             return View("Warlock", warlock);
@@ -538,7 +520,12 @@ namespace WarMachine.Controllers
 
 
 
+            
 
+
+            ViewBag.Props = Warcaster.GetProps();
+            ViewBag.PropData = Helper.GetPropData(Warcaster.GetProps(), Warcaster);
+            ViewBag.Type = "Warcaster";
 
 
             return View("Warcaster", Warcaster);
@@ -555,8 +542,9 @@ namespace WarMachine.Controllers
 
 
 
-        [Route("View/SoloTest/{SoloId}")]
-        public IActionResult SoloTest(int SoloId)
+        [HttpGet]
+        [Route("View/Solo/{SoloId}")]
+        public IActionResult Solo(int SoloId)
         {
 
             //create new model
@@ -600,11 +588,38 @@ namespace WarMachine.Controllers
             solo.Spells = Spells;
 
 
+
+
+
+
+            List<SoloWeapon> soloWeaps = context.SoloWeapons.Where(c => c.SoloID == SoloId).ToList();
+
+            List<Weapon> Weapons = new List<Weapon>();
+
+            foreach (SoloWeapon spell in soloWeaps)
+            {
+
+                Weapons.Add(context.Weapons.Single(c => c.ID == spell.WeaponID));
+
+
+
+            }
+
+            solo.Weapons = Weapons;
+
+
+
+
+
+
+
+
             ViewBag.Props = solo.GetProps();
+            ViewBag.PropData = Helper.GetPropData(solo.GetProps(),solo);
+            ViewBag.Type = "Solo";
 
 
-
-            return View("BaseView", solo);
+            return View("SingleSolo", solo);
 
         }
 

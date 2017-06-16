@@ -13,7 +13,18 @@ namespace WarMachine.Models.WarModels
         public sizes Size { get; set; }
         public int Fury { get; set; }
         public int Threshhold { get; set; }
-        public string FA { get; set; }
+
+        override public IList<String> GetProps()
+
+        {
+            IList<string> Props =
+                new[] { "Name", "SPD", "STR", "MAT", "RAT", "DEF", "ARM", "CMD", "PointCost","Size","Fury","Threshhold", "FA", "factionName" };
+            return Props;
+
+
+        }
+
+
 
 
 

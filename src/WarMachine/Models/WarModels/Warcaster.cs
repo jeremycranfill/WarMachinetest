@@ -13,6 +13,16 @@ namespace WarMachine.Models.WarModels
 
 
 
+        override public IList<String> GetProps()
+
+        {
+            IList<string> Props =
+                new[] { "Name", "SPD", "STR", "MAT", "RAT", "DEF", "ARM", "CMD", "PointCost","Focus","WarjackPoints","Feat", "FA", "factionName" };
+            return Props;
+
+
+        }
+
 
 
     }

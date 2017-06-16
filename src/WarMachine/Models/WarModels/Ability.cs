@@ -13,7 +13,17 @@ namespace WarMachine.Models.WarModels
         public string Description { get; set; }
         public IList<SoloAbility> SoloAbilities { get; set; }
         public IList<UnitAbiliity> UnitAbillities { get; set; }
-        
+
+
+        virtual public IList<String> GetProps()
+
+        {
+            IList<string> Props =
+                new[] { "Name", "Description" };
+            return Props;
+
+
+        }
 
 
 

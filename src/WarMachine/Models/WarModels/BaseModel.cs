@@ -24,15 +24,18 @@ namespace WarMachine.Models.WarModels
         public int CMD { get; set; }
         public int ID { get; set; }
         public int PointCost { get; set; }
+        public string FA { get; set; }
         public Faction Faction { get; set; }
+
         public FactionName factionName { get; set; }
+      
 
 
-         virtual public  IList<String> GetProps()
+        virtual public  IList<String> GetProps()
 
         {
             IList<string> Props =
-                new[] { "Name", "SPD", "STR", "Mat", "RAT", "DEF", "ARM", "CMD", "PointCost", "Faction" };
+                new[] { "Name", "SPD", "STR", "MAT", "RAT", "DEF", "ARM", "CMD", "PointCost", "FA", "factionName" };
             return Props;
 
 

@@ -1,5 +1,5 @@
 ﻿@model WarMachine.Models.WarModels.SoloModel
-@using System.Reflection
+
 
 <table class="table table-striped">
     <thead>
@@ -8,39 +8,36 @@
             @foreach (var property in ViewBag.Props)
             {
                 <th>
-                   @property
-                   
+                    @if (property == "factionName")
+                    {<text> Faction </text>}
+                    else {
+                    @property
+                    }
+
                 </th>
             }
 
             <th>Edit</th>
+        </tr>
 
+            </thead>
+           
+   
 
-            @foreach (PropertyInfo prop in @Model.GetType().GetProperties())
+         <tbody>
+             <tr>
+                 @foreach (var propertyName in ViewBag.PropData)
             {
-                var type = Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType;
-                if (type == typeof(Int32))
-                {
-                    prop.GetValue(@Model, null);
-                }
-            }
-            
+                     <td>
+                         @propertyName
 
+                     </td>
+                 }
 
+                 <td><a asp-controller="Edit" asp-action="@ViewBag.Type" asp-route-SoloId="@Model.ID"><i class="fa fa-edit fa-lg"></i>Edit</a></td>
 
-            
-
-
-@foreach (var propertyName in ViewBag.Props)
-            {
-    <td>
-        @Model.GetType().GetProperty(propertyName).GetValue(Model, null);
-
-    </td>
-}
-
-            <td><a asp-controller="Edit" asp-action="Warcaster" asp-route-SoloId="@Model.ID">Edit</a></td>
-
-
+             </tr>
+    </tbody>
 
             </table>
+

@@ -1,0 +1,45 @@
+﻿@model WarMachine.ViewModels.Edit.EditWarcasterViewModel
+
+
+
+
+@section scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+<form asp-controller="Edit" asp-action="Solo" method="post">
+
+    @Html.Partial("ModelForm")
+
+    <div class="form-group">
+        <label asp-for="Focus"></label>
+        <input asp-for="Focus">
+        <span asp-validation-for="Focus"></span>
+    </div>
+
+
+    <div class="form-group">
+        <label asp-for="WarjackPoints"></label>
+        <input asp-for="WarjackPoints">
+        <span asp-validation-for="WarjackPoints"></span>
+    </div>
+
+
+
+
+    <div class="form-group">
+        <label asp-for="Feat"></label>
+        <input asp-for="Feat">
+        <span asp-validation-for="Feat"></span>
+    </div>
+
+
+
+
+
+
+
+    <input type="submit" class="btn btn-success" />
+
+
+</form>

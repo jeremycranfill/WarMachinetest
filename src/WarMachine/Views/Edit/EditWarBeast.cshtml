@@ -1,0 +1,41 @@
+﻿@model WarMachine.ViewModels.Edit.EditWarBeastViewModel
+@using static WarMachine.Models.WarModels.WarBeast
+@section scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+<form asp-controller="Edit" asp-action="Warbeast" method="post">
+
+   @Html.Partial("EditForm")
+
+    <div class="form-group">
+        <label asp-for="Fury"></label>
+        <input class="form-control" asp-for="Fury" />
+        <span asp-validation-for="Fury"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Threshold"></label>
+        <input class="form-control" asp-for="Threshold" />
+        <span asp-validation-for="Threshold"></span>
+    </div>
+
+         
+
+    <div class="form-group">
+        <label asp-for="Size"></label>
+        <select asp-items="Html.GetEnumSelectList<sizes>()" asp-for="Size"></select>
+        <span asp-validation-for="Size"></span>
+    </div>
+
+
+
+
+
+
+
+    <input type="submit" class="btn btn-success" />
+
+
+</form>

@@ -9,38 +9,42 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>Name</th>
-            <th>SPD</th>
-            <th>STR</th>
-            <th>MAT</th>
-            <th>RAT</th>
-            <th>DEF</th>
-            <th>ARM</th>
-            <th>CMD</th>
-            <th>Point Cost</th>
-            <th>FA</th>
-            <th>FACTION</th>
-            
+
+            @foreach (var property in ViewBag.Props)
+            {
+                <th>
+                    @if (property == "factionName")
+                    {<text> Faction </text>}
+                    else
+                    {
+                        @property
+                    }
+
+                </th>
+            }
+
+            <th>Edit</th>
         </tr>
+
     </thead>
 
+
+
     <tbody>
-      
-            <tr>
-                <td>@Model.Name</td>
-                <td>@Model.SPD</td>
-                <td>@Model.STR</td>
-                <td>@Model.MAT</td>
-                <td>@Model.RAT</td>
-                <td>@Model.DEF</td>
-                <td>@Model.ARM</td>
-                <td>@Model.CMD</td>
-                <td>@Model.PointCost</td>
-                <td>@Model.FA</td>
-                <td>@Model.factionName</td>
-              </tr>
-               
+        <tr>
+            @foreach (var propertyName in ViewBag.PropData)
+            {
+                <td>
+                    @propertyName
+
+                </td>
+            }
+
+            <td><a asp-controller="Edit" asp-action="@ViewBag.Type" asp-route-SoloId="@Model.ID"><i class="fa fa-edit fa-lg"></i>Edit</a></td>
+
+        </tr>
     </tbody>
+
 </table>
 
 
@@ -112,8 +116,39 @@
 
 </table>
 
+<h3>Weapons</h3>
+<table class="table table-sm">
+    <thead>
+        <tr>
+            <th>Name </th>
+            <th>Pow</th>
+            <th>Rng</th>
+            <th>Rof</th>
+            <th>Type</th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (Weapon weap in @Model.Weapons)
+            {
+            <tr>
+                <td>@weap.Name </td>
+                <td>@weap.POW</td>
+                <td>@weap.RNG</td>
+                <td>@weap.ROF</td>
+                <td>@weap.Type</td>
+
+            </tr>
+        }
 
 
+    </tbody>
+
+
+
+</table>
 
 
 
@@ -121,7 +156,7 @@
 
 
 <br />
-<a asp-controller="Edit" asp-action="Solo" asp-route-SoloId="@Model.ID">Edit</a>
+<a asp-controller="Edit" asp-action="Solo" asp-route-SoloId="@Model.ID"><i class="fa fa-edit fa-lg"></i>Edit</a>
 
 
 

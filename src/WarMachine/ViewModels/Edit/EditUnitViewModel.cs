@@ -8,34 +8,67 @@ using WarMachine.Models.WarModels;
 
 namespace WarMachine.ViewModels.Edit
 {
-    public class EditUnitViewModel : UnitModel
+    public class EditUnitViewModel : EditSoloViewModel
     {
 
 
         public EditUnitViewModel() { }
 
-        public EditUnitViewModel(List<Ability> abilityList)
+
+        public EditUnitViewModel(IList<Ability> abills, IList<Weapon> weapons, IList<Spell> spells)
         {
-            foreach (Ability ability in abilityList)
+
+            allAbills = new List<SelectListItem>();
+            foreach (var abil in abills)
             {
-                Abilities.Add(new SelectListItem
+                var item = new SelectListItem
                 {
-                    Value = ability.ID.ToString(),
-                    Text = ability.Name
+                    Value = abil.ID.ToString(),
+                    Text = abil.Name
 
+                };
 
-
-                });
-
+                allAbills.Add(item);
             }
+
+
+
+            allWeaps = new List<SelectListItem>();
+            foreach (var weapon in weapons)
+            {
+                var item = new SelectListItem
+                {
+                    Value = weapon.ID.ToString(),
+                    Text = weapon.Name
+                };
+
+                allWeaps.Add(item);
+            }
+
+            allSpells = new List<SelectListItem>();
+            foreach (var spell in spells)
+            {
+                var item = new SelectListItem
+                {
+                    Value = spell.ID.ToString(),
+                    Text = spell.Name
+                };
+
+                allWeaps.Add(item);
+            }
+
+
+            currenntAbilIDs = new List<int>();
+            currenntSpellIDs = new List<int>();
+            currenntWeaponIDs = new List<int>();
+
         }
-        
-
-       new public List<SelectListItem> Abilities { get; set; } = new List<SelectListItem>();
-
-      
 
 
+        [Required]
+        public int MaxUnit { get; set; }
+        [Required]
+        public int MinUnit { get; set; }
 
 
 
