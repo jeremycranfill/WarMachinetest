@@ -12,7 +12,14 @@ namespace WarMachine.Models.WarModels
         public enum DurationType {None , Rnd, Turn, Upkeep }
 
         public IList<SoloSpell> SoloSpells { get; set; }
-        public IList<UnitSpell> UnitSpells { get; set; }
+        public IList<UnitSpell> UnitSpells { get; set; }       
+        public IList<WarbeastSpell> WarBeastSpells { get; set; }
+        public IList<WarlockSpell> WarlockSpells { get; set; }
+        public IList<WarcasterSpell> WarcasterSpells { get; set; }
+
+
+
+
         public string Name { get; set; }
         public int Cost { get; set; }
         public string RNG { get; set; }

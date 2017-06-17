@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WarMachine.Models.Joins;
 
 namespace WarMachine.Models.WarModels
 {
@@ -9,6 +10,16 @@ namespace WarMachine.Models.WarModels
     {
         public enum Sizes { Light, Heavy, Colossal }
         public Sizes Size { get; set; }
+
+
+
+        public IList<WarjackAbillity> WarjackAbilities { get; set; }
+        public IList<WarjackWeapon> WarjackWeapons { get; set; }
+
+
+
+
+
 
 
         override public IList<String> GetProps()

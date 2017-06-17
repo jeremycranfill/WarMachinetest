@@ -10,8 +10,12 @@ namespace WarMachine.Models.WarModels
     {
         public IList<SoloWeapon> SoloWeapons { get; set; }
         public IList<UnitWeapon> UnitWeapons { get; set; }
+        public IList<WarjackWeapon> WarjackWeapons { get; set; }
+        public IList<WarbeastWeapon> WarbeastWeapons {get; set;}
+        public IList<WarlockWeapon> WarlockWeapons { get; set; }
+        public IList<WarcasterWeapon> WarcasterWeapons { get; set; }
 
-       public enum WeaponType {Ranged, Melee }
+        public enum WeaponType {Ranged, Melee }
 
         public string Name { get; set; }
         public int RNG { get; set; }

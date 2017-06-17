@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 using WarMachine.Models.WarModels;
@@ -22,7 +24,13 @@ namespace WarMachine.Models.WarModels
         public int DEF { get; set; }
         public int ARM { get; set; }
         public int CMD { get; set; }
+
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
+
+
+
         public int PointCost { get; set; }
         public string FA { get; set; }
         public Faction Faction { get; set; }

@@ -104,11 +104,10 @@ namespace WarMachine.Controllers
                 {
                     foreach (var abil in model.abilIDS)
                     {
-
-                        SoloAbility NewSoloAbility = new SoloAbility();
-                        NewSoloAbility.AbilityID = abil;
-                        NewSoloAbility.SoloID = newUnit.ID;
-                        context.SoloAbilities.Add(NewSoloAbility);
+                        UnitAbiliity NewUnitAbillity = new UnitAbiliity();
+                        NewUnitAbillity.AbilityID = abil;
+                        NewUnitAbillity.UnitID = newUnit.ID;
+                        context.UnitAbilities.Add(NewUnitAbillity);
                         context.SaveChanges();
 
 
@@ -121,10 +120,10 @@ namespace WarMachine.Controllers
                     foreach (var weap in model.weapIDS)
                     {
 
-                        SoloWeapon NewSoloWeapon = new SoloWeapon();
-                        NewSoloWeapon.WeaponID = weap;
-                        NewSoloWeapon.SoloID = newUnit.ID;
-                        context.SoloWeapons.Add(NewSoloWeapon);
+                        UnitWeapon newWeapon = new UnitWeapon();
+                        newWeapon.WeaponId = weap;
+                        newWeapon.UnitID = newUnit.ID;
+                        context.UnitWeapons.Add(newWeapon);
                         context.SaveChanges();
 
 
@@ -136,10 +135,10 @@ namespace WarMachine.Controllers
                     foreach (var spell in model.spellIDS)
                     {
 
-                        SoloSpell NewSoloSpell = new SoloSpell();
+                        UnitSpell NewSoloSpell = new UnitSpell();
                         NewSoloSpell.SpellID = spell;
-                        NewSoloSpell.SoloID = newUnit.ID;
-                        context.SoloSpells.Add(NewSoloSpell);
+                        NewSoloSpell.UnitID = newUnit.ID;
+                        context.UnitSpells.Add(NewSoloSpell);
                         context.SaveChanges();
 
 
@@ -242,10 +241,10 @@ namespace WarMachine.Controllers
                     foreach (var abil in model.abilIDS)
                     {
 
-                        SoloAbility NewSoloAbility = new SoloAbility();
-                        NewSoloAbility.AbilityID = abil;
-                        NewSoloAbility.SoloID = newJack.ID;
-                        context.SoloAbilities.Add(NewSoloAbility);
+                        WarjackAbillity NewSoloAbility = new WarjackAbillity();
+                        NewSoloAbility.AbillityID = abil;
+                        NewSoloAbility.WarjackID = newJack.ID;
+                        context.WarjackAbilities.Add(NewSoloAbility);
                         context.SaveChanges();
 
 
@@ -258,30 +257,17 @@ namespace WarMachine.Controllers
                     foreach (var weap in model.weapIDS)
                     {
 
-                        SoloWeapon NewSoloWeapon = new SoloWeapon();
-                        NewSoloWeapon.WeaponID = weap;
-                        NewSoloWeapon.SoloID = newJack.ID;
-                        context.SoloWeapons.Add(NewSoloWeapon);
+                        WarjackWeapon NewSoloWeapon = new WarjackWeapon();
+                        NewSoloWeapon.WeaponId = weap;
+                        NewSoloWeapon.WarjackId = newJack.ID;
+                        context.WarjackWeapons.Add(NewSoloWeapon);
                         context.SaveChanges();
 
 
                     }
                 }
 
-                if (model.spellIDS != null)
-                {
-                    foreach (var spell in model.spellIDS)
-                    {
-
-                        SoloSpell NewSoloSpell = new SoloSpell();
-                        NewSoloSpell.SpellID = spell;
-                        NewSoloSpell.SoloID = newJack.ID;
-                        context.SoloSpells.Add(NewSoloSpell);
-                        context.SaveChanges();
-
-
-                    }
-                }
+               
 
 
 
@@ -360,10 +346,10 @@ namespace WarMachine.Controllers
                     foreach (var abil in model.abilIDS)
                     {
 
-                        SoloAbility NewSoloAbility = new SoloAbility();
-                        NewSoloAbility.AbilityID = abil;
-                        NewSoloAbility.SoloID = newBeast.ID;
-                        context.SoloAbilities.Add(NewSoloAbility);
+                        WarBeastAbillity NewSoloAbility = new WarBeastAbillity();
+                        NewSoloAbility.AbillityId = abil;
+                        NewSoloAbility.WarBeastid  = newBeast.ID;
+                        context.WarbeastAbillities.Add(NewSoloAbility);
                         context.SaveChanges();
 
 
@@ -376,10 +362,10 @@ namespace WarMachine.Controllers
                     foreach (var weap in model.weapIDS)
                     {
 
-                        SoloWeapon NewSoloWeapon = new SoloWeapon();
-                        NewSoloWeapon.WeaponID = weap;
-                        NewSoloWeapon.SoloID = newBeast.ID;
-                        context.SoloWeapons.Add(NewSoloWeapon);
+                        WarbeastWeapon NewSoloWeapon = new WarbeastWeapon();
+                        NewSoloWeapon.WeaponId = weap;
+                        NewSoloWeapon.WarbeastID = newBeast.ID;
+                        context.WarbeastWeapons.Add(NewSoloWeapon);
                         context.SaveChanges();
 
 
@@ -391,10 +377,10 @@ namespace WarMachine.Controllers
                     foreach (var spell in model.spellIDS)
                     {
 
-                        SoloSpell NewSoloSpell = new SoloSpell();
-                        NewSoloSpell.SpellID = spell;
-                        NewSoloSpell.SoloID = newBeast.ID;
-                        context.SoloSpells.Add(NewSoloSpell);
+                        WarbeastSpell NewSoloSpell = new WarbeastSpell();
+                        NewSoloSpell.Spellid = spell;
+                        NewSoloSpell.WarbeastId = newBeast.ID;
+                        context.WarbeastSpells.Add(NewSoloSpell);
                         context.SaveChanges();
 
 
@@ -602,10 +588,10 @@ namespace WarMachine.Controllers
                     foreach (var abil in model.abilIDS)
                     {
 
-                        SoloAbility NewSoloAbility = new SoloAbility();
-                        NewSoloAbility.AbilityID = abil;
-                        NewSoloAbility.SoloID = newSolo.ID;
-                        context.SoloAbilities.Add(NewSoloAbility);
+                        WarcasterAbility NewSoloAbility = new WarcasterAbility();
+                        NewSoloAbility.AbilityId = abil;
+                        NewSoloAbility.WarcasterId = newSolo.ID;
+                        context.WarcasterAbilities.Add(NewSoloAbility);
                         context.SaveChanges();
 
 
@@ -618,10 +604,10 @@ namespace WarMachine.Controllers
                     foreach (var weap in model.weapIDS)
                     {
 
-                        SoloWeapon NewSoloWeapon = new SoloWeapon();
-                        NewSoloWeapon.WeaponID = weap;
-                        NewSoloWeapon.SoloID = newSolo.ID;
-                        context.SoloWeapons.Add(NewSoloWeapon);
+                        WarcasterWeapon NewSoloWeapon = new WarcasterWeapon();
+                        NewSoloWeapon.WeaponId = weap;
+                        NewSoloWeapon.WarcsaterId = newSolo.ID;
+                        context.WarcasterWeapons.Add(NewSoloWeapon);
                         context.SaveChanges();
 
 
@@ -633,10 +619,10 @@ namespace WarMachine.Controllers
                     foreach (var spell in model.spellIDS)
                     {
 
-                        SoloSpell NewSoloSpell = new SoloSpell();
-                        NewSoloSpell.SpellID = spell;
-                        NewSoloSpell.SoloID = newSolo.ID;
-                        context.SoloSpells.Add(NewSoloSpell);
+                        WarcasterSpell NewSoloSpell = new WarcasterSpell();
+                        NewSoloSpell.SpellId = spell;
+                        NewSoloSpell.WarcasterId = newSolo.ID;
+                        context.WarcasterSpells.Add(NewSoloSpell);
                         context.SaveChanges();
 
 
@@ -722,10 +708,10 @@ namespace WarMachine.Controllers
                     foreach (var abil in model.abilIDS)
                     {
 
-                        SoloAbility NewSoloAbility = new SoloAbility();
-                        NewSoloAbility.AbilityID = abil;
-                        NewSoloAbility.SoloID = newSolo.ID;
-                        context.SoloAbilities.Add(NewSoloAbility);
+                        WarlockAbillity NewSoloAbility = new WarlockAbillity();
+                        NewSoloAbility.AbillityId = abil;
+                        NewSoloAbility.WarlockId = newSolo.ID;
+                        context.WarlockAbillities.Add(NewSoloAbility);
                         context.SaveChanges();
 
 
@@ -738,10 +724,10 @@ namespace WarMachine.Controllers
                     foreach (var weap in model.weapIDS)
                     {
 
-                        SoloWeapon NewSoloWeapon = new SoloWeapon();
-                        NewSoloWeapon.WeaponID = weap;
-                        NewSoloWeapon.SoloID = newSolo.ID;
-                        context.SoloWeapons.Add(NewSoloWeapon);
+                        WarlockWeapon NewSoloWeapon = new WarlockWeapon();
+                        NewSoloWeapon.WeaponId = weap;
+                        NewSoloWeapon.WarlockId = newSolo.ID;
+                        context.WarlockWeapons.Add(NewSoloWeapon);
                         context.SaveChanges();
 
 
@@ -753,10 +739,10 @@ namespace WarMachine.Controllers
                     foreach (var spell in model.spellIDS)
                     {
 
-                        SoloSpell NewSoloSpell = new SoloSpell();
-                        NewSoloSpell.SpellID = spell;
-                        NewSoloSpell.SoloID = newSolo.ID;
-                        context.SoloSpells.Add(NewSoloSpell);
+                        WarlockSpell NewSoloSpell = new WarlockSpell();
+                        NewSoloSpell.SpellId = spell;
+                        NewSoloSpell.WarlockId = newSolo.ID;
+                        context.WarlockSpells.Add(NewSoloSpell);
                         context.SaveChanges();
 
 

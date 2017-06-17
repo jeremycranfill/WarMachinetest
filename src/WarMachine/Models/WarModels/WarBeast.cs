@@ -2,11 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WarMachine.Models.Joins;
 
 namespace WarMachine.Models.WarModels
 {
     public class WarBeast : BaseModel
     {
+
+
+         public IList<WarbeastSpell> WarbeastSpells { get; set; }
+        public IList<WarbeastWeapon> WarbeastWeapons { get; set; }
+        public IList<WarBeastAbillity> WarbeastAbiliities {get; set;}
 
 
         public enum sizes {Lesser, Light, Heavy, Pack }

@@ -117,13 +117,13 @@ namespace WarMachine.Controllers
 
             if (editModel.abilIDS != null)
             {
-                foreach (int id in editModel.abilIDS)
+                
 
-                {
+                
                     foreach (var abil in editModel.abilIDS)
                     {
 
-                        if (! editModel.currenntAbilIDs.Contains(abil))
+                        if (!editModel.currenntAbilIDs.Contains(abil))
                         {
 
                             SoloAbility NewSoloAbility = new SoloAbility();
@@ -134,16 +134,16 @@ namespace WarMachine.Controllers
 
                         }
 
-                    }
+                    
 
 
-                    foreach (var abil in editModel.currenntAbilIDs)
+                    foreach (var currentAbil in editModel.currenntAbilIDs)
                     {
 
-                        if (!editModel.abilIDS.Contains(abil))
+                        if (!editModel.abilIDS.Contains(currentAbil))
                         {
 
-                            SoloAbility soloabil = (from s in context.SoloAbilities where s.AbilityID == abil where s.SoloID == editModel.soloID select s).FirstOrDefault<SoloAbility>();
+                            SoloAbility soloabil = (from s in context.SoloAbilities where s.AbilityID == currentAbil where s.SoloID == editModel.soloID select s).FirstOrDefault<SoloAbility>();
                             context.SoloAbilities.Remove(soloabil);
 
                         }

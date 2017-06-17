@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace WarMachine.Data.Migrations
+namespace WarMachine.Migrations.UserDb
 {
-    public partial class CreateIdentitySchema : Migration
+    public partial class Tessssssfffjjst : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
