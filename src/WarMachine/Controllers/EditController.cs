@@ -117,24 +117,24 @@ namespace WarMachine.Controllers
 
             if (editModel.abilIDS != null)
             {
-                
 
-                
-                    foreach (var abil in editModel.abilIDS)
+
+
+                foreach (var abil in editModel.abilIDS)
+                {
+
+                    if (!editModel.currenntAbilIDs.Contains(abil))
                     {
 
-                        if (!editModel.currenntAbilIDs.Contains(abil))
-                        {
+                        SoloAbility NewSoloAbility = new SoloAbility();
+                        NewSoloAbility.AbilityID = abil;
+                        NewSoloAbility.SoloID = editModel.soloID;
+                        context.SoloAbilities.Add(NewSoloAbility);
+                        context.SaveChanges();
 
-                            SoloAbility NewSoloAbility = new SoloAbility();
-                            NewSoloAbility.AbilityID = abil;
-                            NewSoloAbility.SoloID = editModel.soloID;
-                            context.SoloAbilities.Add(NewSoloAbility);
-                            context.SaveChanges();
+                    }
 
-                        }
 
-                    
 
 
                     foreach (var currentAbil in editModel.currenntAbilIDs)
@@ -145,26 +145,27 @@ namespace WarMachine.Controllers
 
                             SoloAbility soloabil = (from s in context.SoloAbilities where s.AbilityID == currentAbil where s.SoloID == editModel.soloID select s).FirstOrDefault<SoloAbility>();
                             context.SoloAbilities.Remove(soloabil);
-
+                            context.SaveChanges();
                         }
 
 
                     }
 
 
-                    }
-
                 }
 
-            else {
+            }
+
+            else
+            {
 
                 // delete all solo abils
-                var soloAbils =  context.SoloAbilities.Where(c => c.SoloID == editModel.soloID).ToList();
+                var soloAbils = context.SoloAbilities.Where(c => c.SoloID == editModel.soloID).ToList();
 
                 foreach (var Abil in soloAbils)
                 {
                     context.SoloAbilities.Remove(Abil);
-
+                    context.SaveChanges();
 
                 }
 
@@ -172,103 +173,87 @@ namespace WarMachine.Controllers
             }
 
 
-            
 
 
-                    if (editModel.weapIDS != null)
+
+
+
+
+
+
+
+
+
+
+            if (editModel.weapIDS != null)
+            {
+                foreach (var weap in editModel.weapIDS)
+                {
+
+                    if (!editModel.currenntWeaponIDs.Contains(weap))
                     {
-                        foreach (var weap in editModel.weapIDS)
+                        SoloWeapon NewSoloWeapon = new SoloWeapon();
+                        NewSoloWeapon.WeaponID = weap;
+                        NewSoloWeapon.SoloID = editModel.soloID;
+                        context.SoloWeapons.Add(NewSoloWeapon);
+                        context.SaveChanges();
+                    }
+
+
+
+
+                    foreach (var weaps in editModel.currenntWeaponIDs)
+                    {
+
+                        if (!editModel.weapIDS.Contains(weaps))
                         {
 
-                            if (!editModel.currenntWeaponIDs.Contains(weap))
-                            {
-                                SoloWeapon NewSoloWeapon = new SoloWeapon();
-                                NewSoloWeapon.WeaponID = weap;
-                                NewSoloWeapon.SoloID = editModel.soloID;
-                                context.SoloWeapons.Add(NewSoloWeapon);
-                                context.SaveChanges();
-                            }
-
+                            SoloWeapon soloWeap = (from s in context.SoloWeapons where s.WeaponID == weap where s.SoloID == editModel.soloID select s).FirstOrDefault<SoloWeapon>();
+                            context.SoloWeapons.Remove(soloWeap);
+                            context.SaveChanges();
                         }
-
-
-                        foreach (var weap in editModel.currenntWeaponIDs)
-                        {
-
-                            if (!editModel.weapIDS.Contains(weap))
-                            {
-
-                                SoloWeapon soloWeap = (from s in context.SoloWeapons where s.WeaponID == weap where s.SoloID == editModel.soloID select s).FirstOrDefault<SoloWeapon>();
-                                context.SoloWeapons.Remove(soloWeap);
-
-                            }
-
-
-
-
-                        }
-
-
-
-
-
-
-
-                        if (editModel.spellIDS != null)
-
-
-                        {
-
-
-                            foreach (var spell in editModel.spellIDS)
-                            {
-
-                                if (!editModel.currenntWeaponIDs.Contains(spell))
-                                {
-                                    SoloSpell NewSoloSpell = new SoloSpell();
-                                    NewSoloSpell.SpellID = spell;
-                                    NewSoloSpell.SoloID = editModel.soloID;
-                                    context.SoloSpells.Add(NewSoloSpell);
-                                    context.SaveChanges();
-                                }
-
-                            }
-
-
-                            foreach (var spell in editModel.currenntSpellIDs)
-                            {
-
-                                if (!editModel.weapIDS.Contains(spell))
-                                {
-
-                                    SoloSpell soloSpell = (from s in context.SoloSpells where s.SpellID == spell where s.SoloID == editModel.ID select s).FirstOrDefault<SoloSpell>();
-                                    context.SoloSpells.Remove(soloSpell);
-
-                                }
-
-
-
-
-                            }
-
-
-
-
-
-
-
-
-                            return Redirect("/View/Solo/"+editSolo.ID);
-                        }
-
 
                     }
+                }
+            }
+
+
+            else
+            {
+
+                // delete all solo abils
+                var soloWeaps = context.SoloWeapons.Where(c => c.SoloID == editModel.soloID).ToList();
+
+                foreach (var Weap in soloWeaps)
+                {
+                    context.SoloWeapons.Remove(Weap);
+                    context.SaveChanges();
+
+                }
+
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             return Redirect("/View/Solo/" + editSolo.ID);
 
-        }
-           
-      
+            }
+
+        
 
 
         [HttpGet]
