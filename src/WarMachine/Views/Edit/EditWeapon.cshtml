@@ -1,0 +1,48 @@
+﻿@model WarMachine.ViewModels.Edit.EditWeaponViewModel
+@using static WarMachine.Models.WarModels.Weapon;
+
+@section scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+<form asp-controller="Edit" asp-action="Weapon" method="post">
+
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input class="form-control" asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+
+
+    <div class="form-group">
+        <label asp-for="RNG"></label>
+        <input class="form-control" asp-for="RNG" />
+        <span asp-validation-for="RNG"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="POW"></label>
+        <input class="form-control" asp-for="POW" />
+        <span asp-validation-for="POW"></span>
+    </div>
+
+    <div class="form-group">
+      <label asp-for="Type">Weapon Type</label>
+         <select class="form-control"- asp-items="Html.GetEnumSelectList<WeaponType>()" asp-for="Type"></select>
+           
+            <span asp-validation-for="Type"></span>
+</div>
+
+    <div class="form-group">
+        <label asp-for="ROF"></label>
+        <input class="form-control" asp-for="ROF" />
+        <span asp-validation-for="ROF"></span>
+    </div>
+   
+    
+    
+    <input type="submit" class="btn btn-success" />
+    <input type="hidden" asp-for="Soloid" />"
+
+</form>

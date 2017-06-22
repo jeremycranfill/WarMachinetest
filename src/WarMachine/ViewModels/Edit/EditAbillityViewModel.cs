@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using WarMachine.Models;
 using WarMachine.Models.WarModels;
 
-namespace WarMachine.ViewModels
+namespace WarMachine.ViewModels.Edit
 {
-    public class AddAbilityViewModel
+    public class EditAbillityViewModel
     {
 
         //this might not be needed
@@ -50,7 +50,7 @@ namespace WarMachine.ViewModels
 
         public List<SelectListItem> Abilities { get; set; } = new List<SelectListItem>();
 
-
+        public int SoloId { get; set; }
 
     }
 }

@@ -9,7 +9,7 @@
 }
 <form asp-controller="Edit" asp-action="Unit" method="post">
 
-    @Html.Partial("ModelForm")
+    @Html.Partial("EditForm")
 
 
     <div class="form-group">
@@ -23,7 +23,7 @@
         <input class="form-control" asp-for="MinUnit" />
         <span asp-validation-for="MinUnit"></span>
     </div>
-
+    <input type="hidden" asp-for="soloID" value="@Model.soloID" />
 
 
 

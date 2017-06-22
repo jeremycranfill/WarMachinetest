@@ -38,7 +38,7 @@
                 </td>
             }
 
-            <td><a asp-controller="Edit" asp-action="@ViewBag.Type" asp-route-SoloId="@Model.ID"><i class="fa fa-edit fa-lg"></i>Edit</a></td>
+            <td><a asp-controller="Edit" asp-action="Warjack" asp-route-SoloId="@Model.ID"><i class="fa fa-edit fa-lg"></i>Edit</a></td>
 
         </tr>
     </tbody>
@@ -74,9 +74,6 @@
 
 
 <h3>Weapons</h3>
-
-
-<h3>Spells</h3>
 <table class="table table-sm">
     <thead>
         <tr>
@@ -126,6 +123,6 @@
 
 <br />
 <a asp-controller="EditAbilities" asp-action="Solo" asp-route-SoloId="@Model.ID">Add Ability</a>
-<a asp-controller="Edit" asp-action="Solo" asp-route-SoloId="@Model.ID"><i class="fa fa-edit fa-lg"></i>Edit </a>
+<a asp-controller="Edit" asp-action="Warjack" asp-route-SoloId="@Model.ID"><i class="fa fa-edit fa-lg"></i>Edit </a>
 
 

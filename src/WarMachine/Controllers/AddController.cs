@@ -53,7 +53,7 @@ namespace WarMachine.Controllers
         }
 
 
-        public IActionResult AddUnit()
+        public IActionResult Unit()
         {
 
             AddUnitViewModel view = new AddUnitViewModel
@@ -67,7 +67,7 @@ namespace WarMachine.Controllers
 
             );
 
-            return View(view);
+            return View("AddUnit",view);
 
 
         }
@@ -75,7 +75,7 @@ namespace WarMachine.Controllers
 
 
         [HttpPost]
-        public IActionResult AddUnit(AddUnitViewModel model)
+        public IActionResult Unit(AddUnitViewModel model)
         {
 
             if (ModelState.IsValid)
@@ -98,6 +98,8 @@ namespace WarMachine.Controllers
                 newUnit.STR = model.STR;
                 newUnit.FA = model.FA;
                 newUnit.factionName = model.Faction;
+                context.Units.Add(newUnit);
+                context.SaveChanges();
 
 
                 if (model.abilIDS != null)
@@ -171,7 +173,7 @@ namespace WarMachine.Controllers
                  }
             
 
-            return View(model);
+            return View("AdUnit",model);
 
 
 
@@ -837,7 +839,7 @@ namespace WarMachine.Controllers
 
 
         [HttpPost]
-        public IActionResult Ability(AddAbilityViewModel model)
+        public IActionResult Ability(EditAbilityViewModel model)
 
         {
 
@@ -866,7 +868,7 @@ namespace WarMachine.Controllers
         }
 
         [HttpPost]
-        public IActionResult Weapon(AddWeaponViewModel model)
+        public IActionResult Weapon(EditAbilityViewModel model)
         {
 
             if (ModelState.IsValid)
@@ -874,10 +876,7 @@ namespace WarMachine.Controllers
                 Weapon newWeapon = new Weapon();
 
                 newWeapon.Name = model.Name;
-                newWeapon.POW = model.POW;
-                newWeapon.RNG = model.RNG;
-                newWeapon.Type = model.Type;
-                context.Weapons.Add(newWeapon);
+                
                 context.SaveChanges();
                 return Redirect("/");
 

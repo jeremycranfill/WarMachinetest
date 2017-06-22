@@ -35,17 +35,17 @@ namespace WarMachine.Controllers
 
                 
         }
-        [Route("View/Ability/{AbilityID}")]
+        [Route("View/Abillity/{AbilityID}")]
         public IActionResult Ability(int AbilityId)
         {
            Ability abil  = context.Abilities.Single(c=> c.ID == AbilityId);
 
             ViewBag.Props = abil.GetProps();
             ViewBag.PropData = Helper.GetPropData(abil.GetProps(), abil);
-            ViewBag.Type = "Spell";
+            ViewBag.Type = "Ability";
 
 
-            return View("Ability", abil);
+            return View("SingleABility", abil);
 
 
         }
@@ -169,6 +169,22 @@ namespace WarMachine.Controllers
 
             unit.Spells = Spells;
 
+
+
+
+            List<UnitWeapon> unitWeapons = context.UnitWeapons.Where(c => c.UnitID == UnitID).ToList();
+            List<Weapon> Weapons = new List<Weapon>();
+
+            foreach (UnitWeapon weapon in unitWeapons)
+            {
+
+                Weapons.Add(context.Weapons.Single(c => c.ID == weapon.WeaponId));
+
+
+
+            }
+
+            unit.Weapons = Weapons;
 
 
 
@@ -468,16 +484,16 @@ namespace WarMachine.Controllers
 
 
             //get list of abilitiy IDS for the model
-            List<SoloAbility> casterAbils = context.SoloAbilities.Where(c => c.SoloID == WarcasterId).ToList();
+            List<WarcasterAbility> casterAbils = context.WarcasterAbilities.Where(c => c.WarcasterId == WarcasterId).ToList();
             //create list to hold abils
             List<Ability> abilList = new List<Ability>();
 
 
             //add each ability to list.
-            foreach (SoloAbility abil in casterAbils)
+            foreach (WarcasterAbility abil in casterAbils)
             {
 
-                abilList.Add(context.Abilities.Single(c => c.ID == abil.AbilityID));
+                abilList.Add(context.Abilities.Single(c => c.ID == abil.AbilityId));
 
 
             }

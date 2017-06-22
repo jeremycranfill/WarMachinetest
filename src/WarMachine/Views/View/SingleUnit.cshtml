@@ -46,38 +46,38 @@
 
 </table>
 
-            <h3>Abilities</h3>
-            <table class="table table-sm">
-                <thead>
-                    <tr>
-                        <th>Name </th>
-                        <th> Description</th>
-                    </tr>
-                </thead>
+<h3>Abilities</h3>
+<table class="table table-sm">
+    <thead>
+        <tr>
+            <th>Name </th>
+            <th> Description</th>
+        </tr>
+    </thead>
 
-                <tbody>
+    <tbody>
 
-                    @foreach (Ability abil in @Model.Abilities)
+        @foreach (Ability abil in @Model.Abilities)
             {
-                        <tr>
-                            <td>@abil.Name </td>
-                            <td>@abil.Description </td>
-                        </tr>
-                    }
+            <tr>
+                <td>@abil.Name </td>
+                <td>@abil.Description </td>
+            </tr>
+        }
 
 
-                </tbody>
-
-
-
-            </table>
+    </tbody>
 
 
 
-            @if (Model.Spells.Count > 0)
+</table>
+
+
+
+@if (Model.Spells.Count > 0)
 
             {
-                <h3>Spells</h3>
+    <h3>Spells</h3>
                 <table class="table table-sm">
                     <thead>
                         <tr>
@@ -107,16 +107,56 @@
                                 <td>@spell.Description </td>
                             </tr>
                         }
-
-
-
-
-
-
-
-
+                    </tbody>
 
 
 
                 </table>
-            }
+
+
+
+
+                <h3>Weapons</h3>
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th>Name </th>
+                            <th>Pow</th>
+                            <th>Rng</th>
+                            <th>Rof</th>
+                            <th>Type</th>
+
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        @foreach (Weapon weap in @Model.Weapons)
+                        {
+                            <tr>
+                                <td>@weap.Name </td>
+                                <td>@weap.POW</td>
+                                <td>@weap.RNG</td>
+                                <td>@weap.ROF</td>
+                                <td>@weap.Type</td>
+
+                            </tr>
+                        }
+
+
+                    </tbody>
+
+
+
+                </table>
+
+
+
+
+
+
+
+
+
+                
+}

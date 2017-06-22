@@ -55,7 +55,7 @@ namespace WarMachine.ViewModels.Edit
                     Text = spell.Name
                 };
 
-                allWeaps.Add(item);
+                allSpells.Add(item);
             }
 
 

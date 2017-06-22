@@ -28,6 +28,9 @@ namespace WarMachine.ViewModels.Edit
         public bool OFF { get; set; }
         [Required]
         public string Description { get; set; }
+        [Required]
+        public bool isAnimi { get; set; }
+
 
         public int soloID { get; set; }
 

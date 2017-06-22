@@ -1,0 +1,67 @@
+﻿@model WarMachine.ViewModels.Edit.EditSpellViewModel
+@using static WarMachine.Models.WarModels.Spell;
+
+@section scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+
+<form asp-controller="Edit" asp-action="Spell" method="post">
+
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input class="form-control" asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Cost"></label>
+        <input class="form-control" asp-for="Cost" />
+        <span asp-validation-for="Cost"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="RNG"></label>
+        <input class="form-control" asp-for="RNG" />
+        <span asp-validation-for="RNG"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="AOE"></label>
+        <select class="form-control" asp-items="Html.GetEnumSelectList<AoeType>()" asp-for="AOE"></select>
+        <span asp-validation-for="AOE"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="POW"></label>
+        <input class="form-control" asp-for="POW" />
+        <span asp-validation-for="POW"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Duration"></label>
+        <select class="form-control" asp-items="Html.GetEnumSelectList<DurationType>()" asp-for="Duration"></select>
+        <span asp-validation-for="Duration"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <input class="form-control" asp-for="Description" />
+        <span asp-validation-for="Description"></span>
+    </div>
+
+
+    <div class="form-group">
+        <label asp-for="OFF"></label>
+        <input asp-for="OFF" />
+        <span asp-validation-for="OFF"></span>
+    </div>
+
+    <input type="hidden" asp-for="soloID" />
+
+    <input type="submit" class="btn btn-success" />
+
+
+</form>
+
+       

@@ -77,6 +77,7 @@ namespace WarMachine.Data
             modelBuilder.Entity<WarjackAbillity>().HasKey(c => new { c.AbillityID, c.WarjackID });
             modelBuilder.Entity<WarjackWeapon>().HasKey(c => new { c.WeaponId, c.WarjackId });
 
+
             modelBuilder.Entity<WarcasterAbility>().HasKey(c => new { c.AbilityId, c.WarcasterId });
             modelBuilder.Entity<WarcasterSpell>().HasKey(c => new { c.SpellId, c.WarcasterId });
             modelBuilder.Entity<WarcasterWeapon>().HasKey(c => new { c.WeaponId, c.WarcsaterId });

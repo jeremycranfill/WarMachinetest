@@ -125,5 +125,41 @@
 
 
 
-        
+        <h3>Weapons</h3>
+
+
+<table class="table table-sm">
+    <thead>
+        <tr>
+            <th>Name </th>
+            <th>Pow</th>
+            <th>Rng</th>
+            <th>Rof</th>
+            <th>Type</th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (Weapon weap in @Model.Weapons)
+            {
+            <tr>
+                <td>@weap.Name </td>
+                <td>@weap.POW</td>
+                <td>@weap.RNG</td>
+                <td>@weap.ROF</td>
+                <td>@weap.Type</td>
+
+            </tr>
+        }
+
+
+    </tbody>
+
+
+
+</table>
+
+
   

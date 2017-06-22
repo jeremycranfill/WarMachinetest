@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using static WarMachine.Models.WarModels.Weapon;
 
-namespace WarMachine.ViewModels
+namespace WarMachine.ViewModels.Edit
 {
     public class EditWeaponViewModel
     {

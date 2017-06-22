@@ -74,10 +74,48 @@
 
 
 
+<h3>Spells</h3>
+<table class="table table-sm">
+    <thead>
+        <tr>
+            <th>Name </th>
+            <th>Pow</th>
+            <th>Rng</th>
+            <th>Cost</th>
+            <th>Duration</th>
+            <th>AOE</th>
+            <th>OFF</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (Spell spell in @Model.Spells)
+            {
+            <tr>
+                <td>@spell.Name </td>
+                <td>@spell.POW</td>
+                <td>@spell.RNG</td>
+                <td>@spell.Cost</td>
+                <td>@spell.Duration</td>
+                <td>@spell.AOE</td>
+                <td>@spell.OFF</td>
+                <td>@spell.Description </td>
+            </tr>
+        }
+
+
+    </tbody>
+
+
+
+</table>
+
+
 <h3>Weapons</h3>
 
 
-<h3>Spells</h3>
 <table class="table table-sm">
     <thead>
         <tr>
@@ -125,8 +163,6 @@
 
 
 
-<br />
 
-<a asp-controller="Edit" asp-action="Warbeast" asp-route-WarbeastId="@Model.ID"><i class="fa fa-edit fa-lg"></i>Edit </a>
 
 
