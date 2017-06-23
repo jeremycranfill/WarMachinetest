@@ -122,7 +122,7 @@
 
 
 <br />
-<a asp-controller="EditAbilities" asp-action="Solo" asp-route-SoloId="@Model.ID">Add Ability</a>
+<a asp-controller="Delete" asp-action="Index" asp-route-Type="@ViewBag.Type" asp-route-name="@Model.Name" asp-route-ID="@Model.ID"><i class="fa fa-trash fa-lg"></i> Delete</a>
 <a asp-controller="Edit" asp-action="Warjack" asp-route-SoloId="@Model.ID"><i class="fa fa-edit fa-lg"></i>Edit </a>
 
 

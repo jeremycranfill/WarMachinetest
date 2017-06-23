@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WarMachine.Data;
 using WarMachine.Models.Joins;
 
 namespace WarMachine.Models.WarModels
@@ -36,7 +37,66 @@ namespace WarMachine.Models.WarModels
 
         }
 
+        public void Delete(ModelDbContext context)
+        {
 
+            context.Weapons.Remove(context.Weapons.SingleOrDefault(c => c.ID == this.ID));
+
+
+            var soloWeapon = context.SoloWeapons.Where(c => c.WeaponID == this.ID).ToList();
+
+            foreach (var solo in soloWeapon)
+            {
+                context.Remove(solo);
+
+            }
+
+            var unitWeapon = context.UnitWeapons.Where(c => c.WeaponId == this.ID);
+
+            foreach (var unit in unitWeapon)
+            {
+
+                context.UnitWeapons.Remove(unit);
+
+            }
+
+
+            var warbeastWeapon = context.WarbeastWeapons.Where(c => c.WeaponId == this.ID);
+
+            foreach (var warbeast in warbeastWeapon)
+            { context.WarbeastWeapons.Remove(warbeast); }
+
+
+            var warjackWeapons = context.WarjackWeapons.Where(c => c.WeaponId == this.ID);
+
+
+            foreach (var warjack in warjackWeapons)
+            { context.WarjackWeapons.Remove(warjack); }
+
+
+
+            var casterWeapons = context.WarcasterWeapons.Where(c => c.WeaponId == this.ID);
+
+            foreach (var warcaster in casterWeapons)
+            { context.WarcasterWeapons.Remove(warcaster); }
+
+
+            var warlockWeapons = context.WarlockWeapons.Where(c => c.WeaponId == this.ID);
+
+            foreach (var warlock in warlockWeapons)
+            { context.WarlockWeapons.Remove(warlock); }
+
+
+
+
+
+            context.SaveChanges();
+
+
+
+
+
+        }
 
 
 

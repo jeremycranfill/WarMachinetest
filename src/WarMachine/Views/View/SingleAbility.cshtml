@@ -19,7 +19,7 @@
                 </th>
             }
 
-            <th>Edit</th>
+            
         </tr>
 
     </thead>
@@ -35,10 +35,13 @@
 
                 </td>
             }
-
-            <td><a asp-controller="Edit" asp-action="@ViewBag.Type" asp-route-SoloId="@Model.ID"><i class="fa fa-edit fa-lg"></i>Edit</a></td>
-
         </tr>
-    </tbody>
+
+      
+
+
+
 
 </table>
+<a asp-controller="Edit" asp-action="@ViewBag.Type" asp-route-type="Solos" asp-route-SoloId="@Model.ID"><i class="fa fa-edit fa-lg"></i>Edit</a>
+<a asp-controller="Delete" asp-action="Index" asp-route-Type="Abillity" asp-route-name="@Model.Name" asp-route-ID="@Model.ID"><i class="fa fa-trash fa-lg"></i> Delete</a>

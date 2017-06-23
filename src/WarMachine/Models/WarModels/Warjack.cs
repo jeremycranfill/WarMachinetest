@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WarMachine.Data;
 using WarMachine.Models.Joins;
 
 namespace WarMachine.Models.WarModels
@@ -33,7 +34,34 @@ namespace WarMachine.Models.WarModels
         }
 
 
+        public override void Delete(ModelDbContext context)
+        {
 
+            context.Warjacks.Remove(context.Warjacks.SingleOrDefault(c => c.ID == this.ID));
+
+
+            var soloAbils = (context.WarjackAbilities.Where(c => c.WarjackID == ID));
+
+            foreach (var abil in soloAbils)
+            {
+                context.WarjackAbilities.Remove(abil);
+            }
+
+
+                       
+
+            var soloWeaps = (context.WarjackWeapons.Where(c => c.WarjackId == ID));
+
+            foreach (var weap in soloWeaps)
+            {
+
+                context.WarjackWeapons.Remove(weap);
+
+            }
+
+            context.SaveChanges();
+
+        }
 
 
 

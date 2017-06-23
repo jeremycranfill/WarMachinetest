@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using WarMachine.Models.WarModels;
 using static WarMachine.ViewModels.BasedModelViewModel;
 
+using WarMachine.Data;
+
 namespace WarMachine.Models.WarModels
 {
     public abstract class BaseModel
@@ -50,7 +52,8 @@ namespace WarMachine.Models.WarModels
         }
 
 
-
+        virtual public void Delete(ModelDbContext context)
+        { }
 
 
     }
