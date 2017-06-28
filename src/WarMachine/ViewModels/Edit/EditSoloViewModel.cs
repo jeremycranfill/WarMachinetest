@@ -65,6 +65,7 @@ namespace WarMachine.ViewModels.Edit
 
 
         public int soloID { get; set; }
+
         public List<int> currenntAbilIDs { get; set; }
         public List<int> currenntSpellIDs { get; set; }
         public List<int> currenntWeaponIDs { get; set; }

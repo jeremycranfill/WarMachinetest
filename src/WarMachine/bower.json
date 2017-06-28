@@ -8,7 +8,8 @@
     "jquery-validation-unobtrusive": "3.2.6",
     "fontawesome": "~4.7.0",
     "bootswatch": "~3.3.7",
-    "dropdown.js": "*"
+    "dropdown.js": "*",
+    "bootstrap-select": "^1.12.2"
   },
   "resolutions": {
     "bootstrap": "~3.3.7",

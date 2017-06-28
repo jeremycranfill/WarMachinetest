@@ -3,6 +3,7 @@
 
   "dependencies": {
     "Ansver.MVC.Selectize": "0.12.4.3",
+    "bootstrap-select": "1.12.2",
     "Microsoft.AspNet.Identity.Core": "2.2.1",
     "Microsoft.AspNet.Identity.EntityFramework": "2.2.1",
     "Microsoft.AspNetCore.Authentication.Cookies": "1.0.0",

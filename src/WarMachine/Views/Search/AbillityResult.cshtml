@@ -1,0 +1,26 @@
+﻿@using WarMachine.Models.WarModels
+@model IEnumerable<Ability>
+@if (@Model.Count() < 1)
+{
+    @: Nothing found.
+
+}
+@if (@Model.Count() >= 1)
+{
+    <table style="width: 30%;" class="table table-striped col-md-1 ">
+        <thead>
+            <tr> <th>Results: @Model.Count()</th></tr>
+
+
+        </thead>
+
+        <tbody>
+            @foreach (var _model in @Model)
+            {
+                <tr><td><a asp-controller="View" asp-action="Abillity" asp-route-id="@_model.ID"> @_model.Name</a></td></tr>
+
+            }
+        </tbody>
+    </table>
+
+}

@@ -14,6 +14,7 @@ using WarMachine.ViewModels;
 
 namespace WarMachine.Controllers
 {
+    [Authorize]
     public class EditController : Controller
     {
 
@@ -34,7 +35,7 @@ namespace WarMachine.Controllers
         }
 
 
-
+       
         [HttpGet]
         [Route("Edit/Solo/{SoloId}")]
 

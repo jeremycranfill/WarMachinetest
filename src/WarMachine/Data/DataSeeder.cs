@@ -1,13 +1,48 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WarMachine.Models;
 using WarMachine.Models.WarModels;
 
 namespace WarMachine.Data
 {
-    public static class DataSeeder
+    public  class DataSeeder
     {
+        private ModelDbContext _context;
+        private UserManager<ApplicationUser> _userManager;
+
+        public DataSeeder(ModelDbContext context, UserManager<ApplicationUser> userManager)
+        {
+            _context = context;
+            _userManager = userManager;
+        }
+
+
+
+
+        public async Task EnsureSeedData()
+        {
+            if (await _userManager.FindByEmailAsync("jeremy.cranfill@gmail.com") == null)
+            {
+                var user = new ApplicationUser()
+                {
+                    UserName = "jcranfill",
+                    Email = "jeremy.cranfill@gmail.com"
+                };
+
+                await _userManager.CreateAsync(user, "P@ssw0rd!");
+            }
+        }
+
+
+
+
+
+
+
+
         public static void Initialize(ModelDbContext context)
         {
             if (context.Factions.Any())

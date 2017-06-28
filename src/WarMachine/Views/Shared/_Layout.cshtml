@@ -67,17 +67,17 @@
                             <li><a asp-controller="View" asp-action="Weapon">Weapon</a></li>
                         </ul>
 
-               
 
 
 
 
-                 
 
 
 
-<li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+
+                    <li><a asp-area="" asp-controller="Search" asp-action="Index">Search</a>
+
+                    <li><a asp-area="" asp-controller="Home" ></a></li>
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>
@@ -85,9 +85,9 @@
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2017 - usertest</p>
+      
+        <footer class="footer navbar-fixed-bottom">
+            <p>&copy; 2017 - WarmachineDB</p>
         </footer>
     </div>
 

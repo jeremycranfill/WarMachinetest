@@ -269,19 +269,19 @@ namespace WarMachine.Controllers
                     }
                 }
 
-               
 
 
 
-
-                return Redirect("/");
+                
+                    
+                    return Redirect("/");
 
 
             }
 
             return View("Warjack", model);
 
-
+            
 
         }
 

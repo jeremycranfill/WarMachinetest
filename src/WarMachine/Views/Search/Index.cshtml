@@ -1,0 +1,29 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<form asp-action="Index" asp-controller="Search" method="post" class="form-inline">
+   
+    <div class="form-group">
+        <label for="Value" class="form-group-lg">Search:</label>
+        <input type="text" class="form-control" name="Value">
+    </div>
+
+    <select name="Type" class="form-control">
+        <option value="Solo">Solo</option>
+        <option value="Unit">Unit</option>
+        <option value="Warlock">Warlock</option>
+        <option value="Warcaster">Warcaster</option>
+        <option value="Warbeast">Warbeast</option>
+        <option value="Warjack">Warjack</option>
+        <option value="Spell">Spell</option>
+        <option value="Abillity">Abillity</option>
+
+    </select>
+    <input type="submit" class="btn btn-success" />
+</form>
+
+
