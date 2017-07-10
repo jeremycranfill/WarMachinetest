@@ -81,7 +81,7 @@
 @if (Model.allAbills.Count > 0)
 {
     <div class="form-group">
-        <label asp-for="abilIDS"></label>
+        <label asp-for="abilIDS">Abillites</label>
         <select multiple class="form-control" asp-for="abilIDS" asp-items="@Model.allAbills"></select>
 
 
@@ -91,7 +91,7 @@
 @if (Model.allSpells.Count > 0)
 {
     <div class="form-group">
-        <label asp-for="spellIDS"></label>
+        <label asp-for="spellIDS">Spells</label>
         <select multiple class="form-control" asp-for="spellIDS" asp-items="@Model.allSpells"></select>
 
     </div>
@@ -100,7 +100,7 @@
 @if (Model.allWeaps.Count > 0)
 {
     <div class="form-group">
-        <label asp-for="weapIDS"></label>
+        <label asp-for="weapIDS">Weapons</label>
         <select multiple class="form-control" asp-for="weapIDS" asp-items="@Model.allWeaps"></select>
 
     </div>

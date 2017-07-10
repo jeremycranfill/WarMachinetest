@@ -868,7 +868,7 @@ namespace WarMachine.Controllers
         }
 
         [HttpPost]
-        public IActionResult Weapon(EditAbilityViewModel model)
+        public IActionResult Weapon(AddWeaponViewModel model)
         {
 
             if (ModelState.IsValid)
@@ -876,6 +876,11 @@ namespace WarMachine.Controllers
                 Weapon newWeapon = new Weapon();
 
                 newWeapon.Name = model.Name;
+                newWeapon.POW = model.POW;
+                newWeapon.RNG = model.RNG;
+                newWeapon.ROF = model.POW;
+                newWeapon.Type = model.Type;
+                context.Weapons.Add(newWeapon);
                 
                 context.SaveChanges();
                 return Redirect("/");
